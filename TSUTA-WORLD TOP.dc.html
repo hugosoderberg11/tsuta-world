@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes heroFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    a { color: #1c7fa6; text-decoration: none; }
+    a:hover { color: #12586f; }
+    #top { font-weight: 500; }
+    #footer a { font-weight: 600; color: #1a1a1d; }
+  </style>
+</helmet>
+<div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;overflow-x:hidden;">
+
+  <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #e7e7e9;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between;">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;">
+        <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:28px;height:auto;display:block;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.01em;color:#1a1a1d;">TSUTA-WORLD</span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:36px;">
+        <a href="#services" style="font-size:14px;font-weight:500;color:#1a1a1d;">SERVICE</a>
+        <a href="#news" style="font-size:14px;font-weight:500;color:#1a1a1d;">NEWS</a>
+        <a href="#footer" style="font-size:14px;font-weight:500;color:#1a1a1d;">COMPANY</a>
+        <a href="#contact" style="padding:10px 22px;background:#1c7fa6;color:#ffffff;border-radius:999px;font-size:14px;font-weight:600;">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" style="position:relative;overflow:hidden;min-height:820px;background:#ffffff;">
+    <div style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;background:#ffffff;">
+      <video id="hero-bg-video" src="assets/hero.mp4" autoPlay="{{heroVideoOn}}" muted="{{heroVideoOn}}" loop="{{heroVideoOn}}" playsInline="{{heroVideoOn}}" preload="auto"
+        style="height:100%;width:auto;min-height:100%;object-fit:cover;object-position:center;transform:scale(1.36);transform-origin:center right;display:block;background:#ffffff;"></video>
+    </div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#ffffff 0%,#ffffff 34%,rgba(255,255,255,0.72) 48%,rgba(255,255,255,0) 66%);"></div>
+    <div style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
+      <div style="animation:heroFade 0.8s ease both;min-width:0;max-width:520px;">
+        <div style="display:inline-flex;align-items:center;padding:6px 14px;border:1px solid #cfe6ee;border-radius:999px;color:#1c7fa6;font-size:12px;font-weight:600;letter-spacing:0.08em;margin-bottom:28px;font-family:'Space Grotesk',sans-serif;">MULTI-BUSINESS CREATIVE COMPANY</div>
+        <h1 style="font-size:46px;line-height:1.4;font-weight:900;color:#17171a;margin:0 0 24px;letter-spacing:-0.01em;"><span style="white-space:nowrap;">動画・Web・広告制作・採用・アパレル。</span><br>AIですべてのコストを壊す。</h1>
+        <p style="font-size:18px;line-height:1.9;color:#2c2e32;margin:0 0 36px;max-width:440px;">「高いのが当たり前」を、私たちは信じない。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;">
+          <sc-for list="{{heroTags}}" as="tag" hint-placeholder-count="5">
+            <span style="padding:8px 16px;border:1px solid #e2e3e6;border-radius:999px;font-size:13px;color:#1a1a1d;">{{tag}}</span>
+          </sc-for>
+        </div>
+        <a href="#services" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#1a1a1d;border-bottom:2px solid #1c7fa6;padding-bottom:4px;">事業を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">TV / MEDIA</h2>
+      <span style="font-size:14px;color:#3d4045;">メディア掲載実績</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <sc-for list="{{mediaItems}}" as="m" hint-placeholder-count="2">
+        <a href="{{m.href}}" target="{{m.target}}" style="display:block;color:inherit;">
+          <div style="width:100%;height:280px;overflow:hidden;background:#f0f1f3;border:1px solid #e7e7e9;">
+            <img src="{{m.imageSrc}}" alt="{{m.title}}" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+          </div>
+          <div style="margin-top:20px;">
+            <div style="font-size:13px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{m.program}}</div>
+            <div style="font-size:19px;font-weight:700;color:#17171a;margin-bottom:8px;">{{m.title}}</div>
+            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0 0 4px;">{{m.desc}}</p>
+            <div style="font-size:13px;color:#3d4045;">{{m.date}}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="news" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0 0 32px;">NEWS</h2>
+    <div>
+      <sc-for list="{{newsItems}}" as="n" hint-placeholder-count="3">
+        <div style="display:flex;gap:32px;padding:22px 0;border-bottom:1px solid #ececee;align-items:baseline;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#3d4045;min-width:110px;flex-shrink:0;">{{n.date}}</span>
+          <a href="{{n.href}}" style="font-size:15px;color:#26272b;">{{n.title}}</a>
+        </div>
+      </sc-for>
+    </div>
+    <a href="post.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:14px;font-weight:600;color:#1a1a1d;">VIEW ALL →</a>
+  </section>
+
+  <section id="services" style="max-width:1240px;margin:0 auto;padding:88px 40px 96px;border-top:1px solid #e7e7e9;">
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">SERVICES</h2>
+      <p style="font-size:26px;font-weight:700;color:#17171a;margin:16px 0 0;max-width:640px;line-height:1.6;">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
+    </div>
+
+    <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
+    <div>
+      <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #ececee;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#dde1e4;">{{s.num}}</div>
+          <div style="width:108px;height:108px;overflow:hidden;border-radius:4px;background:#f0f1f3;border:1px solid #e7e7e9;">
+            <sc-if value="{{s.imageSrc}}">
+              <img src="{{s.imageSrc}}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </sc-if>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{s.category}}</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+              <span style="font-size:20px;font-weight:700;color:#17171a;">{{s.name}}</span>
+              <sc-if value="{{s.price}}">
+                <span style="font-size:12px;font-weight:700;color:#1c7fa6;border:1px solid #cfe6ee;border-radius:999px;padding:3px 10px;">{{s.price}}</span>
+              </sc-if>
+            </div>
+            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
+          </div>
+          <a href="{{s.href}}" target="{{s.target}}" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
+      <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#1c7fa6;font-family:'Space Grotesk',sans-serif;">KOISHIKAWA GROUP SYNERGY</div>
+      <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
+        <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #dfe9ee;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#c3dde7;">{{s.num}}</div>
+          <div style="width:108px;height:108px;background:#e6eef2;border:1px solid #dfe9ee;border-radius:4px;"></div>
+          <div>
+            <div style="font-size:12px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{s.category}}</div>
+            <div style="font-size:20px;font-weight:700;color:#17171a;margin-bottom:8px;">{{s.name}}</div>
+            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
+          </div>
+          <a href="{{s.href}}" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="contact" style="max-width:1240px;margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px;">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">CONTACT</h2>
+        <p style="font-size:22px;font-weight:700;color:#17171a;max-width:480px;line-height:1.7;margin:16px 0 0;">サービスに関するご相談は、お気軽にお問い合わせください。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+        <a href="contact.html" style="padding:16px 40px;background:#1a1a1d;color:#ffffff;border-radius:999px;font-size:15px;font-weight:600;">お問い合わせはこちら</a>
+        <div style="font-size:14px;color:#2e3136;">TEL. 03-6722-6776（平日 10:00-18:00）</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" style="background:#f7f8f9;border-top:1px solid #e7e7e9;padding:72px 40px 32px;">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr 0.75fr 0.85fr 1.15fr 1.25fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #e2e3e6;">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:26px;height:auto;display:block;">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#1a1a1d;">TSUTA-WORLD</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;color:#1a1a1d;border-left:3px solid #1c7fa6;padding-left:10px;margin-bottom:16px;">POST</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="post.html" style="font-size:14px;color:#1a1a1d;">新着情報</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;color:#1a1a1d;border-left:3px solid #1c7fa6;padding-left:10px;margin-bottom:16px;">COMPANY</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="company.html" style="font-size:14px;color:#1a1a1d;">会社情報</a>
+            <a href="agency.html" style="font-size:14px;color:#1a1a1d;">代理店募集</a>
+            <a href="contact.html" style="font-size:14px;color:#1a1a1d;">お問い合わせ</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#1a1a1d;margin-bottom:14px;line-height:1.5;">AI研修（全5コース）</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{aiTrainingLinks}}" as="t" hint-placeholder-count="6">
+              <a href="{{t.href}}" target="_blank" rel="noopener" style="font-size:14px;color:#1a1a1d;line-height:1.5;">{{t.name}}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#2e3136;line-height:1.9;">
+          <div style="color:#1a1a1d;font-weight:600;margin-bottom:8px;">株式会社TSUTA-WORLD</div>
+          <div>本社：〒150-0022 東京都渋谷区恵比寿南1-1-1 ヒューマックス恵比寿ビル8F</div>
+          <div>北海道支社：〒060-0005 北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル8F</div>
+          <div style="margin-top:8px;">TEL. 03-6722-6776</div>
+        </div>
+      </div>
+      <div style="padding-top:24px;font-size:12px;color:#3d4045;">© 2026 TSUTA-WORLD Co., Ltd. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const v = document.getElementById('hero-bg-video');
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    const play = v.play();
+    if (play && play.catch) play.catch(function () {});
+  }
+  renderVals() {
+    return {
+      heroVideoOn: true,
+      heroTags: ['動画', 'Web', '広告', '採用', 'アパレル'],
+      mediaItems: [
+        { program: 'TV番組', title: 'カンニング竹山のイチバン研究所', desc: 'TSUTA-WORLDが取り上げられました。', date: '放送日：2021.07.24', href: 'media-ichiban.html', target: '_self', imageSrc: 'assets/media-eejanai.png' },
+        { program: 'TV番組', title: 'ええじゃない課Biz', desc: 'TSUTA-WORLDとTSUTA-MARKEが取り上げられました。', date: '放送日：2022.06.05', href: 'https://youtu.be/4Mu8aUS427A?si=ca2kgoj22DdK-jqT', target: '_blank', imageSrc: 'assets/media-ichiban.png' }
+      ],
+      newsItems: [
+        { date: '2024.5.2', title: 'むびるプラスに掲載されました', href: 'post-movieru.html' },
+        { date: '2024.4.15', title: 'VideoDX講座の研修プログラムがスタートしました', href: 'post-videodx-2.html' },
+        { date: '2023.9.12', title: 'ミラエラへ掲載されました', href: 'post-mirraerror.html' }
+      ],
+      aiTrainingLinks: [
+        { name: 'VIDEO DX研修', href: 'https://tsuta-world.com/lp/vau/video-dx-elearning/' },
+        { name: 'Chatgpt研修', href: 'https://tsuta-world.com/lp/vau/ai%e7%a0%94%e4%bf%ae/' },
+        { name: '営業職向け｜AI活用型セールス強化研修', href: 'https://tsuta-world.com/lp/vau/salesaldx/' },
+        { name: '人事・広報・総務・経理向け｜AI業務効率化＆DX推進研修', href: 'https://tsuta-world.com/lp/vau/backofficeai/' },
+        { name: 'マーケティング職向け｜AIドリブンマーケティング実践研修', href: 'https://tsuta-world.com/lp/vau/markeai/' },
+        { name: '制作部向け｜AI×クリエイティブ制作効率化研修', href: 'https://tsuta-world.com/lp/vau/createai/' }
+      ],
+      originalServices: [
+        { num: '01', category: '採用ブランディング', name: 'ファンステップ採用', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: '#', target: '_self', arrow: '→' },
+        { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', arrow: '↗' },
+        { num: '03', category: 'AI/DX研修', name: 'AI/DX研修（全5コース）', desc: 'VIDEO DX研修・ChatGPT研修・営業／人事／マーケティング／制作の職種別研修。', href: '#', target: '_self', arrow: '→', imageSrc: 'assets/ai-dx-training.png' },
+        { num: '04', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: '#', target: '_self', arrow: '→' },
+        { num: '05', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: '#', target: '_self', arrow: '→' }
+      ],
+      synergyServices: [
+        { num: '06', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: '#', arrow: '→' },
+        { num: '07', category: 'アパレル', name: 'アパレル', desc: 'アパレル事業。', href: '#', arrow: '→' }
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

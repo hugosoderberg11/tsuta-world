@@ -1,0 +1,40 @@
+# Project Understanding Summary
+
+## What this is
+Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Preview with `py -m http.server 5500`.
+
+## Main files
+- `TSUTA-WORLD TOP.dc.html` — TOP page (dc-runtime). Footer updated per client spec; NEWS links to post pages.
+- `support.js`, `image-slot.js` — dc-runtime (do not edit unless asked).
+- `site.css` — shared styles for subpages.
+- `post.html` — 新着情報一覧
+- `post-*.html` — article detail pages (content from tsuta-world.com)
+- `company.html` — 会社情報 (from tsuta-world.com/company/)
+- `agency.html` — 代理店募集 (from existing site partner-recruitment text)
+- `contact.html` — お問い合わせ (TEL/hours/address from TOP)
+- `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
+- `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
+- `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
+
+## Recent edits (2026-08-20)
+- Hero video: white background + scale(1.36) cover crops top/bottom black letterbox.
+- Footer and body copy darkened (#1a1a1d / #2e3136); footer links font-weight 600.
+
+## Recent edits (2026-08-20)
+- Hero right `image-slot` replaced with looping muted `assets/hero.mp4`; overflow hidden + scale(1.42) crops top/bottom black bars.
+
+## Footer (TOP + all subpages)
+- POST: 新着情報 → post.html
+- COMPANY: 会社情報, 代理店募集, お問い合わせ
+- AI研修（全5コース）: 6 external LP links (tsuta-world.com/lp/vau/…)
+- Company address block (unchanged from TOP)
+
+## Git
+Local repo initialized. Remote `origin` = https://github.com/hugosoderberg11/tsuta-world.git (empty, no commits yet). GitHub account connected in Cursor.
+`py -m http.server 5500`
+- TOP: http://localhost:5500/TSUTA-WORLD%20TOP.dc.html
+- Posts: http://localhost:5500/post.html
+
+## Recent edits (2026-08-20)
+- Client spec: footer restructure, subpages, news list/detail, AI training links.
+- Hero h1 first line kept on one line via white-space: nowrap.

@@ -1,0 +1,287 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #ffffff;
+  color: #1a1a1d;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  line-height: 1.7;
+  font-weight: 500;
+}
+a { color: #1c7fa6; text-decoration: none; }
+a:hover { color: #12586f; }
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid #e7e7e9;
+}
+.page-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+}
+.page-header a.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a1a1d;
+}
+.page-header a.logo span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+}
+.page-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 72px 40px 96px;
+}
+.page-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #1c7fa6;
+  margin: 0 0 12px;
+}
+.page-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #17171a;
+  margin: 0 0 32px;
+  line-height: 1.4;
+}
+.breadcrumb {
+  font-size: 13px;
+  color: #3d4045;
+  margin-bottom: 32px;
+}
+.breadcrumb a { color: #3d4045; }
+.breadcrumb a:hover { color: #1c7fa6; }
+.post-list-item {
+  display: flex;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid #ececee;
+  align-items: baseline;
+}
+.post-list-date {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: #3d4045;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+.post-list-title {
+  font-size: 15px;
+  color: #26272b;
+}
+.post-meta {
+  font-size: 13px;
+  color: #3d4045;
+  margin-bottom: 8px;
+}
+.post-meta .category {
+  color: #1c7fa6;
+  font-weight: 600;
+  margin-right: 12px;
+}
+.post-body {
+  font-size: 15px;
+  color: #1a1a1d;
+  line-height: 1.9;
+}
+.post-body p { margin: 0 0 1em; }
+.info-block { margin-bottom: 40px; }
+.info-block h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #17171a;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ececee;
+}
+.info-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.info-table th,
+.info-table td {
+  padding: 12px 0;
+  border-bottom: 1px solid #ececee;
+  vertical-align: top;
+  text-align: left;
+}
+.info-table th {
+  width: 140px;
+  color: #3d4045;
+  font-weight: 500;
+  padding-right: 24px;
+}
+.history-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #ececee;
+  font-size: 14px;
+  color: #1a1a1d;
+}
+.contact-box {
+  padding: 32px;
+  background: #f7f8f9;
+  border: 1px solid #e7e7e9;
+  border-radius: 8px;
+  max-width: 560px;
+}
+.contact-box p { margin: 0 0 12px; font-size: 15px; color: #1a1a1d; }
+.footer-section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #1a1a1d;
+  border-left: 3px solid #1c7fa6;
+  padding-left: 10px;
+  margin: 0 0 16px;
+}
+.site-footer {
+  background: #f7f8f9;
+  border-top: 1px solid #e7e7e9;
+  padding: 72px 40px 32px;
+}
+.site-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr 0.85fr 1.15fr 1.25fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #e2e3e6;
+}
+.site-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer-links a,
+.site-footer-links span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1d;
+}
+.site-footer-ai-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1d;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.site-footer-copy {
+  padding-top: 24px;
+  font-size: 12px;
+  color: #3d4045;
+}
+
+@keyframes mediaReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mediaKenBurns {
+  from { transform: scale(1.08) translateX(0); }
+  to { transform: scale(1.18) translateX(-2%); }
+}
+.media-detail-hero {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #111;
+}
+.media-detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  animation: mediaKenBurns 18s ease-out both;
+}
+.media-detail-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17,17,20,0.12) 0%, rgba(17,17,20,0.58) 100%);
+}
+.media-detail-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 40px 16px;
+  color: #fff;
+  animation: mediaReveal 0.9s ease both;
+}
+.media-detail-hero-copy .page-label {
+  color: #9ed3e6;
+  margin: 0 0 4px;
+  font-size: 12px;
+}
+.media-detail-hero-copy .page-title {
+  color: #fff;
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+.media-detail-hero-copy .meta { color: rgba(255,255,255,0.78); font-size: 13px; }
+.media-detail-body {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 40px 32px;
+}
+.media-detail-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+.media-detail-video {
+  position: relative;
+  flex: 1.778 1 0;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  animation: mediaReveal 0.9s 0.15s ease both;
+}
+.media-detail-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.media-detail-stills {
+  flex: 1.2 1 0;
+  min-width: 0;
+  animation: mediaReveal 0.9s 0.3s ease both;
+}
+.media-detail-stills img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+@media (max-width: 720px) {
+  .media-detail-body { padding: 14px 12px 20px; }
+  .media-detail-row { gap: 8px; }
+  .media-detail-hero { height: 140px; }
+  .media-detail-hero-copy { padding: 10px 12px 10px; }
+  .media-detail-hero-copy .page-title { font-size: 16px; }
+}
+.media-detail-page .site-footer {
+  padding: 32px 40px 20px;
+}
+.media-detail-page .site-footer-grid {
+  padding-bottom: 20px;
+  gap: 24px;
+}
