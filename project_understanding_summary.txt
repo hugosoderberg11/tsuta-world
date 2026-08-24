@@ -21,7 +21,7 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 
 ## Recent edits (2026-08-24)
 - Vercel Routing Middleware (`middleware.js`) protects entire site with Basic auth via `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD` env vars. Minimal `package.json` only for `@vercel/functions` (Vercel deploy; local preview still uses `start-local.bat` without auth).
-- Client spec: Hero h1 fixed to 2 lines on PC (word-break: keep-all); hero tags enlarged (22px); removed KOISHIKAWA GROUP SYNERGY label; AI/DX研修 removed from SERVICES list (footer links unchanged).
+- Hero second line「AIですべてのコストを壊す。」always nowrap (PC + mobile).
 
 ## Recent edits (2026-08-21)
 - Hero background video removed; hero is text-only on white background.

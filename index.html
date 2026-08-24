@@ -16,6 +16,47 @@
     a:hover { color: #12586f; }
     #top { font-weight: 500; }
     #footer a { font-weight: 600; color: #1a1a1d; }
+    .hero-title {
+      margin: 0 0 24px;
+      word-break: keep-all;
+    }
+    .hero-line-first {
+      display: block;
+      white-space: nowrap;
+      font-size: 44px;
+      line-height: 1.45;
+      font-weight: 900;
+      color: #17171a;
+      letter-spacing: -0.01em;
+    }
+    .hero-line-second {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 34px;
+      line-height: 1.45;
+      font-weight: 900;
+      color: #17171a;
+      letter-spacing: -0.01em;
+    }
+    .hero-tag {
+      padding: 10px 20px;
+      border: 1px solid #e2e3e6;
+      border-radius: 999px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a1a1d;
+    }
+    @media (max-width: 768px) {
+      .hero-line-first {
+        white-space: normal;
+        font-size: clamp(26px, 6.8vw, 34px);
+      }
+      .hero-line-second {
+        white-space: nowrap;
+        font-size: clamp(20px, 4.8vw, 28px);
+      }
+      .hero-tag { font-size: 20px; padding: 8px 16px; }
+    }
   </style>
 </helmet>
 <div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;overflow-x:hidden;">
@@ -37,13 +78,16 @@
 
   <section id="hero" style="position:relative;background:#ffffff;">
     <div style="max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
-      <div style="animation:heroFade 0.8s ease both;min-width:0;max-width:520px;">
+      <div style="animation:heroFade 0.8s ease both;max-width:920px;">
         <div style="display:inline-flex;align-items:center;padding:6px 14px;border:1px solid #cfe6ee;border-radius:999px;color:#1c7fa6;font-size:12px;font-weight:600;letter-spacing:0.08em;margin-bottom:28px;font-family:'Space Grotesk',sans-serif;">MULTI-BUSINESS CREATIVE COMPANY</div>
-        <h1 style="font-size:46px;line-height:1.4;font-weight:900;color:#17171a;margin:0 0 24px;letter-spacing:-0.01em;"><span style="white-space:nowrap;">動画・Web・広告制作・採用・アパレル。</span><br>AIですべてのコストを壊す。</h1>
+        <h1 class="hero-title">
+          <span class="hero-line-first">動画・Web・広告制作・採用・アパレル。</span><br>
+          <span class="hero-line-second">AIですべてのコストを壊す。</span>
+        </h1>
         <p style="font-size:18px;line-height:1.9;color:#2c2e32;margin:0 0 36px;max-width:440px;">「高いのが当たり前」を、私たちは信じない。</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;">
           <sc-for list="{{heroTags}}" as="tag" hint-placeholder-count="5">
-            <span style="padding:8px 16px;border:1px solid #e2e3e6;border-radius:999px;font-size:13px;color:#1a1a1d;">{{tag}}</span>
+            <span class="hero-tag">{{tag}}</span>
           </sc-for>
         </div>
         <a href="#services" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#1a1a1d;border-bottom:2px solid #1c7fa6;padding-bottom:4px;">事業を見る →</a>
@@ -94,7 +138,7 @@
 
     <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
     <div>
-      <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="5">
+      <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="4">
         <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #ececee;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#dde1e4;">{{s.num}}</div>
           <div style="width:108px;height:108px;overflow:hidden;border-radius:4px;background:#f0f1f3;border:1px solid #e7e7e9;">
@@ -118,7 +162,6 @@
     </div>
 
     <div style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
-      <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#1c7fa6;font-family:'Space Grotesk',sans-serif;">KOISHIKAWA GROUP SYNERGY</div>
       <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
         <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #dfe9ee;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#c3dde7;">{{s.num}}</div>
@@ -217,7 +260,6 @@ class Component extends DCLogic {
       originalServices: [
         { num: '01', category: '採用ブランディング', name: 'ファンステップ採用', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: '#', target: '_self', arrow: '→' },
         { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', arrow: '↗' },
-        { num: '03', category: 'AI/DX研修', name: 'AI/DX研修（全5コース）', desc: 'VIDEO DX研修・ChatGPT研修・営業／人事／マーケティング／制作の職種別研修。', href: '#', target: '_self', arrow: '→', imageSrc: 'assets/ai-dx-training.png' },
         { num: '04', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: '#', target: '_self', arrow: '→' },
         { num: '05', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: '#', target: '_self', arrow: '→' }
       ],
