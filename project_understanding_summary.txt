@@ -21,6 +21,8 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
 
 ## Recent edits (2026-08-24)
+- Fixed `media-ichiban.html` mojibake + broken footer HTML; responsive layout in `site.css` and `index.html`.
+- Rewrote all five `post-*.html` detail pages with correct UTF-8 Japanese (fixed mojibake and broken HTML tags). Each uses `page-header-inner--nav` header, breadcrumb/post-meta layout, and footer identical to `contact.html`.
 - Added `creative-marketing.html` layout page; TOP synergy link → creative-marketing.html.
 - Vercel Routing Middleware (`middleware.js`) protects entire site with Basic auth via `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD` env vars. Minimal `package.json` only for `@vercel/functions` (Vercel deploy; local preview still uses `start-local.bat` without auth).
 - Hero tags enlarged to 30px (PC) / 26px (mobile); sub-catch remains 18px.

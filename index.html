@@ -57,27 +57,56 @@
       }
       .hero-tag { font-size: 26px; padding: 10px 20px; }
     }
+    @media (max-width: 960px) {
+      .top-header-nav a:not(.top-header-contact) { display: none; }
+      .top-header-inner { padding: 0 20px !important; }
+      .top-section { padding-left: 20px !important; padding-right: 20px !important; }
+      .top-media-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .top-service-row {
+        grid-template-columns: 40px 72px 1fr 24px !important;
+        gap: 16px !important;
+        padding: 24px 0 !important;
+      }
+      .top-service-row .service-thumb { width: 72px !important; height: 72px !important; }
+      .top-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+      .top-synergy-block { margin-left: -20px !important; margin-right: -20px !important; padding: 40px 20px 32px !important; }
+    }
+    @media (max-width: 600px) {
+      .top-hero-inner { padding-top: 64px !important; padding-bottom: 72px !important; }
+      .top-service-row {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      .top-service-row .service-num { font-size: 22px !important; }
+      .top-service-row .service-thumb { width: 100% !important; height: 160px !important; }
+      .top-service-row .service-arrow { justify-self: start !important; }
+      .top-news-row { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; }
+      .top-news-date { min-width: 0 !important; }
+      .top-footer-grid { grid-template-columns: 1fr !important; }
+      .top-footer { padding: 48px 20px 24px !important; }
+      .top-contact-lead { font-size: 18px !important; }
+    }
   </style>
 </helmet>
 <div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;">
 
   <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #e7e7e9;">
-    <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="top-header-inner" style="max-width:1240px;margin:0 auto;padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between;">
       <a href="#top" style="display:flex;align-items:center;gap:10px;">
         <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:28px;height:auto;display:block;">
         <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.01em;color:#1a1a1d;">TSUTA-WORLD</span>
       </a>
-      <nav style="display:flex;align-items:center;gap:36px;">
+      <nav class="top-header-nav" style="display:flex;align-items:center;gap:36px;">
         <a href="#services" style="font-size:14px;font-weight:500;color:#1a1a1d;">SERVICE</a>
         <a href="#news" style="font-size:14px;font-weight:500;color:#1a1a1d;">NEWS</a>
         <a href="#footer" style="font-size:14px;font-weight:500;color:#1a1a1d;">COMPANY</a>
-        <a href="#contact" style="padding:10px 22px;background:#1c7fa6;color:#ffffff;border-radius:999px;font-size:14px;font-weight:600;">CONTACT</a>
+        <a href="#contact" class="top-header-contact" style="padding:10px 22px;background:#1c7fa6;color:#ffffff;border-radius:999px;font-size:14px;font-weight:600;">CONTACT</a>
       </nav>
     </div>
   </header>
 
   <section id="hero" style="position:relative;background:#ffffff;">
-    <div style="max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
+    <div class="top-hero-inner top-section" style="max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
       <div style="animation:heroFade 0.8s ease both;max-width:920px;">
         <div style="display:inline-flex;align-items:center;padding:6px 14px;border:1px solid #cfe6ee;border-radius:999px;color:#1c7fa6;font-size:12px;font-weight:600;letter-spacing:0.08em;margin-bottom:28px;font-family:'Space Grotesk',sans-serif;">MULTI-BUSINESS CREATIVE COMPANY</div>
         <h1 class="hero-title">
@@ -95,12 +124,12 @@
     </div>
   </section>
 
-  <section id="media" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;">
+  <section id="media" class="top-section" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:12px;">
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">TV / MEDIA</h2>
       <span style="font-size:14px;color:#3d4045;">メディア掲載実績</span>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+    <div class="top-media-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
       <sc-for list="{{mediaItems}}" as="m" hint-placeholder-count="2">
         <a href="{{m.href}}" target="{{m.target}}" style="display:block;color:inherit;">
           <div style="width:100%;height:280px;overflow:hidden;background:#f0f1f3;border:1px solid #e7e7e9;">
@@ -117,12 +146,12 @@
     </div>
   </section>
 
-  <section id="news" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
+  <section id="news" class="top-section" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0 0 32px;">NEWS</h2>
     <div>
       <sc-for list="{{newsItems}}" as="n" hint-placeholder-count="3">
-        <div style="display:flex;gap:32px;padding:22px 0;border-bottom:1px solid #ececee;align-items:baseline;">
-          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#3d4045;min-width:110px;flex-shrink:0;">{{n.date}}</span>
+        <div class="top-news-row" style="display:flex;gap:32px;padding:22px 0;border-bottom:1px solid #ececee;align-items:baseline;">
+          <span class="top-news-date" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#3d4045;min-width:110px;flex-shrink:0;">{{n.date}}</span>
           <a href="{{n.href}}" style="font-size:15px;color:#26272b;">{{n.title}}</a>
         </div>
       </sc-for>
@@ -130,7 +159,7 @@
     <a href="post.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:14px;font-weight:600;color:#1a1a1d;">VIEW ALL →</a>
   </section>
 
-  <section id="services" style="max-width:1240px;margin:0 auto;padding:88px 40px 96px;border-top:1px solid #e7e7e9;">
+  <section id="services" class="top-section" style="max-width:1240px;margin:0 auto;padding:88px 40px 96px;border-top:1px solid #e7e7e9;">
     <div style="margin-bottom:56px;">
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">SERVICES</h2>
       <p style="font-size:26px;font-weight:700;color:#17171a;margin:16px 0 0;max-width:640px;line-height:1.6;">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
@@ -139,9 +168,9 @@
     <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
     <div>
       <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="4">
-        <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #ececee;">
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#dde1e4;">{{s.num}}</div>
-          <div style="width:108px;height:108px;overflow:hidden;border-radius:4px;background:#f0f1f3;border:1px solid #e7e7e9;">
+        <div class="top-service-row" style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #ececee;">
+          <div class="service-num" style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#dde1e4;">{{s.num}}</div>
+          <div class="service-thumb" style="width:108px;height:108px;overflow:hidden;border-radius:4px;background:#f0f1f3;border:1px solid #e7e7e9;">
             <sc-if value="{{s.imageSrc}}">
               <img src="{{s.imageSrc}}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
             </sc-if>
@@ -156,32 +185,32 @@
             </div>
             <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
           </div>
-          <a href="{{s.href}}" target="{{s.target}}" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
+          <a href="{{s.href}}" target="{{s.target}}" class="service-arrow" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
         </div>
       </sc-for>
     </div>
 
-    <div style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
+    <div class="top-synergy-block" style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
       <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
-        <div style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #dfe9ee;">
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#c3dde7;">{{s.num}}</div>
-          <div style="width:108px;height:108px;background:#e6eef2;border:1px solid #dfe9ee;border-radius:4px;"></div>
+        <div class="top-service-row" style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #dfe9ee;">
+          <div class="service-num" style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#c3dde7;">{{s.num}}</div>
+          <div class="service-thumb" style="width:108px;height:108px;background:#e6eef2;border:1px solid #dfe9ee;border-radius:4px;"></div>
           <div>
             <div style="font-size:12px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{s.category}}</div>
             <div style="font-size:20px;font-weight:700;color:#17171a;margin-bottom:8px;">{{s.name}}</div>
             <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
           </div>
-          <a href="{{s.href}}" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
+          <a href="{{s.href}}" class="service-arrow" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
         </div>
       </sc-for>
     </div>
   </section>
 
-  <section id="contact" style="max-width:1240px;margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+  <section id="contact" class="top-section" style="max-width:1240px;margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px;">
       <div>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">CONTACT</h2>
-        <p style="font-size:22px;font-weight:700;color:#17171a;max-width:480px;line-height:1.7;margin:16px 0 0;">サービスに関するご相談は、お気軽にお問い合わせください。</p>
+        <p class="top-contact-lead" style="font-size:22px;font-weight:700;color:#17171a;max-width:480px;line-height:1.7;margin:16px 0 0;">サービスに関するご相談は、お気軽にお問い合わせください。</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
         <a href="contact.html" style="padding:16px 40px;background:#1a1a1d;color:#ffffff;border-radius:999px;font-size:15px;font-weight:600;">お問い合わせはこちら</a>
@@ -190,9 +219,9 @@
     </div>
   </section>
 
-  <footer id="footer" style="background:#f7f8f9;border-top:1px solid #e7e7e9;padding:72px 40px 32px;">
+  <footer id="footer" class="top-footer" style="background:#f7f8f9;border-top:1px solid #e7e7e9;padding:72px 40px 32px;">
     <div style="max-width:1240px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:1fr 0.75fr 0.85fr 1.15fr 1.25fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #e2e3e6;">
+      <div class="top-footer-grid" style="display:grid;grid-template-columns:1fr 0.75fr 0.85fr 1.15fr 1.25fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #e2e3e6;">
         <div>
           <div style="display:flex;align-items:center;gap:10px;">
             <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:26px;height:auto;display:block;">
