@@ -35,13 +35,8 @@
     </div>
   </header>
 
-  <section id="hero" style="position:relative;overflow:hidden;min-height:820px;background:#ffffff;">
-    <div style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;background:#ffffff;">
-      <video id="hero-bg-video" src="assets/hero.mp4" autoPlay="{{heroVideoOn}}" muted="{{heroVideoOn}}" loop="{{heroVideoOn}}" playsInline="{{heroVideoOn}}" preload="auto"
-        style="height:100%;width:auto;min-height:100%;object-fit:cover;object-position:center;transform:scale(1.36);transform-origin:center right;display:block;background:#ffffff;"></video>
-    </div>
-    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#ffffff 0%,#ffffff 34%,rgba(255,255,255,0.72) 48%,rgba(255,255,255,0) 66%);"></div>
-    <div style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
+  <section id="hero" style="position:relative;background:#ffffff;">
+    <div style="max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
       <div style="animation:heroFade 0.8s ease both;min-width:0;max-width:520px;">
         <div style="display:inline-flex;align-items:center;padding:6px 14px;border:1px solid #cfe6ee;border-radius:999px;color:#1c7fa6;font-size:12px;font-weight:600;letter-spacing:0.08em;margin-bottom:28px;font-family:'Space Grotesk',sans-serif;">MULTI-BUSINESS CREATIVE COMPANY</div>
         <h1 style="font-size:46px;line-height:1.4;font-weight:900;color:#17171a;margin:0 0 24px;letter-spacing:-0.01em;"><span style="white-space:nowrap;">動画・Web・広告制作・採用・アパレル。</span><br>AIですべてのコストを壊す。</h1>
@@ -199,18 +194,8 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  componentDidMount() {
-    const v = document.getElementById('hero-bg-video');
-    if (!v) return;
-    v.muted = true;
-    v.loop = true;
-    v.playsInline = true;
-    const play = v.play();
-    if (play && play.catch) play.catch(function () {});
-  }
   renderVals() {
     return {
-      heroVideoOn: true,
       heroTags: ['動画', 'Web', '広告', '採用', 'アパレル'],
       mediaItems: [
         { program: 'TV番組', title: 'カンニング竹山のイチバン研究所', desc: 'TSUTA-WORLDが取り上げられました。', date: '放送日：2021.07.24', href: 'media-ichiban.html', target: '_self', imageSrc: 'assets/media-eejanai.png' },
