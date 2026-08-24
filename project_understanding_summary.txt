@@ -14,14 +14,16 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `post-*.html` — article detail pages (content from tsuta-world.com)
 - `company.html` — 会社情報 (from tsuta-world.com/company/)
 - `agency.html` — 代理店募集 (from existing site partner-recruitment text)
+- `creative-marketing.html` — クリエイティブ＆マーケティング詳細（Hero / SERVICES / WORKS / CONTACT / Footer）
 - `contact.html` — お問い合わせ (TEL/hours/address from TOP)
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
 
 ## Recent edits (2026-08-24)
+- Added `creative-marketing.html` layout page; TOP synergy link → creative-marketing.html.
 - Vercel Routing Middleware (`middleware.js`) protects entire site with Basic auth via `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD` env vars. Minimal `package.json` only for `@vercel/functions` (Vercel deploy; local preview still uses `start-local.bat` without auth).
-- Hero second line「AIですべてのコストを壊す。」always nowrap (PC + mobile).
+- Hero tags enlarged to 30px (PC) / 26px (mobile); sub-catch remains 18px.
 
 ## Recent edits (2026-08-21)
 - Hero background video removed; hero is text-only on white background.
