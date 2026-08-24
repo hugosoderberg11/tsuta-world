@@ -1,11 +1,14 @@
 # Project Understanding Summary
 
 ## What this is
-Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Preview with `py -m http.server 5500`.
+Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Preview locally with `start-local.bat` or `py -m http.server 5500`.
 
 ## Main files
 - `index.html` — TOP page (dc-runtime). Footer updated per client spec; NEWS links to post pages.
 - `support.js`, `image-slot.js` — dc-runtime (do not edit unless asked).
+- `middleware.js` — Vercel Routing Middleware (Basic auth for production)
+- `package.json` — Vercel deploy only (`@vercel/functions`); not used for local preview
+- `start-local.bat` — double-click to start local preview (Python http.server on port 5500)
 - `site.css` — shared styles for subpages.
 - `post.html` — 新着情報一覧
 - `post-*.html` — article detail pages (content from tsuta-world.com)
@@ -15,6 +18,10 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
+
+## Recent edits (2026-08-24)
+- Vercel Routing Middleware (`middleware.js`) protects entire site with Basic auth via `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD` env vars. Minimal `package.json` only for `@vercel/functions` (Vercel deploy; local preview still uses `start-local.bat` without auth).
+- Client spec: Hero h1 fixed to 2 lines on PC (word-break: keep-all); hero tags enlarged (22px); removed KOISHIKAWA GROUP SYNERGY label; AI/DX研修 removed from SERVICES list (footer links unchanged).
 
 ## Recent edits (2026-08-21)
 - Hero background video removed; hero is text-only on white background.
