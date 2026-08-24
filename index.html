@@ -32,7 +32,7 @@
     .hero-line-second {
       display: inline-block;
       white-space: nowrap;
-      font-size: 34px;
+      font-size: clamp(17px, 2.6vw + 10px, 34px);
       line-height: 1.45;
       font-weight: 900;
       color: #17171a;
@@ -53,13 +53,13 @@
       }
       .hero-line-second {
         white-space: nowrap;
-        font-size: clamp(20px, 4.8vw, 28px);
+        font-size: clamp(17px, 4.2vw, 28px);
       }
       .hero-tag { font-size: 20px; padding: 8px 16px; }
     }
   </style>
 </helmet>
-<div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;overflow-x:hidden;">
+<div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;">
 
   <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #e7e7e9;">
     <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between;">
