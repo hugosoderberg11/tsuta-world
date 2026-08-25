@@ -14,6 +14,7 @@
     @keyframes heroFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     a { color: #1c7fa6; text-decoration: none; }
     a:hover { color: #12586f; }
+    .top-service-card:hover { border-color: #cfe6ee !important; }
     #top { font-weight: 500; }
     #footer a { font-weight: 600; color: #1a1a1d; }
     .hero-title {
@@ -62,24 +63,12 @@
       .top-header-inner { padding: 0 20px !important; }
       .top-section { padding-left: 20px !important; padding-right: 20px !important; }
       .top-media-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-      .top-service-row {
-        grid-template-columns: 40px 72px 1fr 24px !important;
-        gap: 16px !important;
-        padding: 24px 0 !important;
-      }
-      .top-service-row .service-thumb { width: 72px !important; height: 72px !important; }
+      .top-service-grid { grid-template-columns: 1fr !important; }
       .top-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
       .top-synergy-block { margin-left: -20px !important; margin-right: -20px !important; padding: 40px 20px 32px !important; }
     }
     @media (max-width: 600px) {
       .top-hero-inner { padding-top: 64px !important; padding-bottom: 72px !important; }
-      .top-service-row {
-        grid-template-columns: 1fr !important;
-        gap: 12px !important;
-      }
-      .top-service-row .service-num { font-size: 22px !important; }
-      .top-service-row .service-thumb { width: 100% !important; height: 160px !important; }
-      .top-service-row .service-arrow { justify-self: start !important; }
       .top-news-row { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; }
       .top-news-date { min-width: 0 !important; }
       .top-footer-grid { grid-template-columns: 1fr !important; }
@@ -165,44 +154,44 @@
       <p style="font-size:26px;font-weight:700;color:#17171a;margin:16px 0 0;max-width:640px;line-height:1.6;">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
     </div>
 
-    <div style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
-    <div>
+    <div style="margin-bottom:20px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
+    <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
       <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="4">
-        <div class="top-service-row" style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #ececee;">
-          <div class="service-num" style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#dde1e4;">{{s.num}}</div>
-          <div class="service-thumb" style="width:108px;height:108px;overflow:hidden;border-radius:4px;background:#f0f1f3;border:1px solid #e7e7e9;">
-            <sc-if value="{{s.imageSrc}}">
-              <img src="{{s.imageSrc}}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </sc-if>
-          </div>
-          <div>
-            <div style="font-size:12px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{s.category}}</div>
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
-              <span style="font-size:20px;font-weight:700;color:#17171a;">{{s.name}}</span>
+        <a href="{{s.href}}" target="{{s.target}}" class="top-service-card" style="display:block;color:inherit;background:#ffffff;border:1px solid #e7e7e9;overflow:hidden;">
+          <img src="{{s.imageSrc}}" alt="{{s.name}}" style="width:100%;height:auto;display:block;vertical-align:top;">
+          <div style="padding:18px 20px 20px;">
+            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;color:#1c7fa6;">{{s.num}}</span>
+              <span style="font-size:12px;color:#1c7fa6;font-weight:600;">{{s.category}}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
+              <span style="font-size:18px;font-weight:700;color:#17171a;">{{s.name}}</span>
               <sc-if value="{{s.price}}">
                 <span style="font-size:12px;font-weight:700;color:#1c7fa6;border:1px solid #cfe6ee;border-radius:999px;padding:3px 10px;">{{s.price}}</span>
               </sc-if>
             </div>
-            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
+            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;">{{s.desc}}</p>
           </div>
-          <a href="{{s.href}}" target="{{s.target}}" class="service-arrow" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
-        </div>
+        </a>
       </sc-for>
     </div>
 
     <div class="top-synergy-block" style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
-      <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
-        <div class="top-service-row" style="display:grid;grid-template-columns:56px 108px 1fr 28px;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid #dfe9ee;">
-          <div class="service-num" style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#c3dde7;">{{s.num}}</div>
-          <div class="service-thumb" style="width:108px;height:108px;background:#e6eef2;border:1px solid #dfe9ee;border-radius:4px;"></div>
-          <div>
-            <div style="font-size:12px;color:#1c7fa6;font-weight:600;margin-bottom:6px;">{{s.category}}</div>
-            <div style="font-size:20px;font-weight:700;color:#17171a;margin-bottom:8px;">{{s.name}}</div>
-            <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;max-width:560px;">{{s.desc}}</p>
-          </div>
-          <a href="{{s.href}}" class="service-arrow" style="font-size:20px;color:#1c7fa6;justify-self:end;">{{s.arrow}}</a>
-        </div>
-      </sc-for>
+      <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+        <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
+          <a href="{{s.href}}" class="top-service-card" style="display:block;color:inherit;background:#ffffff;border:1px solid #dfe9ee;overflow:hidden;">
+            <img src="{{s.imageSrc}}" alt="{{s.name}}" style="width:100%;height:auto;display:block;vertical-align:top;">
+            <div style="padding:18px 20px 20px;">
+              <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;color:#1c7fa6;">{{s.num}}</span>
+                <span style="font-size:12px;color:#1c7fa6;font-weight:600;">{{s.category}}</span>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:#17171a;margin-bottom:8px;">{{s.name}}</div>
+              <p style="font-size:14px;color:#2e3136;line-height:1.7;margin:0;">{{s.desc}}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
     </div>
   </section>
 
@@ -287,14 +276,14 @@ class Component extends DCLogic {
         { name: '制作部向け｜AI×クリエイティブ制作効率化研修', href: 'https://tsuta-world.com/lp/vau/createai/' }
       ],
       originalServices: [
-        { num: '01', category: '採用ブランディング', name: 'ファンステップ採用', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: '#', target: '_self', arrow: '→' },
-        { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', arrow: '↗' },
-        { num: '04', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: '#', target: '_self', arrow: '→' },
-        { num: '05', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: '#', target: '_self', arrow: '→' }
+        { num: '01', category: '採用ブランディング', name: 'ファンステップ採用', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: '#', target: '_self', imageSrc: 'assets/service-fanstep.jpg' },
+        { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz.jpg' },
+        { num: '04', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: '#', target: '_self', imageSrc: 'assets/service-web.jpg' },
+        { num: '05', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: '#', target: '_self', imageSrc: 'assets/service-anime.jpg' }
       ],
       synergyServices: [
-        { num: '06', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: 'creative-marketing.html', arrow: '→' },
-        { num: '07', category: 'アパレル', name: 'アパレル', desc: 'アパレル事業。', href: '#', arrow: '→' }
+        { num: '06', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: 'creative-marketing.html', imageSrc: 'assets/service-creative.jpg' },
+        { num: '07', category: 'アパレル', name: 'アパレル', desc: 'アパレル事業。', href: '#', imageSrc: 'assets/service-apparel.jpg' }
       ],
     };
   }

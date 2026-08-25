@@ -34,19 +34,40 @@
   </section>
 
   <main class="media-detail-body">
-    <div class="media-detail-row">
-      <div class="media-detail-video">
-        <iframe
-          src="https://www.youtube.com/embed/ri2a_JjSd0c"
-          title="カンニング竹山のイチバン研究所"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </div>
-      <div class="media-detail-stills">
-        <img src="assets/ichiban-stills.png" alt="カンニング竹山のイチバン研究所">
-      </div>
+    <div
+      class="media-detail-player"
+      data-youtube="ri2a_JjSd0c"
+      data-title="カンニング竹山のイチバン研究所"
+    >
+      <button type="button" class="media-detail-play" aria-label="動画を再生">
+        <img src="assets/ichiban-cast.png" alt="" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ri2a_JjSd0c/hqdefault.jpg'">
+        <span class="media-detail-play-btn" aria-hidden="true"></span>
+      </button>
+    </div>
+    <p class="media-detail-watch">
+      <a href="https://www.youtube.com/watch?v=ri2a_JjSd0c" target="_blank" rel="noopener">YouTubeで見る ↗</a>
+    </p>
+    <div class="media-detail-stills">
+      <img src="assets/ichiban-stills.png" alt="カンニング竹山のイチバン研究所">
     </div>
   </main>
+  <script>
+    (function () {
+      var player = document.querySelector('.media-detail-player');
+      if (!player) return;
+      player.addEventListener('click', function () {
+        if (player.querySelector('iframe')) return;
+        var id = player.getAttribute('data-youtube');
+        var title = player.getAttribute('data-title') || '';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.title = title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.setAttribute('allowfullscreen', '');
+        player.replaceChildren(iframe);
+      });
+    })();
+  </script>
 
   <footer id="footer" class="site-footer">
     <div class="site-footer-inner">

@@ -17,8 +17,13 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `creative-marketing.html` — クリエイティブ＆マーケティング詳細（Hero / SERVICES / WORKS / CONTACT / Footer）
 - `contact.html` — お問い合わせ (TEL/hours/address from TOP)
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
+- `assets/service-fanstep.jpg` / `service-kitabuzz.jpg` / `service-web.jpg` / `service-anime.jpg` / `service-creative.jpg` / `service-apparel.jpg` — TOP SERVICES large-card banners (1024×576 JPEG, shown uncropped)
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
+
+## Recent edits (2026-08-25)
+- `media-ichiban.html`: video is now a full-width click-to-play player (YouTube iframe loads only after tap) with stills stacked below; removed side-by-side layout that made the player too small.
+- TOP SERVICES switched from 108px square thumbs to large 16:9 cards so promotional banners are fully visible. Images mapped to existing services: ファンステップ採用, キタバズ, Webサイト制作・リース, 説明用アニメ動画, クリエイティブ＆マーケティング, アパレル.
 
 ## Recent edits (2026-08-24)
 - Fixed `media-ichiban.html` mojibake + broken footer HTML; responsive layout in `site.css` and `index.html`.
