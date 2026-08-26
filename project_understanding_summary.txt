@@ -12,18 +12,34 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `site.css` — shared styles for subpages.
 - `post.html` — 新着情報一覧
 - `post-*.html` — article detail pages (content from tsuta-world.com)
-- `company.html` — 会社情報 (from tsuta-world.com/company/)
+- `company.html` — 会社情報（代表メッセージ / 会社概要 / 沿革）。本社は渋谷区神泉町 アネックス神泉301。
 - `agency.html` — 代理店募集 (from existing site partner-recruitment text)
 - `creative-marketing.html` — クリエイティブ＆マーケティング詳細（Hero / SERVICES / WORKS / CONTACT / Footer）
+- `fanstep.html` — ファンステップ採用 LP。Word「fanstep_service_description.docx」準拠（課題4つ / 実績スライド5枚 / 制作スタイル / 3施策 / 動画資産 / 3成果 / tiktok_b問い合わせフォーム / フッター）。料金・ISZ事例・タイムラインは含めない。TOPカードからリンク済み。
+- `assets/fanstep/` — Word内の実績スライドPNG（image1/3/5/7/9）と付随SVG。
+- `website.html` — Webサイト制作・リース 詳細（同構成、placeholderコンテンツ）
+- `animevideo.html` — 説明用アニメ動画 TSUTA-WORLD 詳細。Hero（service-anime.jpg）/ SERVICES 3種 / WORKS 全10カテゴリ75作品（公式LPから取得、assets/animevideo/ サムネ）/ VOICE / CONTACT。カテゴリフィルタはJS。
+- `apparel.html` — アパレル 詳細（同構成、placeholderコンテンツ）
 - `contact.html` — お問い合わせ (TEL/hours/address from TOP)
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/service-fanstep.jpg` / `service-kitabuzz.jpg` / `service-web.jpg` / `service-anime.jpg` / `service-creative.jpg` / `service-apparel.jpg` — TOP SERVICES large-card banners (1024×576 JPEG, shown uncropped)
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
 
+## Recent edits (2026-08-26)
+- `media-ichiban.html` 削除。TOPの「カンニング竹山のイチバン研究所」サムネイル → YouTube（`ri2a_JjSd0c`）直リンク（新規タブ）。`site.css` から未使用の media-detail スタイル削除。
+- `animevideo.html` — 説明用アニメ動画ページ実装。公式LP（tsuta-world.com/lp/）から75作品・YouTube ID・サムネイルを取得し `assets/animevideo/` に配置。10カテゴリフィルタ、実績グリッド、クライアントの声、LP/YouTubeリンク。`site.css` に av-* スタイル追加。
+- `creative-marketing.html` — PPTX「動画制作に関する実績掲載」準拠で WORKS 実装。`assets/creative-marketing/` にPPTから切り出し（実写6/SNS6/アニメLP+口コミ）。カテゴリタブ（実写・SNS・アニメ）、YouTube/LP/tiktok_b リンク付き。
+- TOP「Webサイト制作・リース」カード → `https://min-nano.site/`（新規タブ）。`website.html` は未リンクのまま残置。
+- `fanstep.html` hero copy restored to Word: 「採用ブランディング動画 SNS」and the one-line four issues including「モチベーション低下」. Inquiry form still posts to `https://tsuta-world.com/tiktok_b/branch.php`.
+- `fanstep.html` rebuilt from `fanstep_service_description.docx`: shorter production-style copy, 実績 gallery (`assets/fanstep/image1.png` etc.), three measures, video-asset contrast, three outcomes + RESULT. Dropped PDF extras (pricing, ISZ, timeline, company profile).
+- Previous pass: `fanstep.html` from `ファンステップ採用.pdf` (19 pages). Company address matches current HQ (神泉), not older 恵比寿 listings.
+
 ## Recent edits (2026-08-25)
+- Mobile/tablet hardening: grids use `minmax(0, 1fr)` so columns cannot overflow; TOP/media/service stack at 960px; footer 5→2→1; hero tags scale down (30→26→22→16px); header extra links hide at 960px. Overflow-checked at 320/375/414/768/1024/1280 (scrollWidth === clientWidth).
 - `media-ichiban.html`: video is now a full-width click-to-play player (YouTube iframe loads only after tap) with stills stacked below; removed side-by-side layout that made the player too small.
 - TOP SERVICES switched from 108px square thumbs to large 16:9 cards so promotional banners are fully visible. Images mapped to existing services: ファンステップ採用, キタバズ, Webサイト制作・リース, 説明用アニメ動画, クリエイティブ＆マーケティング, アパレル.
+- Added 4 missing service detail pages (TOP SERVICES cards were `href="#"`): `fanstep.html`, `website.html`, `animevideo.html`, `apparel.html`. Same layout as `creative-marketing.html` (cm-* classes in site.css, reused as-is). TOP `index.html` originalServices/synergyServices hrefs updated to point to the new pages. Body/case content uses "後から追加できます" placeholders like creative-marketing.html did.
 
 ## Recent edits (2026-08-24)
 - Fixed `media-ichiban.html` mojibake + broken footer HTML; responsive layout in `site.css` and `index.html`.

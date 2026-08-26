@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>会社情報 — TSUTA-WORLD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body class="company-page">
   <header class="page-header">
     <div class="page-header-inner page-header-inner--nav">
       <a href="index.html" class="logo">
@@ -28,38 +28,105 @@
     <p class="page-label">COMPANY</p>
     <h1 class="page-title">会社情報</h1>
 
-    <div class="info-block">
-      <h2>我々は弊社の従業員が抱えている課題や悩みを解決する会社です</h2>
-      <p class="post-body">そのようなスタンスでサービスをデザインしています。現在行っている説明用アニメーション動画サービスも、私があまり理解力の高くない人間なので、私でもわかるようにしてほしいという気持ちから考えたサービスになります。私の周りの人も、動画でサクッと知りたいという要望もありました。ウェブサイトにある文章も正直読まないと言っています。なので動画にし、私でもわかるような構成になるようなサービスを設計しました。</p>
-      <p class="post-body" style="margin-top:16px;">代表取締役 山岡優樹</p>
-    </div>
+    <nav class="co-jump" aria-label="ページ内リンク">
+      <a href="#message">代表メッセージ</a>
+      <a href="#overview">会社概要</a>
+      <a href="#history">沿革</a>
+    </nav>
 
-    <div class="info-block">
+    <section class="co-statement" aria-label="企業スタンス">
+      <p class="co-statement-text">我々は弊社の従業員が抱えている<br>課題や悩みを解決する会社です</p>
+      <p class="co-statement-name">山岡優樹</p>
+    </section>
+
+    <section class="co-message" id="message">
+      <p>そのようなスタンスでサービスをデザインしています。<br>現在行っている説明用アニメーション動画サービスも、私があまり理解力の高くない人間なので、私でもわかるようにしてほしいという気持ちから考えたサービスになります。私の周りの人も、動画でサクッと知りたいという要望もありました。ウェブサイトにある文章も正直読まないと言っています。なので動画にし、私でもわかるような構成になるようなサービスを設計しました。</p>
+      <p>弊社内で推進しているフルリモートワークも、私自身が満員電車が嫌で、また効率よく仕事を行い、家族との時間を増やしたいからフルリモートにしました。同じように思っている方は少なくないのではないでしょうか？</p>
+      <p>私は私の欲しいものを作りますし、従業員にもそのようにしてほしいと考えています。それが結果、他の方の課題解決になっているのです。自分事で考えているものは、実は他人事にもなっているのだと考えています。</p>
+      <div class="co-examples">
+        <p>従業員が本気で「うまい棒」を食べ放題したいという願望があるならば、そのようなサービスを作ってもいいでしょう。</p>
+        <p>ウェストをとにかく「くびれ」させたいと本気で思うなら、くびれ特化型のサービス「くびれ道場」を作ってもいいです。</p>
+        <p>誰かが救われるならそれで結構じゃないでしょうか！</p>
+      </div>
+      <p class="co-sign">代表取締役　山岡優樹</p>
+    </section>
+
+    <section class="info-block co-overview" id="overview">
+      <p class="page-label">COMPANY</p>
       <h2>会社概要</h2>
-      <table class="info-table">
-        <tr><th>会社名</th><td>株式会社TSUTA-WORLD</td></tr>
-        <tr><th>住所</th><td>本社 〒150-0022 東京都渋谷区恵比寿南1-1-1 ヒューマックス恵比寿ビル8F<br>北海道支社 〒060-0005 北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル8F</td></tr>
-        <tr><th>代表取締役</th><td>山岡優樹</td></tr>
-        <tr><th>電話番号</th><td>03-6722-6776</td></tr>
-        <tr><th>事業内容</th><td>
-          動画制作事業<br>
-          一括見積サイトの企画・運営・開発<br>
-          WEBメディアの運営<br>
-          前各号に掲げる事業に付帯または関連する事業並びに当会社の目的を達成するために必要な事業<br>
-          DTPデザイン、印刷対応、WEBデザイン業務
-        </td></tr>
-      </table>
-    </div>
+      <dl class="co-dl">
+        <div class="co-dl-row">
+          <dt>会社名</dt>
+          <dd>株式会社TSUTA-WORLD</dd>
+        </div>
+        <div class="co-dl-row">
+          <dt>住所</dt>
+          <dd>
+            <div class="co-offices">
+              <div class="co-office">
+                <p class="co-office-label">本社</p>
+                <p>〒150-0045<br>東京都渋谷区神泉町10番15号<br>アネックス神泉301</p>
+              </div>
+              <div class="co-office">
+                <p class="co-office-label">北海道支社</p>
+                <p>〒060-0005<br>北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル 8F</p>
+              </div>
+            </div>
+          </dd>
+        </div>
+        <div class="co-dl-row">
+          <dt>代表取締役</dt>
+          <dd>山岡優樹</dd>
+        </div>
+        <div class="co-dl-row">
+          <dt>電話番号</dt>
+          <dd><a href="tel:0367226776">03-6722-6776</a></dd>
+        </div>
+        <div class="co-dl-row">
+          <dt>事業内容</dt>
+          <dd>
+            <ul class="co-business">
+              <li>動画制作事業</li>
+              <li>一括見積サイトの企画・運営・開発</li>
+              <li>WEBメディアの運営</li>
+              <li>前各号に掲げる事業に付帯または関連する事業並びに当会社の目的を達成するために必要な事業</li>
+              <li>DTPデザイン、印刷対応、WEBデザイン業務</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </section>
 
-    <div class="info-block">
+    <section class="info-block co-history-block" id="history">
+      <p class="page-label">HISTORY</p>
       <h2>沿革</h2>
-      <div class="history-item">2019.5 令和元年最初の平日に株式会社ＹＯＮＯＨＩを設立</div>
-      <div class="history-item">2019.10 説明用アニメーション動画サービス「TSUTA-WORLD」をサービスイン</div>
-      <div class="history-item">2020.2 第三者割当増資により資本金1010万に増資</div>
-      <div class="history-item">2021.7 東京都渋谷区恵比寿南1-1-1 ヒューマックス恵比寿ビル8Fに移転</div>
-      <div class="history-item">2021.3 漫画付きLP制作「LP COMIC」開始</div>
-      <div class="history-item">2022.4 広告マーケティング資料ポータルサイト「TSUTA-MARKE」をサービスイン</div>
-    </div>
+      <ol class="co-history">
+        <li>
+          <time datetime="2019-05">2019.5</time>
+          <span>令和元年最初の平日に株式会社ＹＯＮＯＨＩを設立</span>
+        </li>
+        <li>
+          <time datetime="2019-10">2019.10</time>
+          <span>説明用アニメーション動画サービス「TSUTA-WORLD」をサービスイン</span>
+        </li>
+        <li>
+          <time datetime="2020-02">2020.2</time>
+          <span>第三者割当増資により資本金1010万に増資</span>
+        </li>
+        <li>
+          <time datetime="2021-03">2021.3</time>
+          <span>漫画付きLP制作「LP COMIC」開始</span>
+        </li>
+        <li>
+          <time datetime="2021-07">2021.7</time>
+          <span>東京都渋谷区恵比寿南1-1-1　ヒューマックス恵比寿ビル 8Fに移転</span>
+        </li>
+        <li>
+          <time datetime="2022-04">2022.4</time>
+          <span>広告マーケティング資料ポータルサイト「TSUTA-MARKE」をサービスイン</span>
+        </li>
+      </ol>
+    </section>
   </main>
 
   <footer id="footer" class="site-footer">
@@ -96,7 +163,7 @@
         </div>
         <div style="font-size:13px;color:#2e3136;line-height:1.9;">
           <div style="color:#1a1a1d;font-weight:600;margin-bottom:8px;">株式会社TSUTA-WORLD</div>
-          <div>本社：〒150-0022 東京都渋谷区恵比寿南1-1-1 ヒューマックス恵比寿ビル8F</div>
+          <div>本社：〒150-0045 東京都渋谷区神泉町10番15号 アネックス神泉301</div>
           <div>北海道支社：〒060-0005 北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル8F</div>
           <div style="margin-top:8px;">TEL. 03-6722-6776</div>
         </div>
