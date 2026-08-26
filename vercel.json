@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/media-ichiban.html",
+      "destination": "https://www.youtube.com/watch?v=ri2a_JjSd0c",
+      "permanent": false
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/assets/tsuta-icon.png",
+      "permanent": false
+    }
+  ]
+}

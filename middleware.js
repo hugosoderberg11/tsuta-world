@@ -1,5 +1,7 @@
 import { next } from '@vercel/functions';
 
+const STATIC_FILE = /\.(?:png|jpe?g|gif|svg|webp|ico|css|js|mp4|woff2?|txt|map|json|bat)$/i;
+
 function unauthorized() {
   return new Response('Authentication required', {
     status: 401,
@@ -31,11 +33,17 @@ function parseBasicAuth(authorization) {
 }
 
 export default function middleware(request) {
+  const { pathname } = new URL(request.url);
+
+  if (STATIC_FILE.test(pathname)) {
+    return next();
+  }
+
   const expectedUser = process.env.BASIC_AUTH_USER;
   const expectedPassword = process.env.BASIC_AUTH_PASSWORD;
 
   if (!expectedUser || !expectedPassword) {
-    return unauthorized();
+    return next();
   }
 
   const credentials = parseBasicAuth(request.headers.get('authorization'));
@@ -51,5 +59,5 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/(.*)'],
+  matcher: ['/((?!assets/|uploads/).*)'],
 };
