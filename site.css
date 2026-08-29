@@ -738,6 +738,14 @@ a:hover { color: #12586f; }
   color: #12586f;
   border-color: #cfe6ee;
 }
+.cm-works-tab.is-active {
+  background: #1c7fa6;
+  border-color: #1c7fa6;
+  color: #fff;
+}
+.cm-works-tab.is-active:hover {
+  color: #fff;
+}
 .cm-works-panel {
   scroll-margin-top: 100px;
   padding-top: 8px;
@@ -745,6 +753,28 @@ a:hover { color: #12586f; }
 }
 .cm-works-panel:last-child {
   margin-bottom: 0;
+}
+/* progressive enhancement: real tab switching once JS marks the container ready */
+.cm-works.js-tabs .cm-works-panel {
+  display: none;
+  margin-bottom: 0;
+}
+.cm-works.js-tabs .cm-works-panel.is-active {
+  display: block;
+}
+.cm-work-result {
+  margin: 20px 0 0;
+  padding: 16px 20px;
+  background: #f2f8fb;
+  border: 1px solid #cfe6ee;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #17171a;
+}
+.cm-work-result strong {
+  color: #1c7fa6;
+  font-weight: 800;
 }
 .cm-works-panel-title {
   font-size: clamp(20px, 2.2vw + 12px, 28px);
@@ -1067,6 +1097,89 @@ a:hover { color: #12586f; }
     max-width: 100%;
     text-align: center;
   }
+}
+
+/* Creative & Marketing — typography refresh (trial page; roll out sitewide later if it reads well) */
+.cm-type-v2 {
+  font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+}
+.cm-type-v2 .cm-hero-title,
+.cm-type-v2 .cm-section-title,
+.cm-type-v2 .cm-works-panel-title,
+.cm-type-v2 .cm-work-company {
+  font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+  letter-spacing: -0.015em;
+}
+.cm-type-v2 .cm-section-title {
+  font-size: clamp(22px, 2.6vw + 13px, 30px);
+  font-weight: 800;
+}
+.cm-type-v2 .cm-hero-lead {
+  font-size: clamp(16px, 1.1vw + 14px, 19px);
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.9;
+}
+.cm-type-v2 .cm-section-note {
+  font-size: 16px;
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.85;
+  max-width: 640px;
+}
+.cm-type-v2 .cm-service-name {
+  font-weight: 800;
+}
+.cm-type-v2 .cm-service-desc {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.8;
+}
+.cm-type-v2 .cm-works-panel-lead {
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.9;
+}
+.cm-type-v2 .cm-work-meta-row dt {
+  font-size: 12.5px;
+}
+.cm-type-v2 .cm-work-meta-row dd {
+  font-size: 16px;
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.8;
+}
+.cm-type-v2 .cm-work-result {
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-type-v2 .cm-live-card-type {
+  font-size: 12px;
+}
+.cm-type-v2 .cm-live-card h4 {
+  font-size: 17.5px;
+  font-weight: 700;
+}
+.cm-type-v2 .cm-anime-figure figcaption {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #23252a;
+}
+.cm-type-v2 .cm-anime-link-card strong {
+  font-size: 17.5px;
+  font-weight: 800;
+}
+.cm-type-v2 .cm-anime-link-card span {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #23252a;
+  line-height: 1.7;
+}
+.cm-type-v2 .cm-contact-lead {
+  font-weight: 600;
+  color: #17171a;
 }
 
 /* Fanstep LP */

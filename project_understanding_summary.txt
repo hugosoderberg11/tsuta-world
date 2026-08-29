@@ -26,7 +26,12 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
 
+## Recent edits (2026-08-29)
+- TOP TV/MEDIA: larger cards, full-bleed thumbs, play overlay, Noto Sans JP for Japanese copy, bigger titles/body, 「動画を見る」CTA.
+- TOP NEWS / SERVICES: same 1360px width as TV/MEDIA; Noto Sans JP; larger titles; NEWS rows are full-width clickable; service cards full-bleed with 「詳しく見る」.
+
 ## Recent edits (2026-08-26)
+- TOP hero: ウェーブ背景画像を外し、白背景のテキストヒーローに戻した。
 - Vercel 404/読み込み失敗対策: `middleware.js` が静的ファイル（support.js / assets）を Basic 認証対象にしていた問題を修正。認証 env 未設定時は通過。`vercel.json` で `media-ichiban.html` → YouTube、`favicon.ico` → アイコンPNG へリダイレクト。`index.html` に favicon リンク追加。
 - `animevideo.html` — 説明用アニメ動画ページ実装。公式LP（tsuta-world.com/lp/）から75作品・YouTube ID・サムネイルを取得し `assets/animevideo/` に配置。10カテゴリフィルタ、実績グリッド、クライアントの声、LP/YouTubeリンク。`site.css` に av-* スタイル追加。
 - `creative-marketing.html` — PPTX「動画制作に関する実績掲載」準拠で WORKS 実装。`assets/creative-marketing/` にPPTから切り出し（実写6/SNS6/アニメLP+口コミ）。カテゴリタブ（実写・SNS・アニメ）、YouTube/LP/tiktok_b リンク付き。

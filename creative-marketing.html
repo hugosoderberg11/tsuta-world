@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>クリエイティブ＆マーケティング — TSUTA-WORLD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body class="cm-page">
+<body class="cm-page cm-type-v2">
   <header class="page-header">
     <div class="page-header-inner page-header-inner--nav">
       <a href="index.html" class="logo">
@@ -78,13 +78,13 @@
         <p class="cm-section-note">アニメ・実写・SNS動画のカテゴリ別に、代表事例を掲載しています。</p>
       </div>
 
-      <nav class="cm-works-tabs" aria-label="制作実績カテゴリ">
-        <a href="#works-live" class="cm-works-tab">実写動画</a>
-        <a href="#works-sns" class="cm-works-tab">SNS動画</a>
-        <a href="#works-anime" class="cm-works-tab">アニメーション</a>
+      <nav class="cm-works-tabs" role="tablist" aria-label="制作実績カテゴリ">
+        <a href="#works-live" class="cm-works-tab" role="tab" data-target="works-live">実写動画</a>
+        <a href="#works-sns" class="cm-works-tab" role="tab" data-target="works-sns">SNS動画</a>
+        <a href="#works-anime" class="cm-works-tab" role="tab" data-target="works-anime">アニメーション</a>
       </nav>
 
-      <section class="cm-works-panel" id="works-live">
+      <section class="cm-works-panel" id="works-live" role="tabpanel">
         <h3 class="cm-works-panel-title">実写動画</h3>
         <p class="cm-works-panel-lead">社長メッセージ・座談会・職場体験など、撮影による採用・ブランディング動画。<a href="https://www.youtube.com/@ichishoku/videos" target="_blank" rel="noopener">一色動画チャンネル</a>の2番目以降の最新作も当社制作です。</p>
         <div class="cm-live-grid">
@@ -133,7 +133,7 @@
         </div>
       </section>
 
-      <section class="cm-works-panel" id="works-sns">
+      <section class="cm-works-panel" id="works-sns" role="tabpanel">
         <h3 class="cm-works-panel-title">SNS動画</h3>
         <p class="cm-works-panel-lead">TikTok・Instagram・YouTubeでの採用・集客事例。<a href="https://tsuta-world.com/tiktok_b/" target="_blank" rel="noopener">ファンステップ採用LP</a>でも詳しく掲載しています。</p>
         <div class="cm-work-list">
@@ -149,8 +149,8 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>母集団形成／中途採用</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>採用促進動画の展開</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>12ヶ月運用で<strong>40名採用</strong>／累計<strong>100万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜12ヶ月運用で<strong>40名採用</strong>／累計<strong>100万再生</strong></p>
             </div>
           </article>
 
@@ -166,8 +166,8 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>母集団形成／中途採用</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>採用促進動画の展開・企業ブランディング</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>6ヶ月運用で<strong>年間1000エントリー</strong>／累計<strong>600万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜6ヶ月運用で<strong>年間1000エントリー</strong>／累計<strong>600万再生</strong></p>
             </div>
           </article>
 
@@ -183,8 +183,8 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>新卒採用／中途採用</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>採用促進動画の展開</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>6ヶ月運用で<strong>23名採用</strong>／累計<strong>180万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜6ヶ月運用で<strong>23名採用</strong>／累計<strong>180万再生</strong></p>
             </div>
           </article>
 
@@ -200,8 +200,8 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>母集団形成／新卒・中途採用</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>採用促進動画の展開</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok／Instagram／YouTube</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>4ヶ月運用で<strong>エントリー増加</strong>／累計<strong>1000万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜4ヶ月運用で<strong>エントリー増加</strong>／累計<strong>1000万再生</strong></p>
             </div>
           </article>
 
@@ -217,8 +217,8 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>母集団形成／新卒・中途採用</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>採用促進動画の展開</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok／Instagram／YouTube</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>12ヶ月運用で<strong>エントリー増加</strong>／累計<strong>5400万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜12ヶ月運用で<strong>エントリー増加</strong>／累計<strong>5400万再生</strong></p>
             </div>
           </article>
 
@@ -234,14 +234,14 @@
                 <div class="cm-work-meta-row"><dt>課題</dt><dd>認知拡大／売上</dd></div>
                 <div class="cm-work-meta-row"><dt>アプローチ</dt><dd>購買促進動画（指名検索・サイト誘導）</dd></div>
                 <div class="cm-work-meta-row"><dt>使用媒体</dt><dd>TikTok／Instagram／YouTube</dd></div>
-                <div class="cm-work-meta-row"><dt>成果</dt><dd>6ヶ月運用で<strong>買取30件</strong>／累計<strong>230万再生</strong></dd></div>
               </dl>
+              <p class="cm-work-result">成果｜6ヶ月運用で<strong>買取30件</strong>／累計<strong>230万再生</strong></p>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="cm-works-panel" id="works-anime">
+      <section class="cm-works-panel" id="works-anime" role="tabpanel">
         <h3 class="cm-works-panel-title">アニメーション動画</h3>
         <p class="cm-works-panel-lead">説明特化型アニメーション。IT・教育・採用など全カテゴリの実績は<a href="https://tsuta-world.com/lp/" target="_blank" rel="noopener">公式LP</a>、追加作品は<a href="https://www.youtube.com/@tsutaworld733/videos" target="_blank" rel="noopener">YouTubeチャンネル</a>でもご覧いただけます。</p>
         <div class="cm-anime-showcase">
@@ -323,5 +323,44 @@
       <div class="site-footer-copy">© 2026 TSUTA-WORLD Co., Ltd. All Rights Reserved.</div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var works = document.querySelector(".cm-works");
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".cm-works-tab"));
+      var panels = Array.prototype.slice.call(document.querySelectorAll(".cm-works-panel"));
+      if (!works || !tabs.length || !panels.length) return;
+
+      function activate(id, opts) {
+        opts = opts || {};
+        tabs.forEach(function (tab) {
+          var isMatch = tab.getAttribute("data-target") === id;
+          tab.classList.toggle("is-active", isMatch);
+          tab.setAttribute("aria-selected", isMatch ? "true" : "false");
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle("is-active", panel.id === id);
+        });
+        if (opts.scroll) {
+          var target = document.getElementById(id);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function (event) {
+          event.preventDefault();
+          var id = tab.getAttribute("data-target");
+          activate(id, { scroll: true });
+          history.replaceState(null, "", "#" + id);
+        });
+      });
+
+      works.classList.add("js-tabs");
+      var initial = location.hash ? location.hash.slice(1) : "";
+      var hasInitial = initial && panels.some(function (panel) { return panel.id === initial; });
+      activate(hasInitial ? initial : panels[0].id);
+    })();
+  </script>
 </body>
 </html>

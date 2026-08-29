@@ -10,7 +10,7 @@
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     @keyframes heroFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     *, *::before, *::after { box-sizing: border-box; }
@@ -27,8 +27,12 @@
     a:hover { color: #12586f; }
     a.top-service-card:hover { color: #17171a; }
     a.top-media-card:hover { color: #17171a; }
+    a.top-news-row:hover { color: #17171a; }
+    .top-wide-section {
+      max-width: 1360px !important;
+    }
     .top-service-grid {
-      gap: 24px !important;
+      gap: 32px !important;
       width: 100%;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
@@ -41,26 +45,60 @@
       grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr) minmax(0, 0.85fr) minmax(0, 1.15fr) minmax(0, 1.25fr) !important;
     }
     .top-footer-grid > * { min-width: 0; }
+    .top-service-section {
+      padding-top: 96px !important;
+      padding-bottom: 0 !important;
+    }
+    .top-service-head { margin-bottom: 40px; }
+    .top-service-kicker-label,
+    .top-news-kicker,
+    .top-media-kicker {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #1c7fa6;
+      margin: 0 0 10px;
+    }
+    .top-service-lead {
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(24px, 2vw + 16px, 36px);
+      font-weight: 900;
+      color: #17171a;
+      line-height: 1.45;
+      letter-spacing: 0.04em;
+      margin: 0;
+      max-width: none;
+    }
+    .top-service-group-label {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #3d4045;
+      margin: 0 0 20px;
+    }
     .top-service-card {
       display: flex !important;
       flex-direction: column;
       background: #ffffff !important;
       border: 1px solid #e7e7e9 !important;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      padding: 12px 12px 22px !important;
+      padding: 0 !important;
       color: #17171a !important;
       min-width: 0;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
     .top-service-card:hover {
       transform: translateY(-4px);
       border-color: #cfe6ee !important;
-      box-shadow: 0 16px 40px rgba(23, 23, 26, 0.08);
+      box-shadow: 0 20px 48px rgba(23, 23, 26, 0.1);
     }
     .top-service-visual {
       position: relative;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
       background: #f0f1f3;
     }
@@ -71,77 +109,136 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 12px;
+      border-radius: 0;
       vertical-align: top;
       transition: transform 0.45s ease;
     }
     .top-service-card:hover .top-service-visual img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
     .top-service-body {
-      padding: 18px 8px 2px;
+      padding: 24px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
     .top-service-kicker {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
-    .top-service-kicker span {
+    .top-service-kicker span:first-child {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.08em;
       color: #1c7fa6;
+    }
+    .top-service-kicker span:last-child {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #12586f;
+      background: #eef6f9;
+      border-radius: 999px;
+      padding: 5px 12px;
     }
     .top-service-name-row {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
     .top-service-name {
-      font-size: clamp(17px, 1.4vw + 12px, 20px);
-      font-weight: 700;
-      color: #17171a;
-      line-height: 1.4;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(20px, 1.5vw + 14px, 26px);
+      font-weight: 900;
+      color: #111114;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
     }
     .top-service-price {
-      font-size: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
       font-weight: 700;
       color: #1c7fa6;
       border: 1px solid #cfe6ee;
       border-radius: 999px;
-      padding: 3px 10px;
+      padding: 5px 12px;
     }
     .top-service-desc {
-      font-size: 14px;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
       color: #2e3136;
-      line-height: 1.7;
+      line-height: 1.9;
+      margin: 0 0 16px;
+    }
+    .top-service-more {
+      margin-top: auto;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1c7fa6;
+    }
+    .top-media-section {
+      padding-top: 96px !important;
+      padding-bottom: 100px !important;
+    }
+    .top-media-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+    }
+    .top-media-kicker {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #1c7fa6;
+      margin: 0 0 10px;
+    }
+    .top-media-lead {
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(24px, 2vw + 16px, 36px);
+      font-weight: 900;
+      color: #17171a;
+      line-height: 1.35;
+      letter-spacing: 0.04em;
       margin: 0;
+    }
+    .top-media-grid {
+      gap: 32px !important;
     }
     .top-media-card {
       display: block;
       color: #17171a !important;
       background: #ffffff;
       border: 1px solid #e7e7e9;
-      border-radius: 16px;
-      padding: 12px 12px 22px;
+      border-radius: 20px;
+      padding: 0;
       min-width: 0;
+      overflow: hidden;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
     .top-media-card:hover {
       transform: translateY(-4px);
       border-color: #cfe6ee;
-      box-shadow: 0 16px 40px rgba(23, 23, 26, 0.08);
+      box-shadow: 0 20px 48px rgba(23, 23, 26, 0.1);
     }
     .top-media-thumb {
       position: relative;
       width: 100%;
       overflow: hidden;
-      border-radius: 12px;
+      border-radius: 0;
       background: #f0f1f3;
       border: 0;
     }
@@ -152,37 +249,149 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 12px;
+      border-radius: 0;
       transition: transform 0.45s ease;
     }
     .top-media-card:hover .top-media-thumb img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
-    .top-media-body { padding: 16px 8px 2px; }
+    .top-media-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 76px;
+      height: 76px;
+      margin: -38px 0 0 -38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 10px 28px rgba(23, 23, 26, 0.22);
+      pointer-events: none;
+    }
+    .top-media-play::after {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 24px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 0 14px 22px;
+      border-color: transparent transparent transparent #1a1a1d;
+    }
+    .top-media-body { padding: 24px 24px 26px; }
     .top-media-program {
-      font-size: 12px;
-      color: #1c7fa6;
+      display: inline-block;
+      font-size: 13px;
+      color: #12586f;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef6f9;
+      font-family: 'Noto Sans JP', sans-serif;
     }
     .top-media-title {
-      font-size: clamp(16px, 1.4vw + 12px, 19px);
-      font-weight: 700;
-      color: #17171a;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(22px, 1.6vw + 16px, 30px);
+      font-weight: 900;
+      color: #111114;
+      margin-bottom: 12px;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
     }
     .top-media-desc {
-      font-size: 14px;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
       color: #2e3136;
-      line-height: 1.7;
-      margin: 0 0 6px;
+      line-height: 1.9;
+      margin: 0 0 14px;
+    }
+    .top-media-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .top-media-date {
-      font-size: 13px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
       color: #3d4045;
+    }
+    .top-media-watch {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1c7fa6;
+    }
+    .top-news-section {
+      padding-top: 96px !important;
+      padding-bottom: 96px !important;
+    }
+    .top-news-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+    }
+    .top-news-lead {
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(24px, 2vw + 16px, 36px);
+      font-weight: 900;
+      color: #17171a;
+      line-height: 1.35;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+    .top-news-all {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1d;
+      border-bottom: 2px solid #1c7fa6;
+      padding-bottom: 4px;
+      white-space: nowrap;
+    }
+    .top-news-list { border-top: 1px solid #e7e7e9; }
+    .top-news-row {
+      display: flex;
+      gap: 32px;
+      padding: 28px 8px;
+      border-bottom: 1px solid #ececee;
+      align-items: center;
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      transition: background 0.25s ease;
+    }
+    .top-news-row:hover { background: #f7fafb; }
+    .top-news-date {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #12586f;
+      min-width: 140px;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .top-news-title {
+      font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(18px, 1.2vw + 14px, 24px);
+      font-weight: 700;
+      color: #111114;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      min-width: 0;
+      flex: 1;
+    }
+    .top-news-arrow {
+      flex-shrink: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1c7fa6;
     }
     #top { font-weight: 500; max-width: 100%; }
     #footer a { font-weight: 600; color: #1a1a1d; }
@@ -268,7 +477,7 @@
       max-width: 440px;
     }
     .top-services-lead {
-      font-size: clamp(20px, 2vw + 12px, 26px) !important;
+      font-size: clamp(24px, 2vw + 16px, 36px) !important;
     }
     .top-synergy-block {
       margin-left: calc(-1 * max(16px, env(safe-area-inset-left), min(40px, 5vw))) !important;
@@ -292,7 +501,10 @@
       .top-header-nav a:not(.top-header-contact) { display: none; }
       .top-header-nav { gap: 12px !important; }
       .top-media-grid,
-      .top-service-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 20px !important; }
+      .top-service-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
+      .top-news-row { gap: 20px; padding: 24px 4px; }
+      .top-media-play { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+      .top-media-play::after { left: 25px; top: 20px; border-width: 12px 0 12px 18px; }
       .top-synergy-block { padding-top: 40px !important; padding-bottom: 32px !important; }
       .hero-tag { font-size: 26px; padding: 10px 18px; }
     }
@@ -301,18 +513,25 @@
     }
     @media (max-width: 600px) {
       .top-hero-inner { padding-top: 56px !important; padding-bottom: 64px !important; }
-      .top-news-row { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; }
+      .top-news-row { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; padding: 22px 4px; }
       .top-news-date { min-width: 0 !important; }
+      .top-news-arrow { display: none; }
+      .top-news-title { font-size: 18px; }
       .top-footer-grid { grid-template-columns: minmax(0, 1fr) !important; }
       .top-footer { padding-top: 48px !important; padding-bottom: 24px !important; }
       .top-contact-lead { font-size: 18px !important; }
       .top-header-contact { padding: 8px 14px !important; font-size: 13px !important; }
       .hero-tag { font-size: 16px; padding: 7px 12px; }
       .top-contact-btn { padding: 14px 24px !important; }
-      .top-service-card,
-      .top-media-card { padding: 10px 10px 18px !important; border-radius: 14px; }
-      .top-service-body,
-      .top-media-body { padding: 16px 8px 0; }
+      .top-service-card { padding: 0 !important; border-radius: 16px; }
+      .top-media-card { padding: 0 !important; border-radius: 16px; }
+      .top-service-body { padding: 20px 18px 22px !important; }
+      .top-media-body { padding: 20px 18px 22px !important; }
+      .top-media-title { font-size: 22px; }
+      .top-media-lead,
+      .top-news-lead,
+      .top-service-lead { font-size: 24px; }
+      .top-service-name { font-size: 20px; }
       .hero-tags { gap: 8px !important; }
     }
     @media (max-width: 380px) {
@@ -321,9 +540,11 @@
     }
     @media (hover: none) {
       .top-service-card:hover,
-      .top-media-card:hover {
+      .top-media-card:hover,
+      .top-news-row:hover {
         transform: none;
         box-shadow: none;
+        background: transparent;
       }
     }
   </style>
@@ -364,49 +585,61 @@
     </div>
   </section>
 
-  <section id="media" class="top-section" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:12px;">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">TV / MEDIA</h2>
-      <span style="font-size:14px;color:#3d4045;">メディア掲載実績</span>
+  <section id="media" class="top-section top-wide-section top-media-section" style="margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+    <div class="top-media-head">
+      <div>
+        <h2 class="top-media-kicker">TV / MEDIA</h2>
+        <p class="top-media-lead">メディア掲載実績</p>
+      </div>
     </div>
-    <div class="top-media-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+    <div class="top-media-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
       <sc-for list="{{mediaItems}}" as="m" hint-placeholder-count="2">
         <a href="{{m.href}}" target="{{m.target}}" class="top-media-card">
           <div class="top-media-thumb">
             <img src="{{m.imageSrc}}" alt="{{m.title}}">
+            <span class="top-media-play" aria-hidden="true"></span>
           </div>
           <div class="top-media-body">
             <div class="top-media-program">{{m.program}}</div>
             <div class="top-media-title">{{m.title}}</div>
             <p class="top-media-desc">{{m.desc}}</p>
-            <div class="top-media-date">{{m.date}}</div>
+            <div class="top-media-meta">
+              <div class="top-media-date">{{m.date}}</div>
+              <span class="top-media-watch">動画を見る →</span>
+            </div>
           </div>
         </a>
       </sc-for>
     </div>
   </section>
 
-  <section id="news" class="top-section" style="max-width:1240px;margin:0 auto;padding:72px 40px;border-top:1px solid #e7e7e9;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0 0 32px;">NEWS</h2>
-    <div>
+  <section id="news" class="top-section top-wide-section top-news-section" style="margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+    <div class="top-news-head">
+      <div>
+        <h2 class="top-news-kicker">NEWS</h2>
+        <p class="top-news-lead">新着情報</p>
+      </div>
+      <a href="post.html" class="top-news-all">すべて見る →</a>
+    </div>
+    <div class="top-news-list">
       <sc-for list="{{newsItems}}" as="n" hint-placeholder-count="3">
-        <div class="top-news-row" style="display:flex;gap:32px;padding:22px 0;border-bottom:1px solid #ececee;align-items:baseline;">
-          <span class="top-news-date" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#3d4045;min-width:110px;flex-shrink:0;">{{n.date}}</span>
-          <a href="{{n.href}}" style="font-size:15px;color:#26272b;">{{n.title}}</a>
-        </div>
+        <a href="{{n.href}}" class="top-news-row">
+          <span class="top-news-date">{{n.date}}</span>
+          <span class="top-news-title">{{n.title}}</span>
+          <span class="top-news-arrow" aria-hidden="true">→</span>
+        </a>
       </sc-for>
     </div>
-    <a href="post.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:14px;font-weight:600;color:#1a1a1d;">VIEW ALL →</a>
   </section>
 
-  <section id="services" class="top-section" style="max-width:1240px;margin:0 auto;padding:88px 40px 96px;border-top:1px solid #e7e7e9;">
-    <div style="margin-bottom:56px;">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">SERVICES</h2>
-      <p class="top-services-lead" style="font-size:26px;font-weight:700;color:#17171a;margin:16px 0 0;max-width:640px;line-height:1.6;">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
+  <section id="services" class="top-section top-wide-section top-service-section" style="margin:0 auto;padding:96px 40px 0;border-top:1px solid #e7e7e9;">
+    <div class="top-service-head">
+      <h2 class="top-service-kicker-label">SERVICES</h2>
+      <p class="top-service-lead">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
     </div>
 
-    <div style="margin-bottom:20px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#3d4045;font-family:'Space Grotesk',sans-serif;">TSUTA-WORLD ORIGINAL SERVICES</div>
-    <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+    <p class="top-service-group-label">オリジナルサービス</p>
+    <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
       <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="4">
         <a href="{{s.href}}" target="{{s.target}}" class="top-service-card">
           <div class="top-service-visual">
@@ -424,13 +657,15 @@
               </sc-if>
             </div>
             <p class="top-service-desc">{{s.desc}}</p>
+            <span class="top-service-more">詳しく見る →</span>
           </div>
         </a>
       </sc-for>
     </div>
 
-    <div class="top-synergy-block" style="background:#f2f8fb;margin:56px -40px -40px;padding:56px 40px 40px;">
-      <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+    <div class="top-synergy-block" style="background:#f2f8fb;margin:56px -40px 0;padding:56px 40px 48px;">
+      <p class="top-service-group-label">関連サービス</p>
+      <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
         <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
           <a href="{{s.href}}" class="top-service-card">
             <div class="top-service-visual">
@@ -445,6 +680,7 @@
                 <span class="top-service-name">{{s.name}}</span>
               </div>
               <p class="top-service-desc">{{s.desc}}</p>
+              <span class="top-service-more">詳しく見る →</span>
             </div>
           </a>
         </sc-for>
