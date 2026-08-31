@@ -19,7 +19,8 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/fanstep/` — Word内の実績スライドPNG（image1/3/5/7/9）と付随SVG。
 - `website.html` — Webサイト制作・リース 詳細（同構成、placeholderコンテンツ）
 - `animevideo.html` — 説明用アニメ動画 TSUTA-WORLD 詳細。Hero（service-anime.jpg）/ SERVICES 3種 / WORKS 全10カテゴリ75作品（公式LPから取得、assets/animevideo/ サムネ）/ VOICE / CONTACT。カテゴリフィルタはJS。
-- `apparel.html` — アパレル 詳細（同構成、placeholderコンテンツ）
+- `apparel.html` — アパレル 詳細。Hero / 事業について / 自社ブランド・OEM / 対応範囲 / WORKS / CONTACT / Footer。コイシカワapparel掲載の文言と実績のみ。
+- `assets/apparel/` — BYWEAR・MA LABELバナー、AKG実績画像（コイシカワ公式から取得）
 - `contact.html` — お問い合わせ (TEL/hours/address from TOP)
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/service-fanstep.jpg` / `service-kitabuzz.jpg` / `service-web.jpg` / `service-anime.jpg` / `service-creative.jpg` / `service-apparel.jpg` — TOP SERVICES large-card banners (1024×576 JPEG, shown uncropped)
@@ -29,6 +30,15 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 ## Recent edits (2026-08-29)
 - TOP TV/MEDIA: larger cards, full-bleed thumbs, play overlay, Noto Sans JP for Japanese copy, bigger titles/body, 「動画を見る」CTA.
 - TOP NEWS / SERVICES: same 1360px width as TV/MEDIA; Noto Sans JP; larger titles; NEWS rows are full-width clickable; service cards full-bleed with 「詳しく見る」.
+
+## Recent edits (2026-08-31)
+- Phase 3B: `apparel.html` をコンテンツ拡充。コイシカワapparelの事業文言、自社ブランド（BYWEAR / MA LABEL BY MAISON SPECIAL）、OEM/ODM対応、確認できる実績2件（HARD ROCK COLLECTION 2024、BYWEAR×AKG 2022）を掲載。未確認の数字・企業名は未記載。TOP / creative-marketing 他ページは未変更。
+- Phase 3A: `creative-marketing.html` をコンテンツ拡充。コイシカワ公式の制作＆マーケティング文言／4ツール分類／対応領域、既存SNS・実写実績、コイシカワ掲載の代表6案件を大きなCASEで追加。未確認の数字・企業概要は未記載。TOP他ページは未変更。
+- TOP NEWS: ZIP「NEWSセクションUI改善案」の案Aを適用。既存リスト構造のまま幾何グリッド／円／グラデーション背景を挿入。記事3件・リンクは据え置き。案B/Cは記事画像が必要なため未採用。
+- サイト全体の青UI統一: NEWSの薄青グラデーション＋グリッド／円をヒーロー・ヘッダー・TV/MEDIA・SERVICES・CONTACT・フッター、およびサブページのHero/Header/WORKS/CONTACT/page-mainへ展開。CONTACTボタンは `#0F7490`。
+- TOP hero: コラージュ画像を外し、白背景のテキストヒーローに戻した。
+- Footer を3カラムに再編（全ページ共通）: 左＝サービス一覧＋AI研修、中央＝COMPANY（新着情報を統合、POST見出し削除）、右＝ロゴ＋既存会社概要。本文は未変更。
+- TOP `index.html` クライアント修正: 「オリジナル/関連サービス」見出し削除、サービス01〜06連番化、薄青背景を全6件に統一、リード文・サービス名・アパレル説明・CONTACT 2行表示を更新。
 
 ## Recent edits (2026-08-26)
 - TOP hero: ウェーブ背景画像を外し、白背景のテキストヒーローに戻した。
@@ -64,8 +74,8 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - Hero right `image-slot` replaced with looping muted `assets/hero.mp4`; overflow hidden + scale(1.42) crops top/bottom black bars.
 
 ## Footer (TOP + all subpages)
-- POST: 新着情報 → post.html
-- COMPANY: 会社情報, 代理店募集, お問い合わせ
+- 3 columns: サービス一覧（01〜06 + AI研修） / COMPANY（新着情報・会社情報・代理店募集・お問い合わせ） / ロゴ＋会社概要
+- POST heading removed; 新着情報 moved under COMPANY
 - AI研修（全5コース）: 6 external LP links (tsuta-world.com/lp/vau/…)
 - Company address block (unchanged from TOP)
 

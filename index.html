@@ -10,7 +10,7 @@
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
   <style>
     @keyframes heroFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     *, *::before, *::after { box-sizing: border-box; }
@@ -42,9 +42,40 @@
     }
     .top-footer-grid {
       width: 100%;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr) minmax(0, 0.85fr) minmax(0, 1.15fr) minmax(0, 1.25fr) !important;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr) minmax(0, 1.15fr) !important;
     }
     .top-footer-grid > * { min-width: 0; }
+    .top-footer-heading {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #1a1a1d;
+      border-left: 3px solid #0F7490;
+      padding-left: 10px;
+      margin: 0 0 16px;
+    }
+    .top-footer-heading-en {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.12em;
+    }
+    .top-footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .top-footer-links a {
+      font-size: 14px;
+      color: #1a1a1d;
+      line-height: 1.5;
+    }
+    .top-footer-ai-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1d;
+      margin: 22px 0 14px;
+      line-height: 1.5;
+    }
     .top-service-section {
       padding-top: 96px !important;
       padding-bottom: 0 !important;
@@ -57,7 +88,7 @@
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.16em;
-      color: #1c7fa6;
+      color: #0F7490;
       margin: 0 0 10px;
     }
     .top-service-lead {
@@ -202,7 +233,7 @@
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.16em;
-      color: #1c7fa6;
+      color: #0F7490;
       margin: 0 0 10px;
     }
     .top-media-lead {
@@ -328,70 +359,137 @@
       color: #1c7fa6;
     }
     .top-news-section {
-      padding-top: 96px !important;
-      padding-bottom: 96px !important;
+      position: relative;
+      overflow: hidden;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 120px 0 140px !important;
+      border-top: 0 !important;
+      background: linear-gradient(160deg, #F7FAFB 0%, #EAF2F5 55%, #FFFFFF 100%);
+    }
+    .top-news-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .top-news-deco-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(#0F749010 1px, transparent 1px), linear-gradient(90deg, #0F749010 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .top-news-deco-orb {
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #0F749026, transparent 70%);
+    }
+    .top-news-deco-ring {
+      position: absolute;
+      left: -80px;
+      bottom: -200px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid #0F749033;
+      border-radius: 50%;
+    }
+    .top-news-deco-ring--sm {
+      left: -40px;
+      bottom: -160px;
+      width: 440px;
+      height: 440px;
+      border-color: #0F74901f;
+    }
+    .top-news-deco-line {
+      position: absolute;
+      top: 0;
+      right: 8%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(#0F749000, #0F749033, #0F749000);
+    }
+    .top-news-inner {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
     }
     .top-news-head {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
       gap: 16px 24px;
     }
+    .top-news-section .top-news-kicker {
+      font-family: 'Barlow Condensed', 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: #0F7490;
+      margin: 0 0 6px;
+    }
     .top-news-lead {
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      font-size: clamp(24px, 2vw + 16px, 36px);
+      font-size: clamp(32px, 2.4vw + 20px, 44px);
       font-weight: 900;
-      color: #17171a;
-      line-height: 1.35;
-      letter-spacing: 0.04em;
+      color: #101418;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
       margin: 0;
     }
     .top-news-all {
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      color: #1a1a1d;
-      border-bottom: 2px solid #1c7fa6;
+      color: #101418;
+      border-bottom: 2px solid #0F7490;
       padding-bottom: 4px;
       white-space: nowrap;
     }
-    .top-news-list { border-top: 1px solid #e7e7e9; }
+    .top-news-list { border-top: 0; }
     .top-news-row {
-      display: flex;
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) 40px;
       gap: 32px;
-      padding: 28px 8px;
-      border-bottom: 1px solid #ececee;
+      padding: 26px 24px;
+      border-top: 1px solid #C9D6DC;
       align-items: center;
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      transition: background 0.25s ease;
+      background: rgba(255, 255, 255, 0.55);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
     }
-    .top-news-row:hover { background: #f7fafb; }
+    .top-news-row:last-child { border-bottom: 1px solid #C9D6DC; }
+    .top-news-row:hover {
+      background: #ffffff;
+      box-shadow: 0 8px 24px #0f749014;
+    }
     .top-news-date {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: #12586f;
-      min-width: 140px;
-      flex-shrink: 0;
-      letter-spacing: 0.02em;
+      font-family: 'Barlow Condensed', 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: #0F7490;
+      min-width: 0;
+      letter-spacing: 0.04em;
     }
     .top-news-title {
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      font-size: clamp(18px, 1.2vw + 14px, 24px);
+      font-size: 19px;
       font-weight: 700;
-      color: #111114;
+      color: #101418;
       line-height: 1.6;
       letter-spacing: 0.02em;
       min-width: 0;
-      flex: 1;
     }
     .top-news-arrow {
       flex-shrink: 0;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      color: #1c7fa6;
+      color: #0F7490;
+      text-align: right;
     }
     #top { font-weight: 500; max-width: 100%; }
     #footer a { font-weight: 600; color: #1a1a1d; }
@@ -421,14 +519,34 @@
     .top-service-grid > *,
     .top-footer-grid > *,
     .top-news-row { min-width: 0; }
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 250, 251, 0.9);
+      backdrop-filter: saturate(1.15) blur(16px);
+      -webkit-backdrop-filter: saturate(1.15) blur(16px);
+      border-bottom: 1px solid #C9D6DC;
+    }
+    .ui-atm {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #F7FAFB 0%, #EAF2F5 55%, #FFFFFF 100%);
+    }
+    .ui-atm > .top-section,
+    .ui-atm > .top-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       max-width: 100%;
       padding: 6px 14px;
-      border: 1px solid #cfe6ee;
+      border: 1px solid #C9D6DC;
       border-radius: 999px;
-      color: #1c7fa6;
+      color: #0F7490;
+      background: rgba(255, 255, 255, 0.55);
       font-size: clamp(10px, 2.4vw, 12px);
       font-weight: 600;
       letter-spacing: 0.06em;
@@ -461,11 +579,12 @@
     }
     .hero-tag {
       padding: 12px 24px;
-      border: 1px solid #e2e3e6;
+      border: 1px solid #C9D6DC;
       border-radius: 999px;
       font-size: 30px;
       font-weight: 600;
-      color: #1a1a1d;
+      color: #0F7490;
+      background: rgba(255, 255, 255, 0.55);
       max-width: 100%;
       flex: 0 1 auto;
     }
@@ -480,10 +599,11 @@
       font-size: clamp(24px, 2vw + 16px, 36px) !important;
     }
     .top-synergy-block {
-      margin-left: calc(-1 * max(16px, env(safe-area-inset-left), min(40px, 5vw))) !important;
-      margin-right: calc(-1 * max(16px, env(safe-area-inset-right), min(40px, 5vw))) !important;
-      padding-left: max(16px, env(safe-area-inset-left), min(40px, 5vw)) !important;
-      padding-right: max(16px, env(safe-area-inset-right), min(40px, 5vw)) !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      background: transparent !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     }
     .top-footer {
       padding-left: max(16px, env(safe-area-inset-left), min(40px, 5vw)) !important;
@@ -494,30 +614,34 @@
       max-width: 100%;
       text-align: center;
     }
-    @media (max-width: 1100px) {
-      .top-footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 32px !important; }
-    }
     @media (max-width: 960px) {
       .top-header-nav a:not(.top-header-contact) { display: none; }
       .top-header-nav { gap: 12px !important; }
       .top-media-grid,
       .top-service-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
-      .top-news-row { gap: 20px; padding: 24px 4px; }
+      .top-news-section { padding-top: 88px !important; padding-bottom: 96px !important; }
+      .top-news-row { grid-template-columns: 100px minmax(0, 1fr) 28px; gap: 20px; padding: 22px 16px; }
+      .top-news-deco-orb { width: 420px; height: 420px; }
+      .top-news-deco-ring { width: 360px; height: 360px; }
       .top-media-play { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
       .top-media-play::after { left: 25px; top: 20px; border-width: 12px 0 12px 18px; }
       .top-synergy-block { padding-top: 40px !important; padding-bottom: 32px !important; }
       .hero-tag { font-size: 26px; padding: 10px 18px; }
+      .top-footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 32px !important; }
+      .top-footer-brand { grid-column: 1 / -1; }
     }
     @media (max-width: 768px) {
       .hero-tag { font-size: 22px; padding: 8px 16px; }
     }
     @media (max-width: 600px) {
       .top-hero-inner { padding-top: 56px !important; padding-bottom: 64px !important; }
-      .top-news-row { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; padding: 22px 4px; }
-      .top-news-date { min-width: 0 !important; }
-      .top-news-arrow { display: none; }
-      .top-news-title { font-size: 18px; }
+      .top-news-row { grid-template-columns: minmax(0, 1fr) 24px; gap: 8px 12px; align-items: start; padding: 20px 14px; }
+      .top-news-date { grid-column: 1; }
+      .top-news-title { grid-column: 1; font-size: 17px; }
+      .top-news-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+      .top-news-deco-line { display: none; }
       .top-footer-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      .top-footer-brand { grid-column: auto; }
       .top-footer { padding-top: 48px !important; padding-bottom: 24px !important; }
       .top-contact-lead { font-size: 18px !important; }
       .top-header-contact { padding: 8px 14px !important; font-size: 13px !important; }
@@ -549,9 +673,9 @@
     }
   </style>
 </helmet>
-<div id="top" style="width:100%;background:#ffffff;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;">
+<div id="top" style="width:100%;background:#F7FAFB;color:#1a1a1d;font-family:'Zen Kaku Gothic New',sans-serif;">
 
-  <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #e7e7e9;">
+  <header class="top-header">
     <div class="top-header-inner" style="max-width:1240px;margin:0 auto;padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between;">
       <a href="#top" style="display:flex;align-items:center;gap:10px;">
         <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:28px;height:auto;display:block;">
@@ -561,12 +685,19 @@
         <a href="#services" style="font-size:14px;font-weight:500;color:#1a1a1d;">SERVICE</a>
         <a href="#news" style="font-size:14px;font-weight:500;color:#1a1a1d;">NEWS</a>
         <a href="#footer" style="font-size:14px;font-weight:500;color:#1a1a1d;">COMPANY</a>
-        <a href="#contact" class="top-header-contact" style="padding:10px 22px;background:#1c7fa6;color:#ffffff;border-radius:999px;font-size:14px;font-weight:600;">CONTACT</a>
+        <a href="#contact" class="top-header-contact" style="padding:10px 22px;background:#0F7490;color:#ffffff;border-radius:999px;font-size:14px;font-weight:600;">CONTACT</a>
       </nav>
     </div>
   </header>
 
-  <section id="hero" style="position:relative;background:#ffffff;">
+  <section id="hero" class="ui-atm">
+    <div class="top-news-deco" aria-hidden="true">
+      <div class="top-news-deco-grid"></div>
+      <div class="top-news-deco-orb"></div>
+      <div class="top-news-deco-ring"></div>
+      <div class="top-news-deco-ring top-news-deco-ring--sm"></div>
+      <div class="top-news-deco-line"></div>
+    </div>
     <div class="top-hero-inner top-section" style="max-width:1240px;margin:0 auto;padding:96px 40px 100px;">
       <div style="animation:heroFade 0.8s ease both;max-width:920px;">
         <div class="hero-badge">MULTI-BUSINESS CREATIVE COMPANY</div>
@@ -580,12 +711,20 @@
             <span class="hero-tag">{{tag}}</span>
           </sc-for>
         </div>
-        <a href="#services" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#1a1a1d;border-bottom:2px solid #1c7fa6;padding-bottom:4px;">事業を見る →</a>
+        <a href="#services" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#1a1a1d;border-bottom:2px solid #0F7490;padding-bottom:4px;">事業を見る →</a>
       </div>
     </div>
   </section>
 
-  <section id="media" class="top-section top-wide-section top-media-section" style="margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+  <section id="media" class="ui-atm top-media-section">
+    <div class="top-news-deco" aria-hidden="true">
+      <div class="top-news-deco-grid"></div>
+      <div class="top-news-deco-orb"></div>
+      <div class="top-news-deco-ring"></div>
+      <div class="top-news-deco-ring top-news-deco-ring--sm"></div>
+      <div class="top-news-deco-line"></div>
+    </div>
+    <div class="top-section top-wide-section" style="margin:0 auto;">
     <div class="top-media-head">
       <div>
         <h2 class="top-media-kicker">TV / MEDIA</h2>
@@ -611,63 +750,55 @@
         </a>
       </sc-for>
     </div>
+    </div>
   </section>
 
-  <section id="news" class="top-section top-wide-section top-news-section" style="margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
-    <div class="top-news-head">
-      <div>
-        <h2 class="top-news-kicker">NEWS</h2>
-        <p class="top-news-lead">新着情報</p>
+  <section id="news" class="top-news-section">
+    <div class="top-news-deco" aria-hidden="true">
+      <div class="top-news-deco-grid"></div>
+      <div class="top-news-deco-orb"></div>
+      <div class="top-news-deco-ring"></div>
+      <div class="top-news-deco-ring top-news-deco-ring--sm"></div>
+      <div class="top-news-deco-line"></div>
+    </div>
+    <div class="top-news-inner top-section top-wide-section">
+      <div class="top-news-head">
+        <div>
+          <h2 class="top-news-kicker">NEWS</h2>
+          <p class="top-news-lead">新着情報</p>
+        </div>
+        <a href="post.html" class="top-news-all">すべて見る →</a>
       </div>
-      <a href="post.html" class="top-news-all">すべて見る →</a>
-    </div>
-    <div class="top-news-list">
-      <sc-for list="{{newsItems}}" as="n" hint-placeholder-count="3">
-        <a href="{{n.href}}" class="top-news-row">
-          <span class="top-news-date">{{n.date}}</span>
-          <span class="top-news-title">{{n.title}}</span>
-          <span class="top-news-arrow" aria-hidden="true">→</span>
-        </a>
-      </sc-for>
+      <div class="top-news-list">
+        <sc-for list="{{newsItems}}" as="n" hint-placeholder-count="3">
+          <a href="{{n.href}}" class="top-news-row">
+            <span class="top-news-date">{{n.date}}</span>
+            <span class="top-news-title">{{n.title}}</span>
+            <span class="top-news-arrow" aria-hidden="true">→</span>
+          </a>
+        </sc-for>
+      </div>
     </div>
   </section>
 
-  <section id="services" class="top-section top-wide-section top-service-section" style="margin:0 auto;padding:96px 40px 0;border-top:1px solid #e7e7e9;">
+  <section id="services" class="ui-atm top-service-section">
+    <div class="top-news-deco" aria-hidden="true">
+      <div class="top-news-deco-grid"></div>
+      <div class="top-news-deco-orb"></div>
+      <div class="top-news-deco-ring"></div>
+      <div class="top-news-deco-ring top-news-deco-ring--sm"></div>
+      <div class="top-news-deco-line"></div>
+    </div>
+    <div class="top-section top-wide-section" style="margin:0 auto;padding-bottom:48px;">
     <div class="top-service-head">
       <h2 class="top-service-kicker-label">SERVICES</h2>
-      <p class="top-service-lead">複数の事業を、一つのクリエイティブ品質で展開しています。</p>
+      <p class="top-service-lead">複数のクリエイティブ内容を一つの窓口で対応し、かつ低価格にて提供可能。</p>
     </div>
 
-    <p class="top-service-group-label">オリジナルサービス</p>
-    <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
-      <sc-for list="{{originalServices}}" as="s" hint-placeholder-count="4">
-        <a href="{{s.href}}" target="{{s.target}}" class="top-service-card">
-          <div class="top-service-visual">
-            <img src="{{s.imageSrc}}" alt="{{s.name}}">
-          </div>
-          <div class="top-service-body">
-            <div class="top-service-kicker">
-              <span>{{s.num}}</span>
-              <span>{{s.category}}</span>
-            </div>
-            <div class="top-service-name-row">
-              <span class="top-service-name">{{s.name}}</span>
-              <sc-if value="{{s.price}}">
-                <span class="top-service-price">{{s.price}}</span>
-              </sc-if>
-            </div>
-            <p class="top-service-desc">{{s.desc}}</p>
-            <span class="top-service-more">詳しく見る →</span>
-          </div>
-        </a>
-      </sc-for>
-    </div>
-
-    <div class="top-synergy-block" style="background:#f2f8fb;margin:56px -40px 0;padding:56px 40px 48px;">
-      <p class="top-service-group-label">関連サービス</p>
+    <div class="top-synergy-block" style="margin:56px 0 0;padding:0;">
       <div class="top-service-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
-        <sc-for list="{{synergyServices}}" as="s" hint-placeholder-count="2">
-          <a href="{{s.href}}" class="top-service-card">
+        <sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+          <a href="{{s.href}}" target="{{s.target}}" class="top-service-card">
             <div class="top-service-visual">
               <img src="{{s.imageSrc}}" alt="{{s.name}}">
             </div>
@@ -678,6 +809,9 @@
               </div>
               <div class="top-service-name-row">
                 <span class="top-service-name">{{s.name}}</span>
+                <sc-if value="{{s.price}}">
+                  <span class="top-service-price">{{s.price}}</span>
+                </sc-if>
               </div>
               <p class="top-service-desc">{{s.desc}}</p>
               <span class="top-service-more">詳しく見る →</span>
@@ -686,57 +820,68 @@
         </sc-for>
       </div>
     </div>
+    </div>
   </section>
 
-  <section id="contact" class="top-section" style="max-width:1240px;margin:0 auto;padding:96px 40px;border-top:1px solid #e7e7e9;">
+  <section id="contact" class="ui-atm">
+    <div class="top-news-deco" aria-hidden="true">
+      <div class="top-news-deco-grid"></div>
+      <div class="top-news-deco-orb"></div>
+      <div class="top-news-deco-ring"></div>
+      <div class="top-news-deco-ring top-news-deco-ring--sm"></div>
+      <div class="top-news-deco-line"></div>
+    </div>
+    <div class="top-section" style="max-width:1240px;margin:0 auto;padding:96px 40px;">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px;">
       <div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#1c7fa6;margin:0;">CONTACT</h2>
-        <p class="top-contact-lead" style="font-size:22px;font-weight:700;color:#17171a;max-width:480px;line-height:1.7;margin:16px 0 0;">サービスに関するご相談は、お気軽にお問い合わせください。</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;color:#0F7490;margin:0;">CONTACT</h2>
+        <p class="top-contact-lead" style="font-size:22px;font-weight:700;color:#17171a;max-width:480px;line-height:1.7;margin:16px 0 0;">サービスに関するご相談は<br>お気軽にお問い合わせください。</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
         <a href="contact.html" class="top-contact-btn" style="padding:16px 40px;background:#1a1a1d;color:#ffffff;border-radius:999px;font-size:15px;font-weight:600;">お問い合わせはこちら</a>
         <div style="font-size:14px;color:#2e3136;">TEL. 03-6722-6776（平日 10:00-18:00）</div>
       </div>
     </div>
+    </div>
   </section>
 
-  <footer id="footer" class="top-footer" style="background:#f7f8f9;border-top:1px solid #e7e7e9;padding:72px 40px 32px;">
+  <footer id="footer" class="top-footer" style="background:#EAF2F5;border-top:1px solid #C9D6DC;padding:72px 40px 32px;">
     <div style="max-width:1240px;margin:0 auto;">
-      <div class="top-footer-grid" style="display:grid;grid-template-columns:1fr 0.75fr 0.85fr 1.15fr 1.25fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #e2e3e6;">
+      <div class="top-footer-grid" style="display:grid;grid-template-columns:1.3fr 0.85fr 1.15fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #e2e3e6;">
         <div>
+          <div class="top-footer-heading">サービス一覧</div>
+          <div class="top-footer-links">
+            <sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+              <a href="{{s.href}}" target="{{s.target}}">{{s.name}}</a>
+            </sc-for>
+          </div>
+          <div class="top-footer-ai-title">AI研修（全5コース）</div>
+          <div class="top-footer-links">
+            <sc-for list="{{aiTrainingLinks}}" as="t" hint-placeholder-count="6">
+              <a href="{{t.href}}" target="_blank" rel="noopener">{{t.name}}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div class="top-footer-heading top-footer-heading-en">COMPANY</div>
+          <div class="top-footer-links">
+            <a href="post.html">新着情報</a>
+            <a href="company.html">会社情報</a>
+            <a href="agency.html">代理店募集</a>
+            <a href="contact.html">お問い合わせ</a>
+          </div>
+        </div>
+        <div class="top-footer-brand">
           <div style="display:flex;align-items:center;gap:10px;">
             <img src="assets/tsuta-icon.png" alt="TSUTA-WORLD" style="width:26px;height:auto;display:block;">
             <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#1a1a1d;">TSUTA-WORLD</span>
           </div>
-        </div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;color:#1a1a1d;border-left:3px solid #1c7fa6;padding-left:10px;margin-bottom:16px;">POST</div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <a href="post.html" style="font-size:14px;color:#1a1a1d;">新着情報</a>
+          <div style="font-size:13px;color:#2e3136;line-height:1.9;margin-top:16px;">
+            <div style="color:#1a1a1d;font-weight:600;margin-bottom:8px;">株式会社TSUTA-WORLD</div>
+            <div>本社：〒150-0045 東京都渋谷区神泉町10番15号 アネックス神泉301</div>
+            <div>北海道支社：〒060-0005 北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル8F</div>
+            <div style="margin-top:8px;">TEL. 03-6722-6776</div>
           </div>
-        </div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;color:#1a1a1d;border-left:3px solid #1c7fa6;padding-left:10px;margin-bottom:16px;">COMPANY</div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <a href="company.html" style="font-size:14px;color:#1a1a1d;">会社情報</a>
-            <a href="agency.html" style="font-size:14px;color:#1a1a1d;">代理店募集</a>
-            <a href="contact.html" style="font-size:14px;color:#1a1a1d;">お問い合わせ</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:13px;font-weight:700;color:#1a1a1d;margin-bottom:14px;line-height:1.5;">AI研修（全5コース）</div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <sc-for list="{{aiTrainingLinks}}" as="t" hint-placeholder-count="6">
-              <a href="{{t.href}}" target="_blank" rel="noopener" style="font-size:14px;color:#1a1a1d;line-height:1.5;">{{t.name}}</a>
-            </sc-for>
-          </div>
-        </div>
-        <div style="font-size:13px;color:#2e3136;line-height:1.9;">
-          <div style="color:#1a1a1d;font-weight:600;margin-bottom:8px;">株式会社TSUTA-WORLD</div>
-          <div>本社：〒150-0045 東京都渋谷区神泉町10番15号 アネックス神泉301</div>
-          <div>北海道支社：〒060-0005 北海道札幌市中央区北5条西5丁目1 5JR55SAPPOROビル8F</div>
-          <div style="margin-top:8px;">TEL. 03-6722-6776</div>
         </div>
       </div>
       <div style="padding-top:24px;font-size:12px;color:#3d4045;">© 2026 TSUTA-WORLD Co., Ltd. All Rights Reserved.</div>
@@ -768,15 +913,13 @@ class Component extends DCLogic {
         { name: 'マーケティング職向け｜AIドリブンマーケティング実践研修', href: 'https://tsuta-world.com/lp/vau/markeai/' },
         { name: '制作部向け｜AI×クリエイティブ制作効率化研修', href: 'https://tsuta-world.com/lp/vau/createai/' }
       ],
-      originalServices: [
-        { num: '01', category: '採用ブランディング', name: 'ファンステップ採用', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: 'fanstep.html', target: '_self', imageSrc: 'assets/service-fanstep.jpg' },
-        { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz.jpg' },
-        { num: '04', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-web.jpg' },
-        { num: '05', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-anime.jpg' }
-      ],
-      synergyServices: [
-        { num: '06', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: 'creative-marketing.html', imageSrc: 'assets/service-creative.jpg' },
-        { num: '07', category: 'アパレル', name: 'アパレル', desc: 'アパレル事業。', href: 'apparel.html', imageSrc: 'assets/service-apparel.jpg' }
+      services: [
+        { num: '01', category: '採用ブランディング', name: 'ファンステップ採用【動画SNS採用】', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: 'fanstep.html', target: '_self', imageSrc: 'assets/service-fanstep.jpg' },
+        { num: '02', category: 'インフルエンサーエージェンシー', name: 'キタバズ【北海道特化型 地域創生インフルエンサー事務所】', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz.jpg' },
+        { num: '03', category: 'Web制作', name: 'Webサイト制作・リース', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-web.jpg' },
+        { num: '04', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', desc: '説明特化型アニメ動画ブランド。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-anime.jpg' },
+        { num: '05', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: 'creative-marketing.html', target: '_self', imageSrc: 'assets/service-creative.jpg' },
+        { num: '06', category: 'アパレル', name: 'アパレル', desc: 'アパレル事業。自社ブランドのほか、OEMによる制作も対応しています。', href: 'apparel.html', target: '_self', imageSrc: 'assets/service-apparel.jpg' }
       ],
     };
   }
