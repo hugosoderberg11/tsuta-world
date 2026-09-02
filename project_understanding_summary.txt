@@ -1,5 +1,14 @@
 # Project Understanding Summary
 
+## Client status (2026-09-02)
+- Inquiry form implemented (`contact.html` → `contact-thanks.html`, `api/contact.js`).
+- AI研修 footer copy is 全6コース.
+- Company overview/history already matched https://tsuta-world.com/company/; no extra copy was supplied.
+- Remaining: SMTP/Resend env on Vercel so mail actually reaches info@tsuta-world.com; website.html leftover vs min-nano.site; Koishikawa-sourced creative/apparel approval; NEWS thumbs; go-live domain/auth.
+
+## Recent edits (2026-09-02)
+- Deploy path: push `main` to GitHub (`origin`) so the linked Vercel project rebuilds.
+
 ## What this is
 Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Preview locally with `start-local.bat` or `py -m http.server 5500`.
 
@@ -7,29 +16,41 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `index.html` — TOP page (dc-runtime). Footer updated per client spec; NEWS links to post pages.
 - `support.js`, `image-slot.js` — dc-runtime (do not edit unless asked).
 - `middleware.js` — Vercel Routing Middleware (Basic auth for production)
-- `package.json` — Vercel deploy only (`@vercel/functions`); not used for local preview
+- `contact.html` — お問い合わせフォーム（会社名 / お名前 / 役職 / 電話番号 / メール / 件名 / 内容）。送信後は `contact-thanks.html`。
+- `contact-thanks.html` — 指定の自動返信文＋入力内容の確認。
+- `contact-form.js` / `api/contact.js` — 当社宛（info@tsuta-world.com / 件名「お問い合わせがありました」）と自動返信。本番は Vercel の `RESEND_API_KEY` または `SMTP_HOST` / `SMTP_USER` / `SMTP_PASS`。ローカルの Python サーバでは API がなくサンクス表示のみ。
+- `package.json` — Vercel deploy (`@vercel/functions`, `nodemailer`)
 - `start-local.bat` — double-click to start local preview (Python http.server on port 5500)
 - `site.css` — shared styles for subpages.
 - `post.html` — 新着情報一覧
 - `post-*.html` — article detail pages (content from tsuta-world.com)
-- `company.html` — 会社情報（代表メッセージ / 会社概要 / 沿革）。本社は渋谷区神泉町 アネックス神泉301。
+- `company.html` — 会社情報（代表メッセージ / 会社概要 / 沿革）。公式 https://tsuta-world.com/company/ と同一内容。本社は渋谷区神泉町 アネックス神泉301。
 - `agency.html` — 代理店募集 (from existing site partner-recruitment text)
 - `creative-marketing.html` — クリエイティブ＆マーケティング詳細（Hero / SERVICES / WORKS / CONTACT / Footer）
 - `fanstep.html` — ファンステップ採用 LP。Word「fanstep_service_description.docx」準拠（課題4つ / 実績スライド5枚 / 制作スタイル / 3施策 / 動画資産 / 3成果 / tiktok_b問い合わせフォーム / フッター）。料金・ISZ事例・タイムラインは含めない。TOPカードからリンク済み。
 - `assets/fanstep/` — Word内の実績スライドPNG（image1/3/5/7/9）と付随SVG。
 - `website.html` — Webサイト制作・リース 詳細（同構成、placeholderコンテンツ）
 - `animevideo.html` — 説明用アニメ動画 TSUTA-WORLD 詳細。Hero（service-anime.jpg）/ SERVICES 3種 / WORKS 全10カテゴリ75作品（公式LPから取得、assets/animevideo/ サムネ）/ VOICE / CONTACT。カテゴリフィルタはJS。
-- `apparel.html` — アパレル 詳細。Hero / 事業について / 自社ブランド・OEM / 対応範囲 / WORKS / CONTACT / Footer。コイシカワapparel掲載の文言と実績のみ。
+- `apparel.html` — アパレル 詳細。Hero / 事業について / 自社ブランド・OEM / 対応範囲 / WORKS / CONTACT / Footer。コイシカワapparel掲載の文言と実績のみ。`ap-page` で大きな太字（Noto Sans JP 900 / Barlow Condensed）とスクロール表示アニメ。
 - `assets/apparel/` — BYWEAR・MA LABELバナー、AKG実績画像（コイシカワ公式から取得）
-- `contact.html` — お問い合わせ (TEL/hours/address from TOP)
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/service-fanstep.jpg` / `service-kitabuzz.jpg` / `service-web.jpg` / `service-anime.jpg` / `service-creative.jpg` / `service-apparel.jpg` — TOP SERVICES large-card banners (1024×576 JPEG, shown uncropped)
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
 
+## Recent edits (2026-09-02)
+- Contact form + thanks page per client spec. Admin mail to info@tsuta-world.com, subject お問い合わせがありました. Autoreply/thanks copy as specified, with submitted fields.
+- Footer AI研修表記を全6コースに変更（全ページ）。
+- 会社概要・沿革は公式 company ページと一致済みのため文言変更なし。
+
 ## Recent edits (2026-08-29)
 - TOP TV/MEDIA: larger cards, full-bleed thumbs, play overlay, Noto Sans JP for Japanese copy, bigger titles/body, 「動画を見る」CTA.
 - TOP NEWS / SERVICES: same 1360px width as TV/MEDIA; Noto Sans JP; larger titles; NEWS rows are full-width clickable; service cards full-bleed with 「詳しく見る」.
+
+- Phase 4C: 企業情報系（company / agency / post / post-* / contact）のUIのみ調整。文言・会社情報・記事は未変更。TOP・サービス詳細は未変更。
+- Phase 4B: サービス詳細5ページのUIブラッシュアップ。文言・実績・リンクは未変更。
+- Phase 4A: TOP（`index.html` のみ）のUIブラッシュアップ。文言・サービス・NEWS記事は未変更。ヒーロー／ヘッダーは Phase 4A 前のテキストヒーロー＋すりガラスヘッダーに戻し、テキストは中央揃え。TV/MEDIA・NEWS・SERVICES・CONTACT・Footer のブラッシュアップは維持。他詳細ページは未変更。
+- `apparel.html` を見やすく拡大。見出し・本文を太字化、幅1360px、ヒーローKen Burns、カード／実績のスクロールフェード。文言・実績は据え置き。他ページの共通 `cm-*` は変更なし。
 
 ## Recent edits (2026-08-31)
 - Phase 3B: `apparel.html` をコンテンツ拡充。コイシカワapparelの事業文言、自社ブランド（BYWEAR / MA LABEL BY MAISON SPECIAL）、OEM/ODM対応、確認できる実績2件（HARD ROCK COLLECTION 2024、BYWEAR×AKG 2022）を掲載。未確認の数字・企業名は未記載。TOP / creative-marketing 他ページは未変更。
@@ -76,7 +97,7 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 ## Footer (TOP + all subpages)
 - 3 columns: サービス一覧（01〜06 + AI研修） / COMPANY（新着情報・会社情報・代理店募集・お問い合わせ） / ロゴ＋会社概要
 - POST heading removed; 新着情報 moved under COMPANY
-- AI研修（全5コース）: 6 external LP links (tsuta-world.com/lp/vau/…)
+- AI研修（全6コース）: 6 external LP links (tsuta-world.com/lp/vau/…)
 - Company address block (unchanged from TOP)
 
 ## Git

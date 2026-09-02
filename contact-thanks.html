@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>山岡優樹 自己紹介（会社紹介） — TSUTA-WORLD</title>
+  <title>送信完了 — TSUTA-WORLD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body class="corp-page article-page">
+<body class="corp-page contact-page contact-thanks-page">
   <header class="page-header">
     <div class="page-header-inner page-header-inner--nav">
       <a href="index.html" class="logo">
@@ -19,21 +19,23 @@
         <a href="index.html#services">SERVICE</a>
         <a href="index.html#news">NEWS</a>
         <a href="index.html#footer">COMPANY</a>
-        <a href="index.html#contact" class="page-header-contact">CONTACT</a>
+        <a href="contact.html" class="page-header-contact">CONTACT</a>
       </nav>
     </div>
   </header>
 
   <main class="page-main">
-    <div class="breadcrumb"><a href="post.html">新着情報</a> / 山岡優樹 自己紹介（会社紹介）</div>
-    <p class="page-label">POST</p>
-    <div class="post-meta"><span class="category">新着情報</span>2023.6.11</div>
-    <h1 class="page-title">山岡優樹 自己紹介（会社紹介）</h1>
-    <div class="post-body">
-      <p>みなさんこんにちは。株式会社TSUTA-WORLDの代表取締役 山岡優樹と申します。</p>
-      <p>現在では、私の本業をもとに 2019年10月から動画制作ブランド「TSUTA-WORLD」とという動画ブランドを運営しております。世の中にある離れている商品、分かりにくいサービスを、アニメーションを使って分かりやすくするのが私の会社名にもしている「TSUTA-WORLD」です。</p>
+    <header class="corp-hero">
+      <p class="page-label">CONTACT</p>
+      <h1 class="page-title">送信完了</h1>
+    </header>
+
+    <div class="contact-thanks">
+      <p>この度はお問い合わせいただきありがとうございます。<br>内容を精査し、2~3営業日以内に返信いたします。<br>なお、内容に対してご返信を控えさせていただく場合がございますこと、予めご了承くださいませ。</p>
+      <h2>■下記内容にて送信されました■</h2>
+      <dl class="contact-summary" id="contact-summary"></dl>
+      <p class="contact-thanks-back"><a href="index.html">トップへ戻る</a></p>
     </div>
-    <p class="post-back"><a href="post.html">新着情報</a></p>
   </main>
 
   <footer id="footer" class="site-footer">
@@ -84,5 +86,6 @@
       <div class="site-footer-copy">© 2026 TSUTA-WORLD Co., Ltd. All Rights Reserved.</div>
     </div>
   </footer>
+  <script src="contact-form.js"></script>
 </body>
 </html>

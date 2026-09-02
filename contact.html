@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>お問い合わせ — TSUTA-WORLD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body class="corp-page contact-page">
   <header class="page-header">
     <div class="page-header-inner page-header-inner--nav">
       <a href="index.html" class="logo">
@@ -19,15 +19,58 @@
         <a href="index.html#services">SERVICE</a>
         <a href="index.html#news">NEWS</a>
         <a href="index.html#footer">COMPANY</a>
-        <a href="index.html#contact" class="page-header-contact">CONTACT</a>
+        <a href="contact.html" class="page-header-contact">CONTACT</a>
       </nav>
     </div>
   </header>
 
   <main class="page-main">
-    <p class="page-label">CONTACT</p>
-    <h1 class="page-title">お問い合わせ</h1>
-    <p class="post-body" style="margin-bottom:32px;">サービスに関するご相談は、お気軽にお問い合わせください。</p>
+    <header class="corp-hero">
+      <p class="page-label">CONTACT</p>
+      <h1 class="page-title">お問い合わせ</h1>
+      <p class="corp-lead">サービスに関するご相談は、お気軽にお問い合わせください。</p>
+    </header>
+
+    <form class="contact-form" id="contact-form" action="/api/contact" method="post">
+      <label class="contact-honeypot" for="website">ウェブサイト</label>
+      <input class="contact-honeypot" type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+
+      <div class="contact-form-grid">
+        <p class="contact-field">
+          <label for="company"><span class="contact-req">必須</span>会社名</label>
+          <input id="company" name="company" type="text" required autocomplete="organization">
+        </p>
+        <p class="contact-field">
+          <label for="name"><span class="contact-req">必須</span>お名前</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </p>
+        <p class="contact-field">
+          <label for="jobTitle"><span class="contact-req">必須</span>役職</label>
+          <input id="jobTitle" name="jobTitle" type="text" required autocomplete="organization-title">
+        </p>
+        <p class="contact-field">
+          <label for="phone"><span class="contact-req">必須</span>電話番号</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </p>
+        <p class="contact-field contact-field--full">
+          <label for="email"><span class="contact-req">必須</span>メールアドレス</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </p>
+        <p class="contact-field contact-field--full">
+          <label for="subject"><span class="contact-req">必須</span>件名</label>
+          <input id="subject" name="subject" type="text" required>
+        </p>
+        <p class="contact-field contact-field--full">
+          <label for="message"><span class="contact-req">必須</span>お問い合わせ内容</label>
+          <textarea id="message" name="message" rows="8" required></textarea>
+        </p>
+      </div>
+      <p class="contact-form-error" id="contact-form-error" hidden></p>
+      <p class="contact-form-submit">
+        <button type="submit">送信する</button>
+      </p>
+    </form>
+
     <div class="contact-box">
       <p><strong>株式会社TSUTA-WORLD</strong></p>
       <p>TEL. 03-6722-6776</p>
@@ -50,7 +93,7 @@
             <a href="creative-marketing.html">クリエイティブ＆マーケティング</a>
             <a href="apparel.html">アパレル</a>
           </div>
-          <div class="site-footer-ai-title">AI研修（全5コース）</div>
+          <div class="site-footer-ai-title">AI研修（全6コース）</div>
           <div class="site-footer-links">
             <a href="https://tsuta-world.com/lp/vau/video-dx-elearning/" target="_blank" rel="noopener">VIDEO DX研修</a>
             <a href="https://tsuta-world.com/lp/vau/ai%e7%a0%94%e4%bf%ae/" target="_blank" rel="noopener">Chatgpt研修</a>
@@ -85,5 +128,6 @@
       <div class="site-footer-copy">© 2026 TSUTA-WORLD Co., Ltd. All Rights Reserved.</div>
     </div>
   </footer>
+  <script src="contact-form.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>説明用アニメ動画 TSUTA-WORLD — TSUTA-WORLD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
 <body class="cm-page av-page">
@@ -24,8 +24,8 @@
     </div>
   </header>
 
-  <section class="cm-hero">
-    <p class="cm-hero-label">EXPLANATION ANIME</p>
+  <section class="cm-hero cm-hero--cinema">
+    <p class="cm-hero-label">04 / EXPLANATION ANIME</p>
     <h1 class="cm-hero-title">説明用アニメ動画 TSUTA-WORLD</h1>
     <p class="cm-hero-lead">30秒で誰にでもわかる。350社以上の制作実績を持つ、説明特化型アニメ動画ブランド。</p>
     <div class="cm-hero-visual">
@@ -155,7 +155,7 @@
             <a href="creative-marketing.html">クリエイティブ＆マーケティング</a>
             <a href="apparel.html">アパレル</a>
           </div>
-          <div class="site-footer-ai-title">AI研修（全5コース）</div>
+          <div class="site-footer-ai-title">AI研修（全6コース）</div>
           <div class="site-footer-links">
             <a href="https://tsuta-world.com/lp/vau/video-dx-elearning/" target="_blank" rel="noopener">VIDEO DX研修</a>
             <a href="https://tsuta-world.com/lp/vau/ai%e7%a0%94%e4%bf%ae/" target="_blank" rel="noopener">Chatgpt研修</a>
@@ -672,8 +672,9 @@
 
       function renderCards(category) {
         var items = data.portfolio.filter(function (item) { return item.category === category; });
-        gridEl.innerHTML = items.map(function (item) {
-          return '<a class="cm-live-card av-portfolio-card" href="https://www.youtube.com/watch?v=' + item.yt + '" target="_blank" rel="noopener">' +
+        gridEl.innerHTML = items.map(function (item, i) {
+          var feat = i === 0 ? ' av-portfolio-card--feature' : '';
+          return '<a class="cm-live-card av-portfolio-card' + feat + '" href="https://www.youtube.com/watch?v=' + item.yt + '" target="_blank" rel="noopener">' +
             '<img src="assets/animevideo/' + item.img + '" alt="' + escapeHtml(item.title) + '">' +
             '<div class="cm-live-card-body">' +
             '<p class="cm-live-card-type">' + escapeHtml(item.category) + '</p>' +
