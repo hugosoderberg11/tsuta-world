@@ -1,0 +1,82 @@
+body {
+  position: relative;
+  isolation: isolate;
+  background: #ffffff;
+}
+.atm-page-deco {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.ui-atm,
+.atm-surface {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+  background: #ffffff;
+}
+.ui-atm > *:not(.hero-deco),
+.atm-surface > *:not(.hero-deco) {
+  position: relative;
+  z-index: 1;
+}
+.hero-deco {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.38;
+}
+.page-main > .hero-deco,
+.cm-section > .hero-deco,
+.cm-hero > .hero-deco {
+  left: 50%;
+  right: auto;
+  width: 100vw;
+  margin-left: -50vw;
+}
+.hero-deco-grid {
+  position: absolute;
+  right: -4%;
+  bottom: -8%;
+  width: 52%;
+  height: 58%;
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 70% 70%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 70%, #000 30%, transparent 78%);
+}
+.hero-deco-wash {
+  position: absolute;
+  top: -18%;
+  left: -10%;
+  width: 48%;
+  height: 60%;
+  background: radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.12), transparent 68%);
+}
+.hero-deco svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.page-main::before,
+.cm-hero::before,
+.cm-works::before,
+.cm-contact::before {
+  display: none !important;
+}
+.cm-works,
+.cm-contact,
+.site-footer,
+.fs-hero,
+.fs-section--tint,
+.fs-tint-sky,
+.fs-tint-peach,
+.fs-tint-violet {
+  background: #ffffff !important;
+  background-image: none !important;
+}

@@ -86,29 +86,27 @@ function readBody(req) {
   });
 }
 
-function createTransport() {
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  if (!host || !user || !pass) {
-    return null;
+function parseResendError(status, raw) {
+  var message = '';
+  try {
+    var parsed = JSON.parse(raw);
+    message = str(parsed && parsed.message);
+  } catch (err) {
+    message = str(raw).slice(0, 300);
   }
-  return require('nodemailer').createTransport({
-    host: host,
-    port: Number(process.env.SMTP_PORT || 587),
-    secure: String(process.env.SMTP_SECURE || '') === '1',
-    auth: { user: user, pass: pass },
-  });
+  if (status === 401 || status === 403) {
+    return 'Resendの認証に失敗しました。APIキーを確認してください。';
+  }
+  if (message) {
+    return 'メール送信に失敗しました（' + message + '）。お手数ですがお電話にてご連絡ください。';
+  }
+  return 'メール送信に失敗しました。お手数ですがお電話にてご連絡ください。';
 }
 
-async function sendWithResend(messages) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return false;
-  }
-  for (let i = 0; i < messages.length; i++) {
-    const msg = messages[i];
-    const payload = {
+async function sendWithResend(apiKey, messages) {
+  for (var i = 0; i < messages.length; i++) {
+    var msg = messages[i];
+    var payload = {
       from: msg.from,
       to: [msg.to],
       subject: msg.subject,
@@ -117,7 +115,7 @@ async function sendWithResend(messages) {
     if (msg.replyTo) {
       payload.reply_to = msg.replyTo;
     }
-    const res = await fetch('https://api.resend.com/emails', {
+    var res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + apiKey,
@@ -126,11 +124,12 @@ async function sendWithResend(messages) {
       body: JSON.stringify(payload),
     });
     if (!res.ok) {
-      const detail = await res.text();
-      throw new Error('Resend error: ' + res.status + ' ' + detail);
+      var detail = await res.text();
+      var error = new Error(parseResendError(res.status, detail));
+      error.status = res.status >= 400 && res.status < 600 ? res.status : 502;
+      throw error;
     }
   }
-  return true;
 }
 
 module.exports = async function handler(req, res) {
@@ -139,7 +138,7 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  let body;
+  var body;
   try {
     body = await readBody(req);
   } catch (err) {
@@ -152,7 +151,7 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const missing = missingRequired(body);
+  var missing = missingRequired(body);
   if (missing.length) {
     json(res, 400, { error: '必須項目が未入力です', missing: missing });
     return;
@@ -162,8 +161,15 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const fields = formatFields(body);
-  const messages = [
+  var apiKey = str(process.env.RESEND_API_KEY);
+  if (!apiKey) {
+    json(res, 503, {
+      error: 'メール送信の設定が完了していません。お手数ですがお電話（03-6722-6776）にてご連絡ください。',
+    });
+    return;
+  }
+
+  var messages = [
     {
       from: FROM_ADDRESS,
       to: TO_ADDRESS,
@@ -180,36 +186,15 @@ module.exports = async function handler(req, res) {
   ];
 
   try {
-    const sentResend = await sendWithResend(messages);
-    if (sentResend) {
-      json(res, 200, { ok: true, delivered: true });
-      return;
-    }
-
-    const transport = createTransport();
-    if (transport) {
-      for (let i = 0; i < messages.length; i++) {
-        const msg = messages[i];
-        await transport.sendMail({
-          from: msg.from,
-          to: msg.to,
-          replyTo: msg.replyTo,
-          subject: msg.subject,
-          text: msg.text,
-        });
-      }
-      json(res, 200, { ok: true, delivered: true });
-      return;
-    }
+    await sendWithResend(apiKey, messages);
   } catch (err) {
-    json(res, 502, { error: 'メール送信に失敗しました' });
+    json(res, err && err.status ? err.status : 502, {
+      error: err && err.message
+        ? err.message
+        : 'メール送信に失敗しました。お手数ですがお電話にてご連絡ください。',
+    });
     return;
   }
 
-  json(res, 200, {
-    ok: true,
-    delivered: false,
-    preview: true,
-    fields: fields,
-  });
+  json(res, 200, { ok: true, delivered: true });
 };

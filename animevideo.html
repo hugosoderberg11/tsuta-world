@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body class="cm-page av-page">
+<body class="cm-page av-page plain-ui display-page cm-type-v2">
   <header class="page-header">
     <div class="page-header-inner page-header-inner--nav">
       <a href="index.html" class="logo">
@@ -24,24 +24,15 @@
     </div>
   </header>
 
-  <section class="cm-hero cm-hero--cinema">
-    <p class="cm-hero-label">04 / EXPLANATION ANIME</p>
-    <h1 class="cm-hero-title">説明用アニメ動画 TSUTA-WORLD</h1>
-    <p class="cm-hero-lead">30秒で誰にでもわかる。350社以上の制作実績を持つ、説明特化型アニメ動画ブランド。</p>
-    <div class="cm-hero-visual">
-      <img src="assets/service-anime.jpg" alt="説明用アニメ動画 TSUTA-WORLD">
+  <section class="cm-hero cm-hero--cinema av-hero">
+    <div class="av-hero-copy">
+      <p class="cm-hero-label">04 / EXPLANATION ANIME</p>
+      <h1 class="cm-hero-title">説明用アニメ動画<br>TSUTA-WORLD</h1>
+      <p class="cm-hero-lead">30秒で誰にでもわかる。350社以上の制作実績を持つ、説明特化型アニメ動画ブランド。</p>
     </div>
   </section>
 
-  <section class="av-stats">
-    <ul class="av-stats-list">
-      <li><strong>92.5%</strong><span>視聴後「理解できた」</span></li>
-      <li><strong>350社+</strong><span>制作実績</span></li>
-      <li><strong>No.1</strong><span>説明用アニメ動画制作（市場調査）</span></li>
-    </ul>
-  </section>
-
-  <section class="cm-section" id="services">
+  <section class="cm-section av-reveal" id="services">
     <div class="cm-section-head">
       <p class="cm-section-label">SERVICES</p>
       <h2 class="cm-section-title">説明用アニメ動画の特徴</h2>
@@ -78,7 +69,7 @@
     </div>
   </section>
 
-  <section class="cm-works" id="works">
+  <section class="cm-works av-reveal" id="works">
     <div class="cm-section">
       <div class="cm-section-head">
         <p class="cm-section-label">WORKS</p>
@@ -102,7 +93,7 @@
     </div>
   </section>
 
-  <section class="cm-section av-voice" id="voice">
+  <section class="cm-section av-voice av-reveal" id="voice">
     <div class="cm-section-head">
       <p class="cm-section-label">VOICE</p>
       <h2 class="cm-section-title">クライアント様の声</h2>
@@ -129,7 +120,7 @@
     </div>
   </section>
 
-  <section class="cm-contact" id="contact">
+  <section class="cm-contact av-reveal" id="contact">
     <div class="cm-contact-inner">
       <div>
         <p class="cm-contact-title">CONTACT</p>
@@ -698,6 +689,34 @@
       });
 
       renderCards(active);
+    })();
+    (function () {
+      var nodes = document.querySelectorAll('.av-reveal');
+      if (!nodes.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.body.classList.add('js-anim');
+      function show(el) { el.classList.add('is-in'); }
+      function check() {
+        nodes.forEach(function (el) {
+          if (el.classList.contains('is-in')) return;
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92 && r.bottom > 48) show(el);
+        });
+      }
+      check();
+      window.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', check);
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              show(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '80px 0px 0px 0px' });
+        nodes.forEach(function (el) { io.observe(el); });
+      }
     })();
   </script>
 </body>

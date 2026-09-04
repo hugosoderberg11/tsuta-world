@@ -1,12 +1,25 @@
 # Project Understanding Summary
 
+## Recent edits (2026-09-04)
+- TOP (`index.html`): Wave Flow Lottie init moved to after dc-runtime React mount (`waitForHeroLottie` in `scroll-motion.js`) — fixes invisible background when early init targeted removed `x-dc` DOM. Shell background `#f4f8fc`, lighter scrim/header glass.
+- fanstep.html / animevideo.html: `display-page` layout — large Noto Sans JP 900 typography, generous section spacing (120–200px), single-column stacks per block, hero entrance + scroll reveal animations, decorative backgrounds and card chrome removed (flat white document). animevideo adds `av-reveal` scroll fade; fanstep re-enables `fs-hero-animate` / `fs-reveal`.
+- fanstep.html / animevideo.html: removed hero stats (2億再生 / 92.5%・350社+・No.1).
+- TOP hero/header background is the Lottie `Wave Flow.json` (`assets/hero-wave-flow.json`, lottie-web CDN), full-bleed behind copy. Previous `hero-business.mp4` unused and removed. Copy/links unchanged.
+- Reverted the TOP hero video split layout.
+- TOP scroll lock: `overflow-x: clip` on html/body was clipping vertical scroll; `support.js` also set html/body/`#dc-root` to `height: 100%`. Restored document scroll (`overflow-y: auto` on html, `height: auto`). Removed GSAP pin on TV/MEDIA grid so メディア掲載実績 no longer holds the page. Section deco clips on `.hero-deco` instead of `overflow: hidden` on whole sections.
+- Geometric hero background is lighter sitewide (layer opacity ~0.38, thinner grid/wash/SVG).
+- Sitewide spacing/type scale: more independent, startup-like whitespace. Section padding ~150–160px (hero ~180–200px). Heading-to-body 32–48px, heading-to-cards 48–72px, card gaps 40–48px, image-text ~48–72px, button gaps ~24px. PC side gutters `min(88px, 6.5vw)`, content width 1440px. Fonts, cards, and media enlarged so extra space does not look empty. TOP (`index.html`) and shared `site.css` (subpages/footer/forms).
+- TOP hero/header implemented from the Figma-style mock. Brand color is a lighter standard blue `#3B82F6`. Buttons on brand fills use white text. Hero marker uses the same blue.
+- TOP scroll motion via GSAP + ScrollTrigger (`scroll-motion.js`, CDN). Hero line reveal, media slide/pin (desktop), per-service clip-path, news row reveal, contact clip expand. Reduced-motion and mobile pin/parallax are limited. Copy/links unchanged.
+
 ## Client status (2026-09-02)
 - Inquiry form implemented (`contact.html` → `contact-thanks.html`, `api/contact.js`).
 - AI研修 footer copy is 全6コース.
 - Company overview/history already matched https://tsuta-world.com/company/; no extra copy was supplied.
-- Remaining: SMTP/Resend env on Vercel so mail actually reaches info@tsuta-world.com; website.html leftover vs min-nano.site; Koishikawa-sourced creative/apparel approval; NEWS thumbs; go-live domain/auth.
+- Remaining: set `RESEND_API_KEY` (and a verified Resend from-domain if needed) on Vercel; website.html leftover vs min-nano.site; Koishikawa-sourced creative/apparel approval; NEWS thumbs; go-live domain/auth.
 
 ## Recent edits (2026-09-02)
+- Contact mail is Resend-only (`RESEND_API_KEY`). nodemailer/SMTP removed. Thanks page only after successful send.
 - Deploy path: push `main` to GitHub (`origin`) so the linked Vercel project rebuilds.
 
 ## What this is
@@ -18,8 +31,8 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `middleware.js` — Vercel Routing Middleware (Basic auth for production)
 - `contact.html` — お問い合わせフォーム（会社名 / お名前 / 役職 / 電話番号 / メール / 件名 / 内容）。送信後は `contact-thanks.html`。
 - `contact-thanks.html` — 指定の自動返信文＋入力内容の確認。
-- `contact-form.js` / `api/contact.js` — 当社宛（info@tsuta-world.com / 件名「お問い合わせがありました」）と自動返信。本番は Vercel の `RESEND_API_KEY` または `SMTP_HOST` / `SMTP_USER` / `SMTP_PASS`。ローカルの Python サーバでは API がなくサンクス表示のみ。
-- `package.json` — Vercel deploy (`@vercel/functions`, `nodemailer`)
+- `contact-form.js` / `api/contact.js` — Resend のみ。`RESEND_API_KEY` で管理者通知（info@tsuta-world.com）と自動返信の2通。キー未設定・送信失敗時はエラー表示、成功時のみサンクスへ。
+- `package.json` — Vercel deploy (`@vercel/functions`)
 - `start-local.bat` — double-click to start local preview (Python http.server on port 5500)
 - `site.css` — shared styles for subpages.
 - `post.html` — 新着情報一覧

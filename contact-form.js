@@ -68,13 +68,10 @@
       }
 
       if (data.website) {
-        window.location.href = 'contact-thanks.html';
+        form.reset();
+        if (submit) submit.disabled = false;
         return;
       }
-
-      try {
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      } catch (err) {}
 
       if (submit) submit.disabled = true;
 
@@ -83,23 +80,22 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       }).then(function (res) {
-        if (res.status === 404 || res.status === 405) {
-          window.location.href = 'contact-thanks.html';
-          return;
+        return res.json().then(function (payload) {
+          return { res: res, payload: payload || {} };
+        }, function () {
+          return { res: res, payload: {} };
+        });
+      }).then(function (result) {
+        if (!result.res.ok) {
+          throw new Error(
+            result.payload.error || '送信に失敗しました。お手数ですがお電話にてご連絡ください。'
+          );
         }
-        if (!res.ok) {
-          return res.json().then(function (payload) {
-            throw new Error((payload && payload.error) || '送信に失敗しました。お手数ですがお電話にてご連絡ください。');
-          }, function () {
-            throw new Error('送信に失敗しました。お手数ですがお電話にてご連絡ください。');
-          });
-        }
+        try {
+          sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (err) {}
         window.location.href = 'contact-thanks.html';
       }).catch(function (err) {
-        if (err && /Failed to fetch|NetworkError/i.test(String(err.message || err))) {
-          window.location.href = 'contact-thanks.html';
-          return;
-        }
         if (submit) submit.disabled = false;
         if (errorBox) {
           errorBox.hidden = false;
