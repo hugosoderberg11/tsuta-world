@@ -16,8 +16,8 @@ body {
   isolation: isolate;
   background: #ffffff;
 }
-.ui-atm > *:not(.hero-deco),
-.atm-surface > *:not(.hero-deco) {
+.ui-atm > *:not(.hero-deco):not(.top-contact-bg),
+.atm-surface > *:not(.hero-deco):not(.top-contact-bg) {
   position: relative;
   z-index: 1;
 }
@@ -70,7 +70,6 @@ body {
   display: none !important;
 }
 .cm-works,
-.cm-contact,
 .site-footer,
 .fs-hero,
 .fs-section--tint,

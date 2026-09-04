@@ -1,6 +1,23 @@
 # Project Understanding Summary
 
 ## Recent edits (2026-09-04)
+- apparel.html hero: larger centered type (label / アパレル事業 / lead / icons / CTAs). Copy and links unchanged.
+- Sitewide phone layout: hamburger nav (SERVICE / NEWS / COMPANY / CONTACT), tighter section padding, stacked CTAs, no horizontal overflow, 16px form fields. Copy and links unchanged.
+- apparel.html hero: white centered banner with yellow marker on 自社ブランドのほか、, 4 service icons (brand / OEM / PR / EC), blue/white CTAs. Copy and links otherwise unchanged.
+- animevideo.html hero title is two lines: 複雑な内容を、 / 誰にでも伝わる動画に。 Mark stays on 誰にでも伝わる. Right visual remains the overlapping work mosaic. Copy/links otherwise unchanged.
+- Reverted Wave Flow Lottie on service heroes (fanstep / animevideo / creative-marketing / apparel). CONTACT blocks still use it. Copy and links unchanged.
+- fanstep.html hero: white centered banner (yellow solid mark, pills, blue/white CTAs). Copy and links unchanged.
+- Header nav (subpages `.page-header-nav` + TOP `.top-header-nav`): Space Grotesk, 700, 17px. CONTACT button scaled with it. Logo wordmark 19px, nowrap so it cannot crush.
+- creative-marketing.html hero: left-aligned editorial split + overlapping work mosaic (Sammy offer / live-action / GREEN EYE). Copy and links unchanged.
+- creative-marketing.html hero grouped: title break, catch tight under the heading, pills, body, then CTAs. Copy unchanged.
+- Contact Wave Flow Lottie (`assets/hero-wave-flow.json`) applied to every Contact block, not just TOP: fanstep / animevideo / creative-marketing / apparel / website CTA sections, plus `contact.html` / `contact-thanks.html`. Shared CSS in `site.css`; init via `contact-lottie.js`. Copy and form endpoints unchanged.
+- Reverted Speee-like boxed heading fill (`.hd-box`); yellow marker and plain titles restored.
+- Service heroes (fanstep / animevideo / creative-marketing / apparel): removed right-side line-art diagrams; copy/CTAs/pills are centered. Copy and links unchanged.
+- creative-marketing.html visual UI aligned with fanstep / animevideo (QUEUE / LLMO, light): yellow marker on 制作＆マーケティング, service pills, numbered service/area cards, pill works tabs, rounded work/contact cards, yellow result boxes. Copy, case studies, and links unchanged.
+- fanstep.html PRODUCTION STYLE: dropped duplicate 制作スタイル label; body copy grouped into 3 numbered points (再生数を追わない / 意味のある1再生 / 安定志向の堅い制作) plus yellow quote and closing note.
+- animevideo.html visual UI aligned with fanstep (QUEUE / LLMO, light): yellow marker, service pills, line-art diagram, 3-col service cards, 2-col works/voice, yellow testimonial, rounded contact card. Copy, portfolio data, and links unchanged.
+- fanstep.html visual UI (QUEUE / LLMO, light): yellow keyword marker, issue pills, line-art diagram, restored 2×2 / 3-col cards, vs-compare for video assets, yellow quote/result boxes, contact form in a rounded card. Copy, works images, and tiktok_b form endpoint unchanged. `display-page` flatten overrides are scoped to `fs-page` only (`animevideo.html` untouched).
+- TOP CONTACT: full-bleed Wave Flow Lottie (`assets/hero-wave-flow.json`) behind 「サービスに関するご相談は…」. `.top-contact-bg` is excluded from `.ui-atm` relative stacking so the animation sits absolutely behind the copy (not as a huge in-flow box). `contact-conversation.mp4` unused.
 - TOP (`index.html`): Wave Flow Lottie init moved to after dc-runtime React mount (`waitForHeroLottie` in `scroll-motion.js`) — fixes invisible background when early init targeted removed `x-dc` DOM. Shell background `#f4f8fc`, lighter scrim/header glass.
 - fanstep.html / animevideo.html: `display-page` layout — large Noto Sans JP 900 typography, generous section spacing (120–200px), single-column stacks per block, hero entrance + scroll reveal animations, decorative backgrounds and card chrome removed (flat white document). animevideo adds `av-reveal` scroll fade; fanstep re-enables `fs-hero-animate` / `fs-reveal`.
 - fanstep.html / animevideo.html: removed hero stats (2億再生 / 92.5%・350社+・No.1).

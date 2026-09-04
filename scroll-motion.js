@@ -8,6 +8,7 @@
   if (!reduced) document.documentElement.classList.add("js-motion");
 
   var heroLottieAnim = null;
+  var contactLottieAnim = null;
 
   function initHeroLottie() {
     var heroLottieEl = document.getElementById("hero-lottie");
@@ -46,6 +47,49 @@
     })();
   }
 
+  function initContactLottie() {
+    var contactLottieEl = document.getElementById("contact-lottie");
+    if (!contactLottieEl) return true;
+    if (contactLottieEl.dataset.lottieBound === "1" || contactLottieEl.classList.contains("is-ready")) return true;
+    if (typeof window.tsutaInitContactLottie === "function") {
+      return window.tsutaInitContactLottie();
+    }
+    if (typeof lottie === "undefined") return false;
+    if (contactLottieAnim) return true;
+
+    contactLottieEl.dataset.lottieBound = "1";
+    contactLottieEl.innerHTML = "";
+    contactLottieAnim = lottie.loadAnimation({
+      container: contactLottieEl,
+      renderer: "svg",
+      loop: !reduced,
+      autoplay: !reduced,
+      path: "assets/hero-wave-flow.json",
+      rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
+    });
+
+    contactLottieAnim.addEventListener("DOMLoaded", function () {
+      contactLottieEl.classList.add("is-ready");
+      var section = contactLottieEl.closest("#contact, .top-contact-section, .cm-contact, .contact-wave-section");
+      if (section) section.classList.add("has-lottie");
+    });
+
+    contactLottieAnim.addEventListener("data_failed", function () {
+      console.error("[contact-lottie] failed to load assets/hero-wave-flow.json");
+    });
+
+    return true;
+  }
+
+  function waitForContactLottie(done) {
+    var n = 0;
+    (function tick() {
+      if (initContactLottie() || n > 120) return done();
+      n += 1;
+      setTimeout(tick, 50);
+    })();
+  }
+
   function cloneHeroDeco() {
     if (typeof window.applyAtmDeco === "function") window.applyAtmDeco();
   }
@@ -55,7 +99,8 @@
     (function tick() {
       var ready =
         document.querySelector(".hero-title") &&
-        document.querySelectorAll(".top-service-card").length >= 1;
+        document.querySelectorAll(".top-service-card").length >= 1 &&
+        document.getElementById("contact-lottie");
       if (ready || n > 80) return done();
       n += 1;
       setTimeout(tick, 50);
@@ -65,14 +110,16 @@
   function boot() {
     waitForScene(function () {
       waitForHeroLottie(function () {
-        cloneHeroDeco();
-        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-        gsap.registerPlugin(ScrollTrigger);
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(init).catch(init);
-        } else {
-          init();
-        }
+        waitForContactLottie(function () {
+          cloneHeroDeco();
+          if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+          gsap.registerPlugin(ScrollTrigger);
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(init).catch(init);
+          } else {
+            init();
+          }
+        });
       });
     });
   }
@@ -322,7 +369,6 @@
     var tel = document.querySelector(".top-contact-tel");
     if (!section) return;
 
-    gsap.set(section, { clipPath: "inset(18% 12% 18% 12%)" });
     if (lead) gsap.set(lead, { y: 36, opacity: 0 });
     if (btn) gsap.set(btn, { y: 32, opacity: 0, scale: 0.9 });
     if (tel) gsap.set(tel, { y: 16, opacity: 0 });
@@ -335,10 +381,9 @@
         once: true
       }
     });
-    tl.to(section, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2 });
-    if (lead) tl.to(lead, { y: 0, opacity: 1, duration: 0.9 }, 0.2);
-    if (btn) tl.to(btn, { y: 0, opacity: 1, scale: 1, duration: 0.85 }, 0.45);
-    if (tel) tl.to(tel, { y: 0, opacity: 1, duration: 0.7 }, 0.62);
+    if (lead) tl.to(lead, { y: 0, opacity: 1, duration: 0.9 }, 0);
+    if (btn) tl.to(btn, { y: 0, opacity: 1, scale: 1, duration: 0.85 }, 0.25);
+    if (tel) tl.to(tel, { y: 0, opacity: 1, duration: 0.7 }, 0.42);
   }
 
   if (document.readyState === "loading") {

@@ -606,7 +606,7 @@
       white-space: nowrap;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 19px;
       letter-spacing: 0.02em;
       color: #111318;
     }
@@ -618,20 +618,20 @@
     }
     .top-header-nav a {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       color: #111318;
     }
     .top-header-nav a:hover { color: #2563EB; }
     .top-header-contact {
-      padding: 10px 20px !important;
+      padding: 12px 24px !important;
       background: #3B82F6 !important;
       color: #ffffff !important;
       border-radius: 8px !important;
-      font-size: 13px !important;
+      font-size: 16px !important;
       font-weight: 700 !important;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
     }
     .top-header-contact:hover { color: #ffffff !important; background: #2563EB !important; }
     .top-news-row a { min-width: 0; }
@@ -704,7 +704,7 @@
       isolation: isolate;
       background: #ffffff;
     }
-    .ui-atm > *:not(.hero-deco) {
+    .ui-atm > *:not(.hero-deco):not(.top-contact-bg) {
       position: relative;
       z-index: 1;
     }
@@ -869,18 +869,67 @@
       font-size: 15px;
     }
     .top-contact-section {
-      background: #ffffff;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       color: #111318;
-      padding: 180px 0 200px;
+      padding: clamp(140px, 16vw, 220px) 0 clamp(160px, 18vw, 240px);
+      min-height: min(68vh, 680px);
+      display: flex;
+      align-items: flex-end;
+      background: #f4f8fc;
+    }
+    #contact.ui-atm {
+      background: #f4f8fc !important;
+      overflow: hidden;
+    }
+    #contact.ui-atm > .top-contact-bg,
+    .top-contact-bg {
+      position: absolute !important;
+      inset: 0;
+      z-index: 0 !important;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .top-contact-lottie {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(220vw, 3000px);
+      height: min(170vh, 2200px);
+      transform: translate(-50%, -50%);
+    }
+    .top-contact-lottie svg {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+    .top-contact-bg-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(255,255,255,0.28) 88%, rgba(255,255,255,0.42) 100%);
+      pointer-events: none;
     }
     .top-contact-inner {
+      position: relative;
+      z-index: 2;
       max-width: var(--content-w);
       margin: 0 auto;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: wrap;
       gap: 48px;
+    }
+    .top-contact-kicker {
+      color: #3B82F6;
+    }
+    .top-contact-kicker::after {
+      background: #3B82F6;
     }
     .top-contact-lead {
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
@@ -1042,8 +1091,8 @@
       text-align: center;
     }
     @media (max-width: 960px) {
-      .top-header-nav { gap: 16px !important; }
-      .top-header-nav a { font-size: 12px; letter-spacing: 0.08em; }
+      .top-header-nav { gap: 20px !important; }
+      .top-header-nav a { font-size: 14px; letter-spacing: 0.06em; }
       .top-media-grid,
       .top-service-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
       .top-media-grid > .top-media-card:last-child { margin-top: 0; }
@@ -1057,7 +1106,8 @@
       .top-footer-brand { grid-column: 1 / -1; }
       .top-contact-lead { font-size: 24px; }
       .top-hero-inner { padding-top: 120px; padding-bottom: 88px; }
-      .top-hero-shell .hero-lottie {
+      .top-hero-shell .hero-lottie,
+      .top-contact-lottie {
         width: min(240vw, 2400px);
         height: min(180vh, 1800px);
         top: 44%;
@@ -1067,17 +1117,31 @@
       .top-contact-section { padding: 96px 0; }
     }
     @media (max-width: 720px) {
-      .hero-pills { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 420px; }
+      .hero-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
+      .hero-cta { width: 100%; max-width: none; }
+      .top-hero-inner { padding-top: 72px; padding-bottom: 56px; }
+      .top-news-section { padding-top: 72px !important; padding-bottom: 80px !important; }
+      .top-media-section,
+      .top-service-section { padding: 72px 0; }
+      .top-contact-section { padding: 72px 0; }
+      #hero { min-height: 0; }
     }
     @media (max-width: 600px) {
-      .top-hero-inner { padding-top: 112px !important; padding-bottom: 72px !important; }
-      #hero { min-height: calc(100svh - 64px); }
-      .top-hero-shell .hero-lottie {
+      :root {
+        --page-gutter-l: max(18px, env(safe-area-inset-left));
+        --page-gutter-r: max(18px, env(safe-area-inset-right));
+      }
+      .top-hero-inner { padding-top: 56px !important; padding-bottom: 48px !important; }
+      #hero { min-height: 0; }
+      .hero-title { font-size: clamp(26px, 8.4vw, 34px) !important; }
+      .top-hero-shell .hero-lottie,
+      .top-contact-lottie {
         width: min(280vw, 2000px);
         height: min(200vh, 1600px);
         top: 42%;
       }
-      .top-header-inner { min-height: 64px; }
+      .top-header { padding-top: env(safe-area-inset-top); }
+      .top-header-inner { min-height: 64px; flex-wrap: nowrap !important; }
       .top-header-nav { gap: 10px !important; }
       .top-news-row { grid-template-columns: minmax(0, 1fr) 24px; gap: 8px 12px; align-items: start; padding: 20px 16px; }
       .top-news-date { grid-column: 1; }
@@ -1085,31 +1149,43 @@
       .top-news-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
       .top-footer-grid { grid-template-columns: minmax(0, 1fr); }
       .top-footer-brand { grid-column: auto; }
-      .top-footer { padding-top: 72px !important; padding-bottom: 32px !important; }
+      .top-footer { padding-top: 64px !important; padding-bottom: max(28px, env(safe-area-inset-bottom)) !important; }
       .top-contact-lead { font-size: 20px !important; }
-      .top-header-contact { padding: 8px 12px !important; font-size: 11px !important; }
+      .top-header-contact { padding: 10px 16px !important; font-size: 13px !important; }
       .hero-kicker { font-size: 10px; letter-spacing: 0.14em; }
-      .hero-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; margin-bottom: 36px; }
-      .hero-pill:nth-child(5) { grid-column: 1 / -1; max-width: 50%; justify-self: center; width: 100%; }
-      .hero-cta { width: 100%; max-width: 280px; }
-      .top-contact-btn { padding: 14px 22px !important; }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+        max-width: none;
+        margin-bottom: 28px;
+      }
+      .hero-pill {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 6px);
+        min-height: 96px;
+        padding: 16px 8px 14px;
+      }
+      .hero-pill:nth-child(5) { grid-column: auto; max-width: calc(50% - 6px); justify-self: auto; width: auto; }
+      .hero-cta { width: 100%; max-width: none; }
+      .top-contact-btn { padding: 14px 22px !important; width: 100%; max-width: 100%; justify-content: center; box-sizing: border-box; }
       .top-service-card { padding: 0 !important; }
       .top-media-card { padding: 0 !important; }
-      .top-service-body { padding: 32px 0 0 !important; }
-      .top-media-body { padding: 32px 0 0 !important; }
-      .top-media-title { font-size: 22px; }
+      .top-service-body { padding: 24px 0 0 !important; }
+      .top-media-body { padding: 24px 0 0 !important; }
+      .top-media-title { font-size: 20px; }
       .top-media-lead,
       .top-news-lead,
-      .top-service-lead { font-size: 26px; }
-      .top-service-name { font-size: 22px; }
+      .top-service-lead { font-size: 22px; }
+      .top-service-name { font-size: 20px; }
       .top-media-section,
-      .top-service-section { padding: 88px 0; }
-      .top-contact-section { padding: 80px 0; }
+      .top-service-section { padding: 64px 0; }
+      .top-contact-section { padding: 64px 0; }
+      .top-news-section { padding-top: 64px !important; padding-bottom: 72px !important; }
     }
     @media (max-width: 380px) {
-      .top-header-inner { flex-wrap: wrap; justify-content: center; }
       .top-header-inner > a span { font-size: 15px; }
-      .top-header-nav a:not(.top-header-contact) { display: none; }
     }
     @media (hover: none) {
       .top-service-card:hover .top-service-visual img,
@@ -1289,6 +1365,10 @@
   </section>
 
   <section id="contact" class="top-contact-section top-reveal ui-atm">
+    <div class="top-contact-bg" aria-hidden="true">
+      <div class="top-contact-lottie" id="contact-lottie"></div>
+      <div class="top-contact-bg-scrim"></div>
+    </div>
     <div class="top-section top-contact-inner">
       <div>
         <h2 class="top-contact-kicker">CONTACT</h2>
@@ -1382,9 +1462,11 @@ class Component extends DCLogic {
 </script>
 <script src="./atm-deco.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="./contact-lottie.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 <script src="./scroll-motion.js"></script>
+<script src="./site-nav.js"></script>
 <style>
   html {
     height: auto !important;
