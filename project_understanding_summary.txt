@@ -1,5 +1,11 @@
 # Project Understanding Summary
 
+## TOP Header / Hero file map (2026-09-09)
+- TOP is `index.html` only (static HTML inside dc-runtime `<x-dc>`, not a React/Vue component). `site.css` is not used on TOP.
+- Markup: `.top-hero-shell` wraps sticky `.top-header` (logo + `.top-header-nav`) and `#hero` (kicker / title / lead / `.hero-pill`s / `.hero-cta`). Lottie mount is `#hero-lottie`.
+- CSS: almost all Header/Hero styles live in the inline `<style>` inside `<helmet>` in `index.html` (`.top-header*`, `.top-hero-*`, `.hero-*`, `#hero`).
+- Behavior: `site-nav.js` injects phone hamburger for `.top-header-inner`; `scroll-motion.js` inits Wave Flow Lottie (`assets/hero-wave-flow.json`) and GSAP hero entrance. `atm-deco.js` skips `#hero`. `support.js` is dc-runtime (do not edit unless asked).
+
 ## Recent edits (2026-09-04)
 - apparel.html hero: larger centered type (label / アパレル事業 / lead / icons / CTAs). Copy and links unchanged.
 - Sitewide phone layout: hamburger nav (SERVICE / NEWS / COMPANY / CONTACT), tighter section padding, stacked CTAs, no horizontal overflow, 16px form fields. Copy and links unchanged.

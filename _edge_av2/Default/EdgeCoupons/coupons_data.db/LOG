@@ -1,0 +1,5 @@
+2026/09/04-12:44:17.235 7c10 Creating DB c:\Users\bando\OneDrive\Desktop\TS\_edge_av2\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/09/04-12:44:17.269 7c10 Reusing MANIFEST c:\Users\bando\OneDrive\Desktop\TS\_edge_av2\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/09/04-12:44:35.229 6b90 Level-0 table #5: started
+2026/09/04-12:44:35.233 6b90 Level-0 table #5: 683284 bytes OK
+2026/09/04-12:44:35.235 6b90 Delete type=0 #3
