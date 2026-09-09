@@ -30,13 +30,11 @@
 
   var TARGETS = [
     ".ui-atm",
-    ".top-footer",
     ".cm-hero",
     ".cm-works",
     ".cm-contact",
     ".cm-section",
     ".page-main",
-    ".site-footer",
     ".fs-hero",
     ".fs-section"
   ].join(",");

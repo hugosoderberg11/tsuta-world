@@ -12,7 +12,8 @@
 
   function initHeroLottie() {
     var heroLottieEl = document.getElementById("hero-lottie");
-    if (!heroLottieEl || typeof lottie === "undefined") return false;
+    if (!heroLottieEl) return true;
+    if (typeof lottie === "undefined") return false;
     if (heroLottieAnim) return true;
 
     heroLottieEl.innerHTML = "";
@@ -100,7 +101,7 @@
       var ready =
         document.querySelector(".hero-title") &&
         document.querySelectorAll(".top-service-card").length >= 1 &&
-        document.getElementById("contact-lottie");
+        document.querySelector("#contact");
       if (ready || n > 80) return done();
       n += 1;
       setTimeout(tick, 50);
@@ -148,39 +149,13 @@
     });
   }
 
-  function initHero(easeOut) {
-    var lines = gsap.utils.toArray(".hero-title span");
-
-    gsap.set(lines, { yPercent: 110, clipPath: "inset(100% 0 0 0)" });
-    gsap.set(".hero-kicker", { y: 24, opacity: 0, clipPath: "inset(0 0 100% 0)" });
-    gsap.set(".hero-lead", { y: 36, opacity: 0 });
-    gsap.set(".hero-pill", { y: 48, opacity: 0, rotateX: 12 });
-    gsap.set(".hero-cta", { y: 28, opacity: 0, scale: 0.92 });
-
-    var tl = gsap.timeline({ defaults: { ease: easeOut } });
-    tl.to(".hero-kicker", { y: 0, opacity: 1, clipPath: "inset(0 0 0% 0)", duration: 0.8 }, 0.1);
-    tl.to(
-      lines,
-      {
-        yPercent: 0,
-        clipPath: "inset(0% 0 0 0)",
-        duration: 1.15,
-        stagger: 0.14
-      },
-      0.18
-    );
-    tl.to(".hero-lead", { y: 0, opacity: 1, duration: 0.9 }, "-=0.45");
-    tl.to(
-      ".hero-pill",
-      { y: 0, opacity: 1, rotateX: 0, duration: 0.85, stagger: 0.08 },
-      "-=0.55"
-    );
-    tl.to(".hero-cta", { y: 0, opacity: 1, scale: 1, duration: 0.8 }, "-=0.4");
+  function initHero() {
+    return;
   }
 
   function initSectionDeco() {
     if (mobile) return;
-    ["#media", "#news", "#services", "#contact", "#footer"].forEach(function (sel) {
+    ["#media", "#services", "#numbers", "#about", "#news", "#contact", "#footer"].forEach(function (sel) {
       var section = document.querySelector(sel);
       if (!section) return;
       var parts = section.querySelectorAll(".hero-deco-grid, .hero-deco-wash, .hero-deco svg");
@@ -274,7 +249,7 @@
 
   function initNews(easeSoft) {
     var rows = gsap.utils.toArray(".top-news-row");
-    var head = document.querySelector(".top-news-head");
+    var head = document.querySelector(".top-news-side");
     if (head) {
       gsap.from(head, {
         y: 40,
@@ -319,14 +294,12 @@
       var odd = i % 2 === 0;
       var fromX = odd ? (desktop ? -90 : -24) : desktop ? 90 : 24;
       var visual = card.querySelector(".top-service-visual");
-      var img = card.querySelector(".top-service-visual img");
       var body = card.querySelector(".top-service-body");
       var idx = card.querySelector(".top-service-idx");
       var start = desktop ? (odd ? "top 76%" : "top 60%") : "top 86%";
 
       gsap.set(card, { y: 40, opacity: 0 });
-      if (visual) gsap.set(visual, { clipPath: "inset(0 0 100% 0)", x: fromX * 0.35 });
-      if (img) gsap.set(img, { scale: 1.16 });
+      if (visual) gsap.set(visual, { x: fromX * 0.35 });
       if (body) gsap.set(body, { x: fromX, opacity: 0 });
       if (idx) gsap.set(idx, { scale: 1.8, opacity: 0, y: 20 });
 
@@ -341,9 +314,8 @@
 
       tl.to(card, { y: 0, opacity: 1, duration: 0.45 }, 0);
       if (visual) {
-        tl.to(visual, { clipPath: "inset(0 0 0% 0)", x: 0, duration: 1.15 }, 0);
+        tl.to(visual, { x: 0, duration: 1.15 }, 0);
       }
-      if (img) tl.to(img, { scale: 1, duration: 1.25, ease: easeSoft }, 0.05);
       if (idx) tl.to(idx, { scale: 1, opacity: 1, y: 0, duration: 0.85 }, 0.2);
       if (body) tl.to(body, { x: 0, opacity: 1, duration: 1, ease: easeSoft }, 0.28);
 
@@ -362,28 +334,8 @@
     });
   }
 
-  function initContact(easeOut) {
-    var section = document.querySelector("#contact");
-    var lead = document.querySelector(".top-contact-lead");
-    var btn = document.querySelector(".top-contact-btn");
-    var tel = document.querySelector(".top-contact-tel");
-    if (!section) return;
-
-    if (lead) gsap.set(lead, { y: 36, opacity: 0 });
-    if (btn) gsap.set(btn, { y: 32, opacity: 0, scale: 0.9 });
-    if (tel) gsap.set(tel, { y: 16, opacity: 0 });
-
-    var tl = gsap.timeline({
-      defaults: { ease: easeOut },
-      scrollTrigger: {
-        trigger: section,
-        start: "top 78%",
-        once: true
-      }
-    });
-    if (lead) tl.to(lead, { y: 0, opacity: 1, duration: 0.9 }, 0);
-    if (btn) tl.to(btn, { y: 0, opacity: 1, scale: 1, duration: 0.85 }, 0.25);
-    if (tel) tl.to(tel, { y: 0, opacity: 1, duration: 0.7 }, 0.42);
+  function initContact() {
+    return;
   }
 
   if (document.readyState === "loading") {

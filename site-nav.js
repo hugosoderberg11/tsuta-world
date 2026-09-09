@@ -3,7 +3,7 @@
 
   var STYLE_ID = "site-nav-css";
   var CSS = [
-    ".site-nav-toggle{display:none;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:10px;background:transparent;cursor:pointer;color:#111318}",
+    ".site-nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:10px;background:transparent;cursor:pointer;color:#111318}",
     ".site-nav-toggle span{display:block;width:18px;height:2px;margin:2.5px 0;background:currentColor;border-radius:1px;transition:transform .2s ease,opacity .2s ease}",
     "body.site-nav-open .site-nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}",
     "body.site-nav-open .site-nav-toggle span:nth-child(2){opacity:0}",

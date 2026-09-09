@@ -1,8 +1,28 @@
 # Project Understanding Summary
 
+## Recent edits (2026-09-09)
+- TOP SERVICE heading: Japanese lead sits immediately to the right of SERVICE (not far-right); Noto Serif JP 700.
+- TOP header hamburger is 3 stacked bars (was one line from row flex) and sits at the far right of the header. SERVICE 01 “Fans Create the Future.” moved to the photo’s lower-left.
+- TOP ABOUT headline is two lines: 伝わらないを、 / なくしていく。
+- Sitewide FOOTER: HTML/CSS recreation of the dark navy 4-column mock (not an image). Background `#001722`, max-width 1400px, padding `55px 5vw 45px`, height ~350px on desktop. Columns: brand (logo + まだ見ぬ可能性を、世界へ。 + UPDATE THE WAY / THE WORLD CONNECTS.) / SERVICE / COMPANY / FOLLOW US, with 1px vertical rules after SERVICE and COMPANY. Existing service/company URLs kept; メンバー / sitemap / Instagram / TikTok / X use `data-href-unset` (no invented URLs). YouTube uses `@tsutaworld733`. Privacy → tsuta-world.com/privacy/, recruit → tsuta-world.com/recruit/. White knockout logo `assets/tsuta-icon-white.png` for the dark bar. Tablet 2-col, mobile stacks brand→SERVICE→COMPANY→FOLLOW US. Other sections unchanged.
+- TOP CONTACT: main headline + Japanese lead shifted right so they clear the woman; UPDATE stack enlarged (~18–24px); inquiry pill larger (~252×70). Other TOP sections unchanged.
+- `contact.html` KV: attached image (`assets/contact-kv.jpg`) used as-is as the page-top banner — no HTML overlay of the in-image type/button. White `.contact-kv` section, `object-fit: contain` + `object-position: center`. Form and company info unchanged.
+- TOP NEWS (`index.html`): moved below ABOUT (order: … NUMBERS → ABOUT → NEWS → CONTACT). Restyled to mock layout — left column (large NEWS / 新着情報 / VIEW ALL →), vertical divider, right list with date+title rows and ← → arrows. Existing `newsItems` data unchanged. Card UI removed.
+- TOP ABOUT US (`index.html`): new section `#about` between NUMBERS and CONTACT, faithful to the supplied mock. White full-width section (~1400px inner). Left: blue ABOUT US kicker + gray vertical rail, Noto Serif JP headline (伝わらないを、なくしていく。), body copy, pill CTA → `company.html`. Center-right: `assets/about-building.jpg` with diagonal `clip-path` polygon. Right: UPDATE/THE WAY… uppercase stack, large pale-blue Cormorant ABOUT, PEOPLE/TECHNOLOGY… stack, vertical 働くを、もっと好きに。 Desktop horizontal layout; tablet/mobile stacks copy → photo → deco. CONTACT and other sections unchanged.
+- TOP NUMBERS (`index.html`): stats strip immediately under SERVICE, matched to the mock (5 equal columns, `#00539C` figures, 900 weight, smaller `+`). Copy: NUMBERS / 数字で見る / TSUTA-WORLD, 1.9億+ / 70社+ / 200万人+ / 400+.
+- TOP SERVICE typography/layout (`index.html` only): matched the mock’s text placement without replacing banners. Larger blue 01–06 numbers; small light English labels sit beside numbers (never on photos). 01 is the featured split (copy / large photo / vertical 働くを、もっと好きに。) with “Fans Create the Future.” on the photo’s lower-center diagonal. 02–06 each use a different number/image/copy grid (not one repeated card). 16:9 `object-fit: contain` banners kept. Header / Hero / MEDIA unchanged.
+- TOP SERVICE images: keep client 16:9 banners (`service-*.jpg`) uncropped. `object-fit: contain` + 16:9 frames; mock cover-crop removed so in-image type/logos stay visible. Layout (01 featured, 02–03 pair, 04–06 trio) unchanged. Header / Hero / MEDIA unchanged.
+- TOP SERVICE (`index.html` only): rebuilt off the card grid into the mock composition. Content width ~1400px. Rows are featured 01 (copy + large diagonal photo + vertical 働くを、もっと好きに。), staggered 02–03 pair, 04–06 trio with overlapping numbers. Existing service copy, images, and links kept; photos cropped so numbers/copy lead. Header / Hero / MEDIA unchanged.
+- TOP MEDIA type/image/padding scaled back up (layout unchanged) after the compact pass was too small.
+- TOP MEDIA (`index.html` only): editorial 3-column row (MEDIA / compact 2 cards / copy + arrows). Existing `mediaItems` data, images, and YouTube links kept. Subpages unchanged.
+- TOP Hero (index.html only) closer to the mock: pulled-back woman crop, bottom-right white diagonal cut (`clip-path` + `.hero-cut`), thinner left fade, `01` + long line pager, centered CTA arrow, smaller script, vertical `伝わるから、世界は動く。`, PEOPLE/BRANDS aside, left copy shifted up/left. Lower sections/subpages unchanged.
+- TOP Hero right: "Create a New Standard." now uses `assets/hero-create-standard.png` matching the handwritten crop, placed top-right over the photo.
+- TOP Hero left copy: UPDATE line is now horizontal black; AI lines use photo teal `#08608F`; subcopy is larger black; CTA shifted right toward the photo. Header/lower sections unchanged.
+- TOP Header/Hero only (`index.html` + inline CSS): rebuilt to the new TSUTA-WORLD mock (white + pale blue, left copy, diagonal `assets/hero-woman.jpg`, script/vertical/pager decorations). Header is logo / SERVICE / MEDIA / NEWS / COMPANY / お問い合わせ / hamburger. Hero Lottie and GSAP entrance disabled (`scroll-motion.js` skips missing `#hero-lottie` and no-ops `initHero`). Lower sections and subpages unchanged.
+
 ## TOP Header / Hero file map (2026-09-09)
 - TOP is `index.html` only (static HTML inside dc-runtime `<x-dc>`, not a React/Vue component). `site.css` is not used on TOP.
-- Markup: `.top-hero-shell` wraps sticky `.top-header` (logo + `.top-header-nav`) and `#hero` (kicker / title / lead / `.hero-pill`s / `.hero-cta`). Lottie mount is `#hero-lottie`.
+- Markup: `.top-hero-shell` wraps sticky `.top-header` (logo + `.top-header-nav`) and `#hero` (kicker / title / lead / `.hero-cta` + `.hero-visual` with photo / script / slogan / aside / pager). Lottie mount `#hero-lottie` is unused on TOP.
 - CSS: almost all Header/Hero styles live in the inline `<style>` inside `<helmet>` in `index.html` (`.top-header*`, `.top-hero-*`, `.hero-*`, `#hero`).
 - Behavior: `site-nav.js` injects phone hamburger for `.top-header-inner`; `scroll-motion.js` inits Wave Flow Lottie (`assets/hero-wave-flow.json`) and GSAP hero entrance. `atm-deco.js` skips `#hero`. `support.js` is dc-runtime (do not edit unless asked).
 
@@ -73,6 +93,7 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/service-fanstep.jpg` / `service-kitabuzz.jpg` / `service-web.jpg` / `service-anime.jpg` / `service-creative.jpg` / `service-apparel.jpg` — TOP SERVICES large-card banners (1024×576 JPEG, shown uncropped)
 - `assets/media-eejanai.png` — TV/MEDIA カンニング竹山のイチバン研究所 thumbnail
 - `assets/media-ichiban.png` — TV/MEDIA ええじゃない課Biz thumbnail
+- `assets/about-building.jpg` — TOP ABOUT US section building photo (diagonal clip-path)
 
 ## Recent edits (2026-09-02)
 - Contact form + thanks page per client spec. Admin mail to info@tsuta-world.com, subject お問い合わせがありました. Autoreply/thanks copy as specified, with submitted fields.
@@ -131,10 +152,10 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - Hero right `image-slot` replaced with looping muted `assets/hero.mp4`; overflow hidden + scale(1.42) crops top/bottom black bars.
 
 ## Footer (TOP + all subpages)
-- 3 columns: サービス一覧（01〜06 + AI研修） / COMPANY（新着情報・会社情報・代理店募集・お問い合わせ） / ロゴ＋会社概要
-- POST heading removed; 新着情報 moved under COMPANY
-- AI研修（全6コース）: 6 external LP links (tsuta-world.com/lp/vau/…)
-- Company address block (unchanged from TOP)
+- 4 columns on desktop: brand / SERVICE / COMPANY / FOLLOW US. Dark navy `#001722`, white type, vertical rules after SERVICE and COMPANY.
+- SERVICE: ファンステップ採用, キタバズ, AI × Web制作, 説明用アニメ動画, クリエイティブ＆マーケティング, アパレル
+- COMPANY: 会社概要, メンバー (URL unset), 採用情報, お知らせ, お問い合わせ
+- FOLLOW US: Instagram / YouTube / TikTok / X; privacy + sitemap; © 2026 TSUTA-WORLD Inc.
 
 ## Git
 Local repo initialized. Remote `origin` = https://github.com/hugosoderberg11/tsuta-world.git (empty, no commits yet). GitHub account connected in Cursor.
