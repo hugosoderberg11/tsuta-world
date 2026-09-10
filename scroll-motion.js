@@ -149,8 +149,46 @@
     });
   }
 
-  function initHero() {
-    return;
+  function initHero(easeOut) {
+    var hero = document.getElementById("hero");
+    if (!hero) return;
+
+    var copy = hero.querySelector(".hero-copy-main");
+    var visual = hero.querySelector(".hero-visual");
+    var decos = hero.querySelectorAll(".hero-anim-deco");
+
+    if (copy) {
+      gsap.set(copy, { y: 24, opacity: 0 });
+      gsap.to(copy, {
+        y: 0,
+        opacity: 1,
+        duration: 0.95,
+        ease: easeOut || "power4.out",
+        delay: 0.08
+      });
+    }
+
+    if (visual) {
+      gsap.set(visual, { x: 18, opacity: 0 });
+      gsap.to(visual, {
+        x: 0,
+        opacity: 1,
+        duration: 1.1,
+        ease: easeOut || "power4.out",
+        delay: 0.32
+      });
+    }
+
+    decos.forEach(function (el, i) {
+      gsap.to(el, {
+        y: i % 2 === 0 ? -7 : 6,
+        duration: 5.5 + i * 0.6,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: 0.9 + i * 0.12
+      });
+    });
   }
 
   function initSectionDeco() {
@@ -191,23 +229,11 @@
     if (!head && !cards.length) return;
 
     if (head) {
-      gsap.set(head, { x: desktop ? -80 : -28, opacity: 0, clipPath: "inset(0 40% 0 0)" });
-      gsap.to(head, {
-        x: 0,
-        opacity: 1,
-        clipPath: "inset(0 0% 0 0)",
-        duration: 1.05,
-        ease: easeOut,
-        scrollTrigger: {
-          trigger: "#media",
-          start: "top 78%",
-          once: true
-        }
-      });
+      gsap.set(head, { clearProps: "transform,clipPath,opacity" });
     }
 
     cards.forEach(function (card, i) {
-      var fromX = i % 2 === 0 ? (desktop ? -120 : -40) : desktop ? 120 : 40;
+      var fromX = i % 2 === 0 ? (desktop ? 48 : 24) : desktop ? 48 : 24;
       var img = card.querySelector("img");
       var num = card.querySelector(".top-media-no");
       var body = card.querySelector(".top-media-body");
@@ -282,9 +308,9 @@
     var cards = gsap.utils.toArray(".top-service-card");
     if (head) {
       gsap.from(head, {
-        y: 48,
-        clipPath: "inset(0 0 100% 0)",
-        duration: 1,
+        y: 28,
+        opacity: 0,
+        duration: 0.9,
         ease: easeOut,
         scrollTrigger: { trigger: "#services", start: "top 78%", once: true }
       });

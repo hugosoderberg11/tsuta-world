@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="atm-deco.css">
   <style>
     @keyframes heroFade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroCopyIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroVisualIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes heroFloatAlt { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
     *, *::before, *::after { box-sizing: border-box; }
     :root {
       --page-gutter-l: max(20px, env(safe-area-inset-left), min(88px, 6.5vw));
@@ -61,16 +65,32 @@
     }
     .top-svc-pair,
     .top-svc-trio {
-      display: grid;
       width: 100%;
+    }
+    .top-svc-pair {
+      display: grid;
       align-items: start;
     }
-    #services sc-for { display: contents; }
+    .top-svc-trio {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      column-gap: 2%;
+    }
+    #services sc-for,
+    #media sc-for { display: contents; }
+    #services .top-svc-trio > sc-for {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      column-gap: 2%;
+      width: 100%;
+    }
     .top-media-grid {
       display: grid;
       width: 100%;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 40px 48px;
+      gap: 24px 32px;
       align-items: start;
     }
     .site-footer {
@@ -238,12 +258,15 @@
     }
     .top-service-section {
       position: relative;
-      padding: 120px 0 72px;
+      padding: 76px 0 52px;
       background: #ffffff;
     }
+    /* --svc-w drives every SERVICE size, so the block keeps the mock's
+       proportions at any viewport width. 1400px is the reference width. */
     .top-service-inner {
-      width: min(1400px, calc(100% - 48px));
-      max-width: 1400px;
+      --svc-w: min(90vw, max(1400px, 73vw));
+      width: var(--svc-w);
+      max-width: none;
       margin: 0 auto;
     }
     .top-service-head {
@@ -252,20 +275,23 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       gap: 12px 32px;
-      margin-bottom: 64px;
+      margin-bottom: 28px;
       max-width: none;
       overflow: visible;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
     }
     .top-service-section .top-service-kicker-label {
       display: block;
-      font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(56px, 7.2vw, 92px);
       font-weight: 700;
-      letter-spacing: 0.08em;
-      line-height: 0.92;
+      letter-spacing: 0.02em;
+      line-height: 1;
       color: #111318;
       margin: 0;
-      font-style: italic;
+      font-style: normal;
+      white-space: nowrap;
     }
     .top-service-section .top-service-kicker-label::after { content: none; width: 0; height: 0; }
     .top-service-lead {
@@ -575,123 +601,85 @@
       min-width: 0;
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
       --svc-shift: 0px;
-      --svc-blue: #1E4ED8;
+      --svc-blue: #33598C;
     }
     .top-service-card::before,
     .top-service-card::after { content: none; display: none; }
 
-    /* 01 — featured: copy left, large photo, vertical line */
+    /* 01 — featured: copy 41%, photo 47%, vertical slogan in the right margin.
+       The photo keeps its right edge and loses width off its left side, so the
+       script line has white space to sit in before it crosses the photo. */
     .top-svc-hero {
-      grid-template-columns: minmax(340px, 460px) minmax(0, 1fr) 2em;
-      column-gap: 40px;
+      grid-template-columns: 43% 40% minmax(0, 1fr);
+      column-gap: 1.2%;
       align-items: start;
       width: 100%;
     }
     .top-svc-hero-copy {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 16px;
       min-width: 0;
-      padding-top: 8px;
+      padding-top: calc(var(--svc-w) * 0.014);
     }
     .top-svc-hero .top-service-kicker {
       flex-wrap: nowrap;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
     }
 
     .top-svc-pair {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 88px 72px;
-      margin-top: 108px;
+      grid-template-columns: 46% 46%;
+      column-gap: 4%;
+      margin-top: 10px;
     }
     .top-svc-mid .top-service-kicker { grid-area: num; }
     .top-svc-mid .top-service-visual { grid-area: img; }
     .top-svc-mid .top-service-body { grid-area: body; }
-
-    /* 02 — number row spans full width, wide image left, copy right */
-    .top-svc-mid[data-num="02"] {
-      grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.9fr);
+    /* The photo column is narrower than the gutter it leaves behind so the copy
+       column keeps its old start position while the photo shrinks. */
+    .top-svc-mid {
+      grid-template-columns: 38% 50%;
       grid-template-areas:
         "num num"
         "img body";
-      column-gap: 28px;
-      row-gap: 12px;
+      column-gap: 10%;
+      row-gap: 6px;
       align-items: start;
     }
-    .top-svc-mid[data-num="02"] .top-service-body {
-      padding-top: 6px;
-    }
-
-    /* 03 — staggered down; more even split; copy sits lower beside the image */
-    .top-svc-mid[data-num="03"] {
-      margin-top: 84px;
-      grid-template-columns: minmax(0, 1.05fr) minmax(190px, 1fr);
-      grid-template-areas:
-        "num num"
-        "img body";
-      column-gap: 32px;
-      row-gap: 10px;
-      align-items: start;
-    }
-    .top-svc-mid[data-num="03"] .top-service-body {
-      padding-top: 28px;
-    }
+    .top-svc-mid[data-num="03"] { margin-top: 0; }
 
     .top-svc-trio {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 72px 40px;
-      margin-top: 116px;
-      align-items: start;
+      margin-top: 10px;
+    }
+    .top-svc-trio > .top-svc-low {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 33.33%;
+      width: auto;
     }
     .top-svc-low .top-service-kicker { grid-area: num; }
     .top-svc-low .top-service-visual { grid-area: img; }
     .top-svc-low .top-service-body { grid-area: body; }
-
-    /* 04 — number sits only above the image; Japanese copy starts beside the number */
-    .top-svc-low[data-num="04"] {
-      grid-template-columns: minmax(0, 1.05fr) minmax(168px, 1fr);
-      grid-template-areas:
-        "num body"
-        "img body";
-      column-gap: 20px;
-      row-gap: 8px;
-      align-items: start;
-    }
-    .top-svc-low[data-num="04"] .top-service-body {
-      padding-top: 10px;
-      align-self: start;
-    }
-
-    /* 05 — number row spans; image left; copy starts at the image row */
-    .top-svc-low[data-num="05"] {
-      margin-top: 56px;
-      grid-template-columns: minmax(0, 1fr) minmax(168px, 1.05fr);
+    .top-svc-low {
       grid-template-areas:
         "num num"
         "img body";
-      column-gap: 18px;
-      row-gap: 10px;
+      row-gap: 5px;
       align-items: start;
     }
-    .top-svc-low[data-num="05"] .top-service-body {
-      padding-top: 4px;
-    }
+    .top-svc-low .top-service-body { padding-top: 8px; }
 
-    /* 06 — number above image only; whole copy block sits lower beside the photo */
+    .top-svc-low[data-num="04"],
+    .top-svc-low[data-num="05"],
     .top-svc-low[data-num="06"] {
-      margin-top: 24px;
-      grid-template-columns: minmax(0, 1.15fr) minmax(160px, 0.9fr);
-      grid-template-areas:
-        "num ."
-        "img body";
-      column-gap: 22px;
-      row-gap: 8px;
-      align-items: start;
+      margin-top: 0;
+      grid-template-columns: 34% 56%;
+      column-gap: 5%;
     }
-    .top-svc-low[data-num="06"] .top-service-body {
-      padding-top: 18px;
-      align-self: end;
+    .top-svc-trio .top-svc-low .top-service-body {
+      padding-top: 6px;
+      gap: 6px;
     }
 
     .top-service-visual,
@@ -704,116 +692,135 @@
     }
     .top-svc-hero .top-service-visual {
       overflow: visible;
-      padding-bottom: 4px;
+      padding-bottom: 0;
     }
     .top-svc-hero .top-service-visual::before {
       content: "";
       position: absolute;
       z-index: 0;
-      left: 10%;
-      right: -8%;
-      top: -12%;
-      bottom: -6%;
+      left: -16%;
+      right: -3.5%;
+      top: 3%;
+      bottom: -4%;
       background: #E7F1F8;
-      clip-path: polygon(8% 0, 100% 10%, 92% 100%, 0 88%);
+      clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
       pointer-events: none;
     }
+    /* 02–06 tilt down to the right; 01 tilts up to the right (per the mock) */
     .top-service-visual-clip {
       position: relative;
       z-index: 1;
       overflow: hidden;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: auto;
       background: transparent;
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+      -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
     }
     .top-svc-hero .top-service-visual-clip {
-      height: auto;
       min-height: 0;
+      aspect-ratio: 1.85 / 1;
+      clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+      -webkit-clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
     }
-    .top-svc-mid .top-service-visual-clip,
-    .top-svc-low .top-service-visual-clip {
-      height: auto;
-    }
+    .top-svc-mid[data-num="02"] .top-service-visual-clip { aspect-ratio: 1.69 / 1; }
+    .top-svc-mid[data-num="03"] .top-service-visual-clip { aspect-ratio: 1.76 / 1; }
+    .top-svc-low[data-num="04"] .top-service-visual-clip { aspect-ratio: 1.36 / 1; }
+    .top-svc-low[data-num="05"] .top-service-visual-clip { aspect-ratio: 0.97 / 1; }
+    .top-svc-low[data-num="06"] .top-service-visual-clip { aspect-ratio: 0.95 / 1; }
     .top-service-visual img {
       width: 100%;
       max-width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
       display: block;
       position: absolute;
       inset: 0;
       transition: transform 0.6s ease;
     }
-    .top-svc-hero .top-service-visual img { object-position: center; }
-    .top-svc-mid[data-num="02"] .top-service-visual img { object-position: center; }
+    .top-svc-hero .top-service-visual img { object-position: center 18%; }
+    .top-svc-mid[data-num="02"] .top-service-visual img { object-position: center 40%; }
     .top-svc-mid[data-num="03"] .top-service-visual img { object-position: 52% center; }
-    .top-svc-low[data-num="04"] .top-service-visual img { object-position: center; }
+    .top-svc-low[data-num="04"] .top-service-visual img { object-position: 18% center; }
     .top-svc-low[data-num="05"] .top-service-visual img { object-position: center; }
     .top-svc-low[data-num="06"] .top-service-visual img { object-position: center; }
     .top-service-script {
       display: none;
     }
+    /* Starts in the white gutter left of the photo and crosses its lower-left corner */
     .top-svc-hero .top-service-script {
       display: block;
       position: absolute;
-      left: 0;
-      bottom: 4%;
+      left: -9%;
+      bottom: 6%;
       z-index: 3;
       font-family: Caveat, 'Noto Sans JP', cursive;
-      font-size: clamp(34px, 3.6vw, 56px);
+      font-size: calc(var(--svc-w) * 0.023);
       font-weight: 600;
       color: var(--svc-blue);
-      transform: rotate(-13deg);
+      transform: rotate(-11deg);
       transform-origin: left bottom;
-      white-space: nowrap;
+      white-space: pre-line;
       pointer-events: none;
-      line-height: 1;
+      line-height: 1.05;
     }
     .top-service-vert {
       display: none;
     }
+    /* justify-self keeps the slogan tight against the photo instead of the far margin */
     .top-svc-hero .top-service-vert {
       display: block;
+      position: absolute;
+      top: calc(var(--svc-w) * 0.022);
+      left: calc(43% + 1.2% + 40% + 0.35%);
       margin: 0;
-      padding-top: 72px;
+      padding: 0;
       writing-mode: vertical-rl;
+      -webkit-writing-mode: vertical-rl;
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px;
+      font-size: calc(var(--svc-w) * 0.0132);
       font-weight: 400;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.3em;
       color: #1a1a1d;
-      line-height: 1.7;
+      line-height: 1.85;
       pointer-events: none;
-      align-self: start;
+      white-space: nowrap;
+      z-index: 2;
     }
     .top-service-body {
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       min-width: 0;
       z-index: 1;
     }
     .top-svc-hero .top-service-body {
-      gap: 16px;
+      gap: 12px;
+    }
+    .top-svc-mid .top-service-body {
+      gap: 10px;
+    }
+    .top-svc-low .top-service-body {
+      gap: 8px;
     }
     .top-service-kicker {
       display: flex;
       align-items: flex-start;
-      gap: 12px 14px;
+      gap: 4px 10px;
       margin: 0;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       z-index: 2;
     }
     .top-service-idx {
       font-family: 'Barlow Condensed', 'Space Grotesk', sans-serif;
-      font-size: clamp(72px, 6.4vw, 96px);
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      font-size: calc(var(--svc-w) * 0.038);
+      font-weight: 600;
+      letter-spacing: 0.02em;
       color: var(--svc-blue);
-      line-height: 0.78;
+      line-height: 0.85;
       flex: 0 0 auto;
       display: block;
       white-space: nowrap;
@@ -830,43 +837,40 @@
       overflow-wrap: normal;
     }
     .top-svc-hero .top-service-idx {
-      font-size: clamp(100px, 9.6vw, 148px);
+      font-size: calc(var(--svc-w) * 0.043);
     }
     .top-svc-mid .top-service-idx {
-      font-size: clamp(80px, 7vw, 108px);
+      font-size: calc(var(--svc-w) * 0.035);
     }
     .top-svc-low .top-service-idx {
-      font-size: clamp(68px, 6vw, 92px);
+      font-size: calc(var(--svc-w) * 0.0285);
     }
     .top-service-en {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
+      font-size: calc(var(--svc-w) * 0.0072);
+      font-weight: 500;
+      letter-spacing: 0.08em;
       color: var(--svc-blue);
-      line-height: 1.35;
-      padding-top: 0.45em;
-      white-space: nowrap;
+      line-height: 1.75;
+      padding-top: 0.05em;
+      white-space: pre-line;
       word-break: keep-all;
       overflow-wrap: normal;
+      max-width: 12em;
     }
-    .top-svc-low[data-num="04"] .top-service-kicker {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-    }
-    .top-svc-low[data-num="04"] .top-service-en {
-      padding-top: 0;
-    }
-    .top-svc-hero .top-service-en {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      padding-top: 0.7em;
-      max-width: none;
-      white-space: nowrap;
+    .top-svc-mid .top-service-en {
+      font-size: calc(var(--svc-w) * 0.007);
     }
     .top-svc-low .top-service-en {
-      white-space: normal;
+      font-size: calc(var(--svc-w) * 0.0065);
+    }
+    /* 02's single-line label sits at the number's baseline, not its cap */
+    .top-svc-mid[data-num="02"] .top-service-en {
+      max-width: none;
+      white-space: nowrap;
+      align-self: flex-end;
+      padding-top: 0;
+      padding-bottom: 0.1em;
     }
     .top-service-name-row {
       display: flex;
@@ -877,44 +881,55 @@
     }
     .top-service-name {
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      font-size: clamp(15px, 1vw + 11px, 18px);
+      font-size: calc(var(--svc-w) * 0.015);
       font-weight: 700;
       color: #111114;
-      line-height: 1.55;
+      line-height: 1.38;
       letter-spacing: 0.02em;
       margin: 0;
+      white-space: pre-line;
     }
     .top-svc-hero .top-service-name {
-      font-size: clamp(24px, 2.1vw, 34px);
-      line-height: 1.45;
-      font-weight: 700;
+      font-size: calc(var(--svc-w) * 0.018);
+      line-height: 1.4;
     }
     .top-svc-mid .top-service-name {
-      font-size: clamp(16px, 1.15vw + 11px, 20px);
+      font-size: calc(var(--svc-w) * 0.0138);
+      font-weight: 600;
+      line-height: 1.36;
+    }
+    .top-svc-low .top-service-name {
+      font-size: calc(var(--svc-w) * 0.0115);
+      font-weight: 600;
+      line-height: 1.34;
     }
     .top-service-price {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--svc-blue);
-      margin: 0;
+      display: none;
     }
     .top-service-desc {
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      font-size: 13px;
+      font-size: calc(var(--svc-w) * 0.0102);
       font-weight: 400;
       color: #2e3136;
-      line-height: 1.85;
+      line-height: 1.55;
       margin: 0;
+      white-space: pre-line;
     }
     .top-svc-hero .top-service-desc {
-      font-size: 14px;
-      line-height: 1.9;
+      line-height: 1.68;
+    }
+    .top-svc-mid .top-service-desc {
+      font-size: calc(var(--svc-w) * 0.0098);
+      line-height: 1.5;
+    }
+    .top-svc-low .top-service-desc {
+      font-size: calc(var(--svc-w) * 0.0085);
+      line-height: 1.42;
     }
     .top-service-more {
-      margin-top: 2px;
+      margin-top: 0;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 11px;
+      font-size: calc(var(--svc-w) * 0.0082);
       font-weight: 500;
       letter-spacing: 0.08em;
       color: var(--svc-blue);
@@ -957,32 +972,49 @@
       transform: translateX(5px);
     }
     .top-media-section {
-      padding: 160px 0 180px;
+      padding: 120px 0 40px;
       background: #ffffff;
       border-top: 0;
     }
+    .top-media-inner {
+      width: min(1400px, calc(100% - 48px));
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .top-media-layout {
       display: grid;
-      grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.7fr) minmax(240px, 0.75fr);
-      gap: 48px 64px;
-      align-items: stretch;
+      grid-template-columns: minmax(280px, 0.54fr) minmax(0, 1fr) minmax(0, 1fr) minmax(150px, 0.5fr);
+      gap: 28px 48px;
+      align-items: start;
     }
     .top-media-head {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 0;
+      margin-left: -20px;
+      padding-right: 24px;
       gap: 0;
+      position: relative;
+      z-index: 5;
+      overflow: visible;
+      min-width: 0;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      transform: none !important;
     }
     .top-media-section .top-media-kicker {
       display: block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(52px, 5.6vw, 76px);
+      font-size: clamp(48px, 5vw, 72px);
       font-weight: 700;
       letter-spacing: 0.02em;
       line-height: 1;
       color: #111318;
       margin: 0 0 18px;
+      white-space: nowrap;
+      position: relative;
+      z-index: 5;
     }
     .top-media-section .top-media-kicker::after { content: none; width: 0; height: 0; }
     .top-media-lead {
@@ -1016,6 +1048,8 @@
       padding: 0;
       min-width: 0;
       overflow: visible;
+      position: relative;
+      z-index: 1;
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
     }
     .top-media-thumb {
@@ -1385,18 +1419,18 @@
     .hero-shape--back {
       top: 0;
       right: 0;
-      width: 54%;
+      width: 62%;
       height: 100%;
       background: #f2f7fb;
-      clip-path: polygon(20% 0, 100% 0, 100% 100%, 2% 100%);
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
     }
     .hero-shape--mid {
       top: 0;
       right: 0;
-      width: 50%;
+      width: 58%;
       height: 100%;
       background: linear-gradient(108deg, rgba(198, 222, 238, 0.28) 0%, rgba(198, 222, 238, 0.16) 42%, transparent 68%);
-      clip-path: polygon(14% 0, 24% 0, 10% 100%, 0 100%);
+      clip-path: polygon(12% 0, 22% 0, 8% 100%, 0 100%);
     }
     .ui-atm {
       position: relative;
@@ -1444,7 +1478,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(380px, 0.9fr) minmax(0, 1.3fr);
+      grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
       align-items: stretch;
       gap: 0;
       width: 100%;
@@ -1463,7 +1497,7 @@
       max-width: none;
       width: 100%;
       margin: 0;
-      padding: clamp(16px, 4.5vh, 56px) 8px clamp(32px, 6vh, 72px) 8px;
+      padding: clamp(12px, 4vh, 48px) 0 clamp(20px, 5vh, 56px) 0;
       animation: none;
     }
     .hero-copy-main {
@@ -1471,8 +1505,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-left: 36px;
-      padding-left: 34px;
+      margin-left: clamp(8px, 1.8vw, 32px);
+      padding-left: clamp(18px, 2.2vw, 34px);
+      max-width: 100%;
     }
     .hero-rail {
       position: absolute;
@@ -1745,14 +1780,14 @@
       animation: heroFade 0.7s ease both;
     }
     .hero-title {
-      margin: 0 0 16px;
-      max-width: none;
+      margin: 0 0 clamp(10px, 1.4vh, 16px);
+      max-width: 100%;
       text-align: left;
       font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-      font-size: clamp(28px, 3.4vw, 52px);
+      font-size: clamp(22px, 2.55vw, 46px);
       font-weight: 900;
-      line-height: 1.16;
-      letter-spacing: 0.03em;
+      line-height: 1.18;
+      letter-spacing: 0.02em;
       color: #111318;
     }
     .hero-title span { display: block; overflow: visible; white-space: nowrap; }
@@ -1770,17 +1805,17 @@
       height: 100%;
       overflow: hidden;
       background: #cfe6f6;
-      clip-path: polygon(11% 0, 100% 0, 100% 62%, 50% 100%, 0 100%);
+      clip-path: polygon(13% 0, 100% 0, 100% 56%, 46% 100%, 0 100%);
     }
     .hero-photo img {
       position: absolute;
       top: 0;
-      left: 4%;
-      width: 96%;
+      left: 0;
+      width: 100%;
       height: 100%;
       max-width: none;
       object-fit: cover;
-      object-position: 20% 28%;
+      object-position: 22% 24%;
       display: block;
     }
     .hero-photo::after {
@@ -1795,8 +1830,8 @@
       position: absolute;
       right: -1px;
       bottom: -1px;
-      width: 50%;
-      height: 40%;
+      width: 52%;
+      height: 38%;
       background: #ffffff;
       clip-path: polygon(100% 0, 100% 100%, 0 100%);
       z-index: 2;
@@ -1804,10 +1839,10 @@
     }
     .hero-script {
       position: absolute;
-      top: 6.5%;
-      right: 11%;
+      top: 5.5%;
+      right: 9%;
       z-index: 5;
-      width: min(22vw, 255px);
+      width: min(20vw, 240px);
       max-width: none;
       height: auto;
       margin: 0;
@@ -1816,13 +1851,13 @@
     }
     .hero-slogan {
       position: absolute;
-      right: 3.2%;
-      top: 17%;
+      right: 2.4%;
+      top: 15%;
       z-index: 3;
       margin: 0;
       writing-mode: vertical-rl;
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px;
+      font-size: clamp(10px, 0.85vw, 13px);
       font-weight: 500;
       letter-spacing: 0.32em;
       color: #2c333a;
@@ -1832,12 +1867,12 @@
     }
     .hero-aside {
       position: absolute;
-      right: 9%;
-      top: 56%;
+      right: 7.5%;
+      top: 54%;
       z-index: 3;
       margin: 0;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 9px;
+      font-size: clamp(7px, 0.6vw, 9px);
       font-weight: 600;
       letter-spacing: 0.18em;
       line-height: 1.6;
@@ -1847,12 +1882,12 @@
     }
     .hero-pager {
       position: absolute;
-      right: 2.5%;
-      bottom: 5.5%;
+      right: 2%;
+      bottom: 5%;
       z-index: 4;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: clamp(8px, 1vw, 14px);
       pointer-events: none;
     }
     .hero-pager-num {
@@ -1887,11 +1922,11 @@
       border: 0;
     }
     @media (min-width: 1200px) {
-      .hero-title { font-size: clamp(40px, 3.5vw, 54px); }
+      .hero-title { font-size: clamp(36px, 2.7vw, 48px); }
     }
     @media (min-width: 1600px) {
-      .hero-photo img { left: 6%; width: 94%; object-position: 18% 32%; }
-      .hero-script { width: min(19vw, 248px); top: 7%; right: 12%; }
+      .hero-photo img { object-position: 20% 26%; }
+      .hero-script { width: min(18vw, 248px); top: 6%; right: 10%; }
       .top-contact-section { height: 640px; }
       .top-contact-title { font-size: 80px; }
       .top-contact-copy { left: 64%; top: 24%; max-width: min(560px, 34vw); }
@@ -1907,8 +1942,15 @@
       clip-path: none !important;
       -webkit-clip-path: none !important;
     }
-    html.js-motion .hero-copy,
+    html.js-motion .hero-copy-main,
+    html.js-motion .hero-visual,
+    html.js-motion .hero-anim-deco { animation: none !important; }
     html.js-motion .top-reveal { animation: none !important; }
+    html:not(.js-motion) .hero-copy-main { animation: heroCopyIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    html:not(.js-motion) .hero-visual { animation: heroVisualIn 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+    html:not(.js-motion) .hero-script { animation: heroFloat 7s ease-in-out infinite; }
+    html:not(.js-motion) .hero-slogan { animation: heroFloatAlt 8s ease-in-out 0.5s infinite; }
+    html:not(.js-motion) .hero-pager { animation: heroFloat 9s ease-in-out 1s infinite; }
     html.js-motion .top-media-card:hover .top-media-thumb img,
     html.js-motion .top-service-card:hover .top-service-visual img { transform: none; }
     html.js-motion #hero,
@@ -1930,14 +1972,14 @@
     .hero-lead {
       position: relative;
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: clamp(16px, 1.05vw + 13px, 22px);
+      font-size: clamp(12px, 0.9vw + 10px, 20px);
       font-weight: 700;
-      line-height: 1.7;
+      line-height: 1.65;
       color: #111318;
-      margin: 2px 0 28px;
-      max-width: 22em;
+      margin: 2px 0 clamp(14px, 2vh, 24px);
+      max-width: 18em;
       text-align: left;
-      padding-left: 18px;
+      padding-left: clamp(12px, 1.2vw, 18px);
     }
     .hero-lead::before {
       content: "";
@@ -1977,7 +2019,7 @@
       }
       .top-svc-hero .top-service-vert { display: none; }
       .top-svc-hero .top-service-visual {
-        padding-bottom: 28px;
+        padding-bottom: 36px;
       }
       .top-svc-hero .top-service-visual::before {
         left: 6%;
@@ -1985,19 +2027,23 @@
         top: -8%;
         bottom: 8%;
       }
-      .top-svc-hero .top-service-visual-clip {
-        height: auto;
-        min-height: 0;
-      }
       .top-svc-hero .top-service-script {
-        left: 0;
-        bottom: 4%;
+        left: 8%;
+        bottom: 22%;
+        font-size: 22px;
       }
-      .top-svc-pair,
-      .top-svc-trio {
+      .top-svc-pair {
         grid-template-columns: minmax(0, 1fr);
         gap: 56px;
         margin-top: 56px;
+      }
+      .top-svc-trio {
+        flex-direction: column;
+        gap: 48px;
+        margin-top: 56px;
+      }
+      .top-svc-trio > .top-svc-low {
+        max-width: none;
       }
       .top-svc-mid[data-num="02"],
       .top-svc-mid[data-num="03"],
@@ -2013,9 +2059,23 @@
         gap: 12px;
       }
       .top-svc-mid .top-service-visual-clip,
-      .top-svc-low .top-service-visual-clip { height: auto; }
+      .top-svc-low .top-service-visual-clip { height: auto; aspect-ratio: 16 / 10; }
+      .top-svc-hero .top-service-visual-clip { aspect-ratio: 16 / 10; }
       .top-svc-low .top-service-kicker { margin: 0; }
+      .top-svc-low .top-service-body { padding-top: 0; gap: 14px; }
       .top-svc-low[data-num="06"] .top-service-body { align-self: start; }
+      /* below 960 the fluid --svc-w sizes would shrink too far, so pin them */
+      .top-service-en { max-width: 14em; font-size: 11px; }
+      .top-svc-hero .top-service-idx { font-size: 56px; }
+      .top-svc-mid .top-service-idx,
+      .top-svc-low .top-service-idx { font-size: 46px; }
+      .top-svc-hero .top-service-name { font-size: 26px; }
+      .top-service-name,
+      .top-svc-low .top-service-name { font-size: 21px; }
+      .top-service-desc,
+      .top-svc-low .top-service-desc { font-size: 14px; line-height: 1.75; }
+      .top-service-more { font-size: 12px; }
+      .top-svc-hero-copy { padding-top: 0; gap: 20px; }
       .top-service-head {
         flex-direction: row;
         flex-wrap: wrap;
@@ -2026,11 +2086,15 @@
       .top-service-lead { max-width: none; margin-top: 0; text-align: left; }
       .top-service-body { padding: 0 !important; }
       .top-media-layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 32px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 24px 20px;
       }
-      .top-media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-      .top-media-grid > .top-media-card:last-child { margin-top: 0; }
+      .top-media-head {
+        grid-column: 1 / -1;
+        margin-left: 0;
+        padding-right: 0;
+      }
+      .top-media-aside { grid-column: 1 / -1; }
       .top-media-aside {
         border-left: 0;
         border-top: 1px solid #D5DCE3;
@@ -2060,47 +2124,52 @@
       .top-contact-script { font-size: 22px; top: 18%; }
       .top-contact-cta { top: 66%; width: 236px; height: 64px; }
       .top-hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        min-height: 0;
-        padding-top: 12px;
-        padding-bottom: 56px;
-        padding-right: var(--page-gutter-r) !important;
-        gap: 28px;
+        grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+        min-height: clamp(420px, 72svh, 640px);
+        padding-top: 8px;
+        padding-bottom: 20px;
+        padding-right: 0 !important;
+        gap: 0;
       }
       .hero-copy {
         display: block;
-        align-self: stretch;
-        padding-left: 0;
-        padding-top: 24px;
-        padding-bottom: 28px;
+        align-self: center;
+        padding: 8px 0 12px;
         max-width: none;
       }
-      .hero-copy-main { width: 100%; padding-left: 0; margin-left: 0; }
-      .hero-title span { white-space: normal; }
+      .hero-copy-main { width: 100%; padding-left: clamp(10px, 1.5vw, 18px); margin-left: 0; }
+      .hero-title { font-size: clamp(18px, 2.8vw, 32px); line-height: 1.2; }
+      .hero-title span { white-space: nowrap; }
       .hero-kicker {
-        position: static;
-        writing-mode: horizontal-tb;
-        white-space: normal;
-        margin-bottom: 16px;
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        line-height: 1.5;
+        position: absolute;
+        left: 0;
+        top: 4px;
+        writing-mode: vertical-rl;
+        white-space: nowrap;
+        font-size: 7px;
+        letter-spacing: 0.14em;
+        line-height: 1;
       }
-      .hero-cta { align-self: flex-start; margin-left: 0; transform: none; }
+      .hero-lead { font-size: clamp(10px, 1.6vw, 15px); margin-bottom: 12px; max-width: 100%; }
+      .hero-cta { align-self: flex-start; margin-left: 0; transform: none; gap: 12px; font-size: 12px; }
+      .hero-cta-orb { width: 42px; height: 42px; flex: 0 0 42px; }
       .hero-rail { display: none; }
       .hero-visual {
-        height: min(64vw, 520px) !important;
-        min-height: 320px !important;
+        height: auto !important;
+        min-height: clamp(300px, 58svh, 560px) !important;
+        align-self: stretch;
       }
       .hero-photo {
         width: 100%;
-        clip-path: polygon(10% 0, 100% 0, 100% 78%, 68% 100%, 0 100%);
+        clip-path: polygon(12% 0, 100% 0, 100% 60%, 50% 100%, 0 100%);
       }
-      .hero-photo img { left: 2%; width: 98%; object-position: 22% 24%; }
-      .hero-script { width: min(36vw, 220px); top: 4%; right: 4%; }
-      .hero-slogan { right: 3%; top: 14%; font-size: 12px; }
-      .hero-aside { right: 6%; top: 52%; }
-      .top-media-section { padding: 96px 0 110px; }
+      .hero-photo img { left: 0; width: 100%; object-position: 24% 22%; }
+      .hero-script { width: min(28vw, 180px); top: 4%; right: 5%; }
+      .hero-slogan { right: 2%; top: 12%; font-size: clamp(8px, 1.2vw, 11px); }
+      .hero-aside { right: 5%; top: 50%; font-size: 7px; }
+      .hero-pager-num { font-size: 16px; }
+      .hero-pager-line { width: min(12vw, 100px); }
+      .top-media-section { padding: 96px 0 36px; }
       .top-service-section { padding: 96px 0 56px; }
       .top-numbers-section { padding: 40px 0 96px; }
       .top-numbers-inner {
@@ -2163,9 +2232,26 @@
     @media (max-width: 720px) {
       .hero-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
       .hero-cta { width: auto; max-width: none; }
-      .top-hero-inner { padding-top: 8px; padding-bottom: 40px; }
+      .top-hero-inner {
+        grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+        min-height: clamp(360px, 68svh, 520px);
+        padding-top: 6px;
+        padding-bottom: 16px;
+      }
+      .hero-title { font-size: clamp(14px, 3.6vw, 24px); }
+      .hero-lead { font-size: clamp(9px, 2.2vw, 13px); margin-bottom: 10px; }
+      .hero-cta { gap: 8px; font-size: 10px; }
+      .hero-cta-orb { width: 34px; height: 34px; flex: 0 0 34px; }
+      .hero-cta-orb svg { width: 14px; height: 14px; }
+      .hero-kicker { display: none; }
+      .hero-visual { min-height: clamp(260px, 54svh, 460px) !important; }
+      .hero-script { width: min(32vw, 140px); top: 3%; right: 3%; }
+      .hero-slogan { font-size: 8px; letter-spacing: 0.22em; }
+      .hero-aside { display: none; }
+      .hero-pager-num { font-size: 14px; }
+      .hero-pager-line { width: min(10vw, 72px); }
       .top-news-section { padding: 56px 0 72px !important; }
-      .top-media-section { padding: 72px 0 80px; }
+      .top-media-section { padding: 72px 0 32px; }
       .top-service-section { padding: 72px 0 40px; }
       .top-numbers-section { padding: 32px 0 72px; }
       .top-about-section { padding: 56px 0 72px; }
@@ -2187,14 +2273,28 @@
         --page-gutter-l: max(18px, env(safe-area-inset-left));
         --page-gutter-r: max(18px, env(safe-area-inset-right));
       }
-      .top-hero-inner { padding-top: 4px !important; padding-bottom: 36px !important; }
+      .top-hero-inner {
+        grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+        min-height: clamp(300px, 62svh, 440px);
+        padding-top: 4px !important;
+        padding-bottom: 12px !important;
+      }
       #hero { min-height: 0; }
-      .hero-title { font-size: clamp(28px, 8vw, 40px) !important; }
-      .hero-visual { height: min(78vw, 420px) !important; min-height: 260px !important; }
+      .hero-copy { padding: 4px 0 8px; }
+      .hero-copy-main { padding-left: 6px; }
+      .hero-title { font-size: clamp(12px, 4.2vw, 20px) !important; line-height: 1.22; }
+      .hero-lead { font-size: clamp(8px, 2.6vw, 11px); margin-bottom: 8px; padding-left: 8px; }
+      .hero-cta { gap: 6px; font-size: 9px; }
+      .hero-cta-orb { width: 28px; height: 28px; flex: 0 0 28px; }
+      .hero-cta-orb svg { width: 12px; height: 12px; }
+      .hero-visual { min-height: clamp(220px, 50svh, 380px) !important; height: auto !important; }
       .hero-vert { display: none; }
-      .hero-slogan,
+      .hero-slogan { display: none; }
       .hero-aside { display: none; }
-      .hero-script { width: min(42vw, 200px); right: 3%; top: 3%; }
+      .hero-script { width: min(36vw, 110px); right: 2%; top: 2%; }
+      .hero-pager { bottom: 3%; gap: 6px; }
+      .hero-pager-num { font-size: 12px; }
+      .hero-pager-line { width: min(14vw, 56px); }
       .top-header { padding-top: env(safe-area-inset-top); }
       .top-header-inner { min-height: 64px; flex-wrap: nowrap !important; }
       .top-header-nav { gap: 10px !important; }
@@ -2224,14 +2324,20 @@
       .hero-pill:nth-child(5) { grid-column: auto; max-width: calc(50% - 6px); justify-self: auto; width: auto; }
       .hero-cta { width: auto; max-width: none; }
       .top-contact-cta { width: 236px; height: 64px; }
-      .top-media-grid { grid-template-columns: minmax(0, 1fr); }
       .top-service-card { padding: 0 !important; }
       .top-media-card { padding: 0 !important; }
       .top-service-body { padding: 0 !important; }
       .top-media-title { font-size: 18px; }
       .top-news-lead { font-size: 15px; }
-      .top-service-name { font-size: 20px; }
-      .top-media-section { padding: 64px 0 72px; }
+      .top-svc-hero .top-service-name { font-size: 22px; }
+      .top-service-name,
+      .top-svc-low .top-service-name { font-size: 18px; }
+      .top-svc-hero .top-service-idx { font-size: 48px; }
+      .top-svc-mid .top-service-idx,
+      .top-svc-low .top-service-idx { font-size: 40px; }
+      .top-service-desc,
+      .top-svc-low .top-service-desc { font-size: 13px; }
+      .top-media-section { padding: 64px 0 28px; }
       .top-service-section { padding: 64px 0 32px; }
       .top-numbers-section { padding: 24px 0 64px; }
       .top-about-section { padding: 48px 0 64px; }
@@ -2252,7 +2358,7 @@
       .top-news-row:hover { color: #111318 !important; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hero-copy, .top-reveal { animation: none; }
+      .hero-copy, .hero-copy-main, .hero-visual, .hero-script, .hero-slogan, .hero-pager, .top-reveal { animation: none !important; }
       .top-service-visual img, .top-media-thumb img, .top-news-arrow, .hero-pill { transition: none; }
       .hero-pill:hover { transform: none; }
     }
@@ -2311,36 +2417,34 @@
           <img src="assets/hero-woman.jpg" alt="">
         </div>
         <span class="hero-cut" aria-hidden="true"></span>
-        <img class="hero-script" src="assets/hero-create-standard.png" alt="" aria-hidden="true">
-        <p class="hero-slogan" aria-hidden="true">伝わるから、世界は動く。</p>
-        <p class="hero-aside" aria-hidden="true">PEOPLE<br>BRANDS<br>SOCIETY<br>A BRIGHTER<br>TOMORROW.</p>
-        <div class="hero-pager" aria-hidden="true"><span class="hero-pager-num">01</span><span class="hero-pager-line"></span></div>
+        <img class="hero-script hero-anim-deco" src="assets/hero-create-standard.png" alt="" aria-hidden="true">
+        <p class="hero-slogan hero-anim-deco" aria-hidden="true">伝わるから、世界は動く。</p>
+        <p class="hero-aside hero-anim-deco" aria-hidden="true">PEOPLE<br>BRANDS<br>SOCIETY<br>A BRIGHTER<br>TOMORROW.</p>
+        <div class="hero-pager hero-anim-deco" aria-hidden="true"><span class="hero-pager-num">01</span><span class="hero-pager-line"></span></div>
       </div>
     </div>
   </section>
   </div>
 
   <section id="media" class="top-media-section top-reveal">
-    <div class="top-section top-wide-section top-media-layout">
+    <div class="top-media-inner top-media-layout">
     <div class="top-media-head">
       <h2 class="top-media-kicker">MEDIA</h2>
       <p class="top-media-lead">メディア掲載実績</p>
       <a href="#media" class="top-media-all">VIEW ALL <span aria-hidden="true">→</span></a>
     </div>
-    <div class="top-media-grid">
-      <sc-for list="{{mediaItems}}" as="m" hint-placeholder-count="2">
-        <a href="{{m.href}}" target="{{m.target}}" class="top-media-card">
-          <div class="top-media-thumb">
-            <img src="{{m.imageSrc}}" alt="{{m.title}}">
-          </div>
-          <span class="top-media-label">MEDIA</span>
-          <div class="top-media-date">{{m.date}}</div>
-          <div class="top-media-title">{{m.title}}</div>
-        </a>
-      </sc-for>
-    </div>
+    <sc-for list="{{mediaItems}}" as="m" hint-placeholder-count="2">
+      <a href="{{m.href}}" target="{{m.target}}" class="top-media-card">
+        <div class="top-media-thumb">
+          <img src="{{m.imageSrc}}" alt="{{m.title}}">
+        </div>
+        <span class="top-media-label">MEDIA</span>
+        <div class="top-media-date">{{m.date}}</div>
+        <div class="top-media-title">{{m.title}}</div>
+      </a>
+    </sc-for>
     <div class="top-media-aside">
-      <p class="top-media-copy">私たちの<br>取り組みが<br>さまざまなメディアで<br>紹介されています。</p>
+      <p class="top-media-copy">私たちの取り組みが<br>さまざまなメディアで紹介されています。</p>
       <div class="top-media-tools" aria-hidden="true">
         <span class="top-media-arrows"><span>←</span><span>→</span></span>
         <span class="top-media-rule"></span>
@@ -2372,9 +2476,9 @@
           <div class="top-service-visual-clip">
             <img src="{{s.imageSrc}}" alt="{{s.name}}">
           </div>
-          <span class="top-service-script" aria-hidden="true">Fans Create the Future.</span>
+          <span class="top-service-script" aria-hidden="true">Fans Create<br>the Future.</span>
         </div>
-        <p class="top-service-vert" aria-hidden="true">働くを、<br>もっと好きに。</p>
+        <p class="top-service-vert" aria-hidden="true">働くを、もっと好きに。</p>
       </a>
     </sc-for>
     <div class="top-svc-pair">
@@ -2590,12 +2694,12 @@ SOCIETY</p>
 class Component extends DCLogic {
   renderVals() {
     var services = [
-        { num: '01', en: 'FAN STEP RECRUITING', category: '採用ブランディング', name: 'ファンステップ採用【動画SNS採用】', catch: '採用は、「集める」から「好きになってもらう」へ。', desc: 'LINE×動画×SNSで「ここで働きたい」を育てる採用へ。', href: 'fanstep.html', target: '_self', imageSrc: 'assets/service-fanstep.jpg' },
-        { num: '02', en: 'KITABUZZ', category: 'インフルエンサーエージェンシー', name: 'キタバズ【北海道特化型 地域創生インフルエンサー事務所】', catch: '北海道の可能性を、もっと大きく。', desc: '北海道特化インフルエンサーエージェンシー。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz.jpg' },
-        { num: '03', en: 'AI × WEB CREATE', category: 'Web制作', name: 'Webサイト制作・リース', catch: 'AIで、つくるをもっと自由に。', desc: 'AI自動制作システムによるHP制作。', price: '¥4,980/月〜', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-web.jpg' },
-        { num: '04', en: 'EXPLAINER ANIMATION VIDEO', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', catch: '複雑なことを、シンプルに伝える。', desc: '説明特化型アニメ動画ブランド。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-anime.jpg' },
-        { num: '05', en: 'CREATIVE & MARKETING', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', catch: '戦略×クリエイティブで、成果を最大化。', desc: 'アニメ・実写・SNS動画など、動画制作からマーケティングまでを横断。', href: 'creative-marketing.html', target: '_self', imageSrc: 'assets/service-creative.jpg' },
-        { num: '06', en: 'FASHION APPAREL', category: 'アパレル', name: 'アパレル', catch: '好きなものを、もっと自由に。', desc: 'アパレル事業。自社ブランドのほか、OEMによる制作も対応しています。', href: 'apparel.html', target: '_self', imageSrc: 'assets/service-apparel.jpg' }
+        { num: '01', en: 'FAN STEP\nRECRUITING', category: '採用ブランディング', name: 'ファンステップ採用【動画SNS採用】', catch: '採用は、\n「集める」から\n「好きになってもらう」へ。', desc: 'LINE × 動画 × SNSで\n「ここで働きたい」を育てる採用。\n応募の前から、企業のファンをつくる\n新しい採用モデルです。', href: 'fanstep.html', target: '_self', imageSrc: 'assets/service-fanstep-photo.jpg' },
+        { num: '02', en: 'KITABUZZ', category: 'インフルエンサーエージェンシー', name: 'キタバズ【北海道特化型 地域創生インフルエンサー事務所】', catch: '北海道の可能性を、\nもっと大きく。', desc: '北海道の企業・店舗と\nインフルエンサーをつなぐ\n北海道特化型マーケティング。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz-photo.jpg' },
+        { num: '03', en: 'AI × WEB\nCREATE', category: 'Web制作', name: 'Webサイト制作・リース', catch: 'AIで、\nつくるをもっと自由に。', desc: 'AIを活用したWebサイト制作・\nシステム開発・業務効率化を実現。', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-aiweb-photo.jpg' },
+        { num: '04', en: 'EXPLAINER\nANIMATION VIDEO', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', catch: '複雑なことを、\nシンプルに伝える。', desc: '伝わりやすく、心を動かす\n採用用アニメーション動画。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-animation-photo.jpg' },
+        { num: '05', en: 'CREATIVE &\nMARKETING', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', catch: '戦略×クリエイティブで、\n成果を最大化。', desc: '動画・SNS・広告・デザインで、\n企業の魅力を引き出します。', href: 'creative-marketing.html', target: '_self', imageSrc: 'assets/service-creative-photo.jpg' },
+        { num: '06', en: 'FASHION\nAPPAREL', category: 'アパレル', name: 'アパレル', catch: '好きなものを、\nもっと自由に。', desc: '企画・デザインから倉庫・販売まで\nトータルでサポート。', href: 'apparel.html', target: '_self', imageSrc: 'assets/service-apparel-photo.jpg' }
     ];
     return {
       mediaItems: [
