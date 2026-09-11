@@ -108,7 +108,84 @@
     })();
   }
 
+  function formatCountValue(value, decimal) {
+    if (decimal) return value.toFixed(1);
+    return String(Math.round(value));
+  }
+
+  function initNumbersCountUp() {
+    var section = document.getElementById("numbers");
+    if (!section) return;
+
+    var nums = section.querySelectorAll(".top-numbers-num");
+    if (!nums.length) return;
+
+    var items = [];
+    nums.forEach(function (el) {
+      var value = parseFloat(el.getAttribute("data-value"), 10);
+      if (isNaN(value)) return;
+      var decimal = el.getAttribute("data-decimal") === "1";
+      items.push({ el: el, value: value, decimal: decimal });
+      if (reduced) {
+        el.textContent = formatCountValue(value, decimal);
+      } else {
+        el.textContent = decimal ? "0.0" : "0";
+      }
+    });
+
+    if (reduced || !items.length) return;
+
+    var started = false;
+    var duration = 1750;
+
+    function runCountUp() {
+      if (started) return;
+      started = true;
+      var startTime = null;
+
+      function frame(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+
+        items.forEach(function (item) {
+          var current = item.value * eased;
+          item.el.textContent = formatCountValue(current, item.decimal);
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          items.forEach(function (item) {
+            item.el.textContent = formatCountValue(item.value, item.decimal);
+          });
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      runCountUp();
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          runCountUp();
+          observer.disconnect();
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(section);
+  }
+
   function boot() {
+    initNumbersCountUp();
     waitForScene(function () {
       waitForHeroLottie(function () {
         waitForContactLottie(function () {
