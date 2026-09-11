@@ -614,7 +614,7 @@
        The photo keeps its right edge and loses width off its left side, so the
        script line has white space to sit in before it crosses the photo. */
     .top-svc-hero {
-      grid-template-columns: 43% 40% minmax(0, 1fr);
+      grid-template-columns: 40% 46% minmax(0, 1fr);
       column-gap: 1.2%;
       align-items: start;
       width: 100%;
@@ -628,8 +628,8 @@
     }
     .top-svc-hero .top-service-kicker {
       flex-wrap: nowrap;
-      align-items: flex-start;
-      gap: 6px 10px;
+      align-items: center;
+      gap: 0 12px;
     }
 
     .top-svc-pair {
@@ -702,7 +702,7 @@
       content: none;
       display: none;
     }
-    /* 02–06 tilt down to the right; 01 tilts up to the right (per the mock) */
+    /* 02–06: subtle diagonal cuts per the mock (not plain rectangles) */
     .top-service-visual-clip {
       position: relative;
       z-index: 1;
@@ -710,8 +710,28 @@
       width: 100%;
       height: auto;
       background: transparent;
-      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
-      -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 92%);
+      -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 92%);
+    }
+    .top-svc-mid[data-num="02"] .top-service-visual-clip {
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 80%);
+      -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 80%);
+    }
+    .top-svc-mid[data-num="03"] .top-service-visual-clip {
+      clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+      -webkit-clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .top-svc-low[data-num="04"] .top-service-visual-clip {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 70%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 70%);
+    }
+    .top-svc-low[data-num="05"] .top-service-visual-clip {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 74%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 74%);
+    }
+    .top-svc-low[data-num="06"] .top-service-visual-clip {
+      clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
+      -webkit-clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
     }
     .top-svc-hero .top-service-visual-clip {
       min-height: 0;
@@ -739,10 +759,12 @@
     .top-svc-hero .top-service-visual img {
       position: relative;
       inset: auto;
-      width: 100%;
+      width: 108%;
+      max-width: 108%;
       height: auto;
       object-fit: contain;
       object-position: center;
+      margin-left: -2%;
     }
     .top-svc-mid[data-num="02"] .top-service-visual img { object-position: center 40%; }
     .top-svc-mid[data-num="03"] .top-service-visual img { object-position: 52% center; }
@@ -764,7 +786,7 @@
       display: block;
       position: absolute;
       top: calc(var(--svc-w) * 0.022);
-      left: calc(43% + 1.2% + 40% + 0.35%);
+      left: calc(40% + 1.2% + 46% + 0.35%);
       margin: 0;
       padding: 0;
       writing-mode: vertical-rl;
@@ -799,8 +821,8 @@
     }
     .top-service-kicker {
       display: flex;
-      align-items: flex-start;
-      gap: 2px 8px;
+      align-items: center;
+      gap: 0 12px;
       margin: 0;
       flex-wrap: nowrap;
       z-index: 2;
@@ -843,7 +865,8 @@
       letter-spacing: 0.045em;
       color: #3A5F8F;
       line-height: 1.18;
-      padding-top: 0.2em;
+      padding: 0;
+      align-self: center;
       white-space: pre-line;
       word-break: keep-all;
       overflow-wrap: normal;
@@ -855,13 +878,9 @@
     .top-svc-low .top-service-en {
       font-size: calc(var(--svc-w) * 0.0104);
     }
-    /* 02's single-line label sits against the number's upper half, as in the mock */
     .top-svc-mid[data-num="02"] .top-service-en {
       max-width: none;
       white-space: nowrap;
-      align-self: flex-start;
-      padding-top: 0.28em;
-      padding-bottom: 0;
     }
     .top-service-name-row {
       display: flex;
@@ -881,8 +900,8 @@
       white-space: pre-line;
     }
     .top-svc-hero .top-service-name {
-      font-size: calc(var(--svc-w) * 0.018);
-      line-height: 1.4;
+      font-size: calc(var(--svc-w) * 0.0235);
+      line-height: 1.32;
     }
     .top-svc-mid .top-service-name {
       font-size: calc(var(--svc-w) * 0.0138);
@@ -974,8 +993,8 @@
     }
     .top-media-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 0.54fr) minmax(0, 1fr) minmax(0, 1fr) minmax(150px, 0.5fr);
-      gap: 28px 48px;
+      grid-template-columns: minmax(0, max-content) minmax(0, 1fr) minmax(0, 1fr) max-content;
+      gap: 28px 40px;
       align-items: start;
     }
     .top-media-head {
@@ -1109,6 +1128,7 @@
       line-height: 2.05;
       letter-spacing: 0.06em;
       margin: 0;
+      white-space: nowrap;
     }
     .top-media-tools {
       display: flex;
@@ -2088,7 +2108,7 @@
       .top-svc-hero .top-service-idx { font-size: 80px; }
       .top-svc-mid .top-service-idx,
       .top-svc-low .top-service-idx { font-size: 68px; }
-      .top-svc-hero .top-service-name { font-size: 26px; }
+      .top-svc-hero .top-service-name { font-size: 30px; line-height: 1.32; }
       .top-service-name,
       .top-svc-low .top-service-name { font-size: 21px; }
       .top-service-desc,
@@ -2312,7 +2332,7 @@
       .top-service-body { padding: 0 !important; }
       .top-media-title { font-size: 18px; }
       .top-news-lead { font-size: 15px; }
-      .top-svc-hero .top-service-name { font-size: 22px; }
+      .top-svc-hero .top-service-name { font-size: 26px; line-height: 1.32; }
       .top-service-name,
       .top-svc-low .top-service-name { font-size: 18px; }
       .top-svc-hero .top-service-idx { font-size: 64px; }
@@ -2341,10 +2361,16 @@
     @media (min-width: 961px) and (max-width: 1199px) {
       .top-hero-shell { min-height: 0; }
       .top-media-layout {
-        grid-template-columns: minmax(0, 0.46fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.42fr);
+        grid-template-columns: minmax(0, max-content) minmax(0, 1fr) minmax(0, 1fr);
         gap: 24px 28px;
       }
       .top-media-head { margin-left: 0; padding-right: 8px; }
+      .top-media-aside {
+        grid-column: 1 / -1;
+        border-left: 0;
+        border-top: 1px solid #D5DCE3;
+        padding: 20px 0 0;
+      }
       .top-about-section { overflow: hidden; }
       .top-about-vert { left: auto; right: 0; }
       .top-service-section,
