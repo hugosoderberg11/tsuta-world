@@ -1844,19 +1844,21 @@
       right: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      background: #cfe6f6;
-      clip-path: polygon(13% 0, 100% 0, 100% 56%, 46% 100%, 0 100%);
+      overflow: visible;
+      background: transparent;
+      clip-path: none;
     }
     .hero-photo img {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      object-fit: cover;
-      object-position: 22% 24%;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      max-width: 118%;
+      max-height: 118%;
+      transform: translate(-50%, -50%) scale(1.12);
+      object-fit: contain;
+      object-position: center;
       display: block;
     }
     .hero-photo::after {
@@ -1892,15 +1894,16 @@
     }
     .hero-slogan {
       position: absolute;
-      right: 2.4%;
-      top: 15%;
-      z-index: 3;
+      right: 2%;
+      bottom: 9%;
+      top: auto;
+      z-index: 4;
       margin: 0;
-      writing-mode: vertical-rl;
+      writing-mode: horizontal-tb;
       font-family: 'Noto Sans JP', sans-serif;
-      font-size: clamp(11px, 0.95vw, 15px);
+      font-size: clamp(12px, 1.05vw, 16px);
       font-weight: 500;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.18em;
       color: #2c333a;
       line-height: 1;
       pointer-events: none;
@@ -1920,30 +1923,6 @@
       color: rgba(17, 19, 24, 0.7);
       pointer-events: none;
       white-space: nowrap;
-    }
-    .hero-pager {
-      position: absolute;
-      right: 2%;
-      bottom: 5%;
-      z-index: 4;
-      display: flex;
-      align-items: center;
-      gap: clamp(8px, 1vw, 14px);
-      pointer-events: none;
-    }
-    .hero-pager-num {
-      font-family: 'Barlow Condensed', 'Times New Roman', serif;
-      font-size: 26px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: #111318;
-      line-height: 1;
-    }
-    .hero-pager-line {
-      width: min(16vw, 168px);
-      height: 1px;
-      background: #111318;
-      opacity: 0.78;
     }
     .hero-pill-icon { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
     @media (hover: hover) and (pointer: fine) {
@@ -1966,7 +1945,7 @@
       .hero-title { font-size: clamp(46px, 3.6vw, 66px); }
     }
     @media (min-width: 1600px) {
-      .hero-photo img { object-position: 20% 26%; }
+      .hero-photo img { object-position: center; }
       .hero-script { width: min(18vw, 248px); top: 6%; right: 10%; }
       .top-contact-section { height: auto; }
       .top-contact-copy { left: auto; right: 18%; top: 24%; max-width: min(560px, 36vw); }
@@ -1989,7 +1968,6 @@
     html:not(.js-motion) .hero-visual { animation: heroVisualIn 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
     html:not(.js-motion) .hero-script { animation: heroFloat 7s ease-in-out infinite; }
     html:not(.js-motion) .hero-slogan { animation: heroFloatAlt 8s ease-in-out 0.5s infinite; }
-    html:not(.js-motion) .hero-pager { animation: heroFloat 9s ease-in-out 1s infinite; }
     html.js-motion .top-media-card:hover .top-media-thumb img,
     html.js-motion .top-service-card:hover .top-service-visual img { transform: none; }
     html.js-motion #hero,
@@ -2104,16 +2082,20 @@
       .top-svc-low .top-service-body { padding-top: 0; gap: 14px; }
       .top-svc-low[data-num="06"] .top-service-body { align-self: start; }
       /* below 960 the fluid --svc-w sizes would shrink too far, so pin them */
-      .top-service-en { max-width: 14em; font-size: 14px; line-height: 1.18; }
+      .top-service-en { max-width: 14em; font-size: 16px; line-height: 1.22; }
       .top-svc-hero .top-service-idx { font-size: 80px; }
       .top-svc-mid .top-service-idx,
-      .top-svc-low .top-service-idx { font-size: 68px; }
-      .top-svc-hero .top-service-name { font-size: 30px; line-height: 1.32; }
-      .top-service-name,
-      .top-svc-low .top-service-name { font-size: 21px; }
+      .top-svc-low .top-service-idx { font-size: 72px; }
+      .top-svc-hero .top-service-name { font-size: 32px; line-height: 1.32; }
+      .top-svc-mid .top-service-name { font-size: 24px; line-height: 1.36; }
+      .top-svc-low .top-service-name { font-size: 22px; line-height: 1.34; }
       .top-service-desc,
-      .top-svc-low .top-service-desc { font-size: 14px; line-height: 1.75; }
-      .top-service-more { font-size: 12px; }
+      .top-svc-mid .top-service-desc,
+      .top-svc-low .top-service-desc { font-size: 16px; line-height: 1.72; }
+      .top-service-more { font-size: 14px; }
+      .top-svc-mid .top-service-body,
+      .top-svc-low .top-service-body { gap: 16px; }
+      .top-service-lead { font-size: clamp(18px, 4.2vw, 22px); }
       .top-svc-hero-copy { padding-top: 0; gap: 20px; }
       .top-service-head {
         flex-direction: row;
@@ -2203,17 +2185,38 @@
         height: auto !important;
         min-height: 0 !important;
         align-self: stretch;
+        overflow: visible;
       }
       .hero-photo {
+        position: relative;
+        top: auto;
+        right: auto;
         width: 100%;
-        clip-path: polygon(12% 0, 100% 0, 100% 60%, 50% 100%, 0 100%);
+        height: 100%;
+        min-height: clamp(280px, 42vw, 520px);
+        clip-path: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      .hero-photo img { left: 0; width: 100%; object-position: 24% 22%; }
+      .hero-photo img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        max-width: 112%;
+        max-height: 100%;
+        transform: scale(1.08);
+        transform-origin: center center;
+        display: block;
+        margin: 0 auto;
+        object-fit: contain;
+        object-position: center;
+      }
       .hero-script { width: min(28vw, 180px); top: 4%; right: 5%; }
-      .hero-slogan { right: 2%; top: 12%; font-size: clamp(8px, 1.2vw, 11px); }
+      .hero-slogan { right: 2%; bottom: 8%; font-size: clamp(10px, 1.3vw, 13px); }
       .hero-aside { right: 5%; top: 50%; font-size: 7px; }
-      .hero-pager-num { font-size: 16px; }
-      .hero-pager-line { width: min(12vw, 100px); }
       .top-media-section { padding: 96px 0 36px; }
       .top-service-section { padding: 96px 0 56px; }
       .top-numbers-section { padding: 40px 0 40px; }
@@ -2223,40 +2226,69 @@
         gap: 36px 28px;
       }
       .top-numbers-title { grid-column: 1 / -1; }
-      .top-about-section { padding: 40px 0 72px; overflow: hidden; }
+      .top-about-section { padding: 40px 0 72px; overflow: visible; }
       .top-about-inner {
-        --about-photo-w: min(72vw, 520px);
+        --about-photo-w: min(58vw, 400px);
         --about-photo-h: min(58vw, 400px);
         grid-template-columns: minmax(0, 1fr);
         gap: 40px;
         min-height: 0;
       }
       .top-about-stage {
+        display: grid;
+        grid-template-columns: minmax(0, var(--about-photo-w)) minmax(0, 1fr);
+        column-gap: clamp(8px, 2.4vw, 16px);
+        align-items: center;
         height: auto;
-        min-height: calc(var(--about-photo-h) + 96px);
+        min-height: var(--about-photo-h);
         margin: 0 auto;
-        width: min(100%, calc(var(--about-photo-w) + 200px));
+        width: 100%;
+        overflow: visible;
       }
       .top-about-photo {
-        left: 0;
-        top: 0;
+        position: relative;
+        left: auto;
+        top: auto;
         transform: none;
-        width: var(--about-photo-w);
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        max-width: var(--about-photo-w);
         height: var(--about-photo-h);
         clip-path: polygon(11% 0%, 74% 0%, 100% 100%, 22% 90%);
         -webkit-clip-path: polygon(11% 0%, 74% 0%, 100% 100%, 22% 90%);
+        z-index: 1;
       }
-      .top-about-deco-upper {
-        top: 4%;
-        left: calc(var(--about-photo-w) * 0.88);
+      .top-about-deco {
+        position: relative;
+        inset: auto;
+        grid-column: 2;
+        grid-row: 1;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10px;
+        min-width: 0;
+        min-height: var(--about-photo-h);
+        padding-left: 4px;
+      }
+      .top-about-deco-upper,
+      .top-about-deco-lower,
+      .top-about-deco-big {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        text-align: right;
+        margin: 0;
       }
       .top-about-deco-big {
-        left: calc(var(--about-photo-w) * 0.76);
-        font-size: clamp(72px, 16vw, 104px);
-      }
-      .top-about-deco-lower {
-        top: 60%;
-        left: calc(var(--about-photo-w) * 0.84);
+        font-size: clamp(40px, 11.5vw, 72px);
+        line-height: 0.9;
+        max-width: 100%;
       }
       .top-about-vert {
         left: calc(var(--about-photo-w) + 12px);
@@ -2277,14 +2309,13 @@
       .top-numbers-section { padding: 32px 0 36px; }
       .top-about-section { padding: 36px 0 64px; }
       .top-about-inner {
-        --about-photo-w: min(78vw, 460px);
-        --about-photo-h: min(56vw, 360px);
+        --about-photo-w: min(54vw, 360px);
+        --about-photo-h: min(54vw, 360px);
       }
       .top-about-headline { margin-top: 30px; font-size: clamp(34px, 8.4vw, 44px); }
       .top-about-body { font-size: 15px; max-width: none; line-height: 1.66; }
       .top-about-btn { min-width: 220px; height: 46px; margin-top: 28px; }
-      .top-about-stage { width: min(100%, calc(var(--about-photo-w) + 120px)); min-height: calc(var(--about-photo-h) + 96px); }
-      .top-about-deco-big { font-size: clamp(64px, 18vw, 88px); }
+      .top-about-deco-big { font-size: clamp(38px, 10.5vw, 64px); }
       .top-contact-section { padding: 0; height: auto; min-height: 0; }
       .top-contact-script { left: 3%; top: 22%; font-size: 14px; }
       .top-contact-aside { top: 8%; right: 2.5%; font-size: 7px; }
@@ -2332,14 +2363,17 @@
       .top-service-body { padding: 0 !important; }
       .top-media-title { font-size: 18px; }
       .top-news-lead { font-size: 15px; }
-      .top-svc-hero .top-service-name { font-size: 26px; line-height: 1.32; }
-      .top-service-name,
-      .top-svc-low .top-service-name { font-size: 18px; }
-      .top-svc-hero .top-service-idx { font-size: 64px; }
+      .top-svc-hero .top-service-name { font-size: 30px; line-height: 1.32; }
+      .top-svc-mid .top-service-name { font-size: 23px; line-height: 1.36; }
+      .top-svc-low .top-service-name { font-size: 21px; line-height: 1.34; }
+      .top-svc-hero .top-service-idx { font-size: 72px; }
       .top-svc-mid .top-service-idx,
-      .top-svc-low .top-service-idx { font-size: 54px; }
+      .top-svc-low .top-service-idx { font-size: 64px; }
       .top-service-desc,
-      .top-svc-low .top-service-desc { font-size: 13px; }
+      .top-svc-mid .top-service-desc,
+      .top-svc-low .top-service-desc { font-size: 15px; line-height: 1.72; }
+      .top-service-en { font-size: 15px; line-height: 1.22; }
+      .top-service-more { font-size: 13px; }
       .top-media-section { padding: 64px 0 28px; }
       .top-service-section { padding: 64px 0 32px; }
       .top-numbers-section { padding: 24px 0 32px; }
@@ -2347,13 +2381,12 @@
       .top-about-copy { padding-left: 22px; }
       .top-about-copy::before { top: 44px; height: min(320px, calc(100% - 44px)); }
       .top-about-inner {
-        --about-photo-w: min(82vw, 400px);
-        --about-photo-h: min(58vw, 320px);
+        --about-photo-w: min(50vw, 300px);
+        --about-photo-h: min(52vw, 300px);
       }
-      .top-about-stage { width: 100%; min-height: calc(var(--about-photo-h) + 80px); }
-      .top-about-deco-upper { left: calc(var(--about-photo-w) * 0.86); font-size: 10px; }
-      .top-about-deco-big { left: calc(var(--about-photo-w) * 0.74); font-size: clamp(56px, 20vw, 76px); }
-      .top-about-deco-lower { left: calc(var(--about-photo-w) * 0.82); font-size: 10px; }
+      .top-about-deco-upper,
+      .top-about-deco-lower { font-size: 9px; }
+      .top-about-deco-big { font-size: clamp(34px, 9.5vw, 52px); }
       .top-about-vert { left: calc(var(--about-photo-w) + 8px); font-size: 12px; letter-spacing: 0.2em; }
       .top-contact-section { padding: 0; }
       .top-news-section { padding: 48px 0 64px !important; }
@@ -2371,7 +2404,7 @@
         border-top: 1px solid #D5DCE3;
         padding: 20px 0 0;
       }
-      .top-about-section { overflow: hidden; }
+      .top-about-section { overflow: visible; }
       .top-about-vert { left: auto; right: 0; }
       .top-service-section,
       .top-media-section,
@@ -2444,23 +2477,40 @@
         width: 100%;
         height: auto !important;
         min-height: 0 !important;
-        aspect-ratio: 4 / 5;
-        max-height: 58vh;
+        aspect-ratio: auto;
+        max-height: none;
         align-self: stretch;
-        overflow: hidden;
+        overflow: visible;
+        display: block;
       }
       .hero-photo {
+        position: relative;
+        top: auto;
+        right: auto;
         width: 100%;
-        clip-path: polygon(6% 0, 100% 0, 100% 70%, 58% 100%, 0 100%);
+        height: auto;
+        clip-path: none;
+        overflow: visible;
       }
-      .hero-photo img { object-position: 68% 12%; }
-      .hero-cut { width: 48%; height: 32%; }
+      .hero-photo img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        max-width: 108%;
+        max-height: none;
+        transform: scale(1.06);
+        transform-origin: center center;
+        display: block;
+        margin: 0 auto;
+        object-fit: contain;
+        object-position: center;
+      }
+      .hero-cut { display: none; }
       .hero-script { width: min(42vw, 150px); top: 4%; right: 6%; }
-      .hero-slogan,
       .hero-aside { display: none !important; }
-      .hero-pager { right: 4%; bottom: 6%; }
-      .hero-pager-num { font-size: 16px; }
-      .hero-pager-line { width: min(22vw, 88px); }
+      .hero-slogan { right: 4%; bottom: 8%; font-size: 12px; letter-spacing: 0.12em; }
       .hero-shape--back,
       .hero-shape--mid { width: 100%; clip-path: none; opacity: 0.55; height: 42%; top: auto; bottom: 0; }
       .top-numbers-inner {
@@ -2476,8 +2526,6 @@
       .top-about-headline { font-size: clamp(28px, 8vw, 36px); }
       .top-about-headline span { white-space: nowrap; }
       .top-about-btn { min-width: 0; width: 100%; max-width: 280px; }
-      .top-about-stage { width: 100%; overflow: hidden; }
-      .top-about-deco-big { font-size: clamp(52px, 18vw, 72px); left: 52%; }
       .top-about-vert { display: none; }
       .top-contact-section {
         display: flex;
@@ -2534,7 +2582,7 @@
       .top-news-row:hover { color: #111318 !important; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hero-copy, .hero-copy-main, .hero-visual, .hero-script, .hero-slogan, .hero-pager, .top-reveal { animation: none !important; }
+      .hero-copy, .hero-copy-main, .hero-visual, .hero-script, .hero-slogan, .top-reveal { animation: none !important; }
       .hero-rail-travel { animation: none !important; opacity: 0 !important; }
       .hero-rail-arrow { animation: none !important; }
       .top-service-visual img, .top-media-thumb img, .top-news-arrow, .hero-pill { transition: none; }
@@ -2592,13 +2640,12 @@
       </div>
       <div class="hero-visual">
         <div class="hero-photo">
-          <img src="assets/hero-woman.jpg" alt="">
+          <img src="assets/hero-woman-new.jpg" alt="">
         </div>
         <span class="hero-cut" aria-hidden="true"></span>
         <img class="hero-script hero-anim-deco" src="assets/hero-create-standard.png" alt="" aria-hidden="true">
         <p class="hero-slogan hero-anim-deco" aria-hidden="true">伝わるから、世界は動く。</p>
         <p class="hero-aside hero-anim-deco" aria-hidden="true">PEOPLE<br>BRANDS<br>SOCIETY<br>A BRIGHTER<br>TOMORROW.</p>
-        <div class="hero-pager hero-anim-deco" aria-hidden="true"><span class="hero-pager-num">01</span><span class="hero-pager-line"></span></div>
       </div>
     </div>
   </section>
