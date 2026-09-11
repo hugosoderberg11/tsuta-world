@@ -61,18 +61,14 @@ a:hover { color: #1D4ED8; }
 .page-header a.logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   color: #1a1a1d;
   min-width: 0;
   flex-shrink: 0;
 }
-.page-header a.logo span {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 19px;
-  letter-spacing: 0.02em;
-  min-width: 0;
-  white-space: nowrap;
+.page-header a.logo img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 .page-main {
   position: relative;
@@ -396,18 +392,10 @@ a:hover { color: #1D4ED8; }
   margin: 0 0 18px;
 }
 .site-footer-logo img {
-  width: 32px;
-  height: auto;
+  width: auto;
+  height: 34px;
   display: block;
   flex-shrink: 0;
-}
-.site-footer-logo span {
-  font-family: 'Space Grotesk', 'Noto Sans JP', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: #ffffff;
 }
 .site-footer-tagline-ja {
   margin: 0 0 10px;
@@ -633,7 +621,7 @@ a:hover { color: #1D4ED8; }
   }
 }
 @media (max-width: 380px) {
-  .page-header a.logo span { font-size: 16px; }
+  .page-header a.logo img { height: 28px; }
 }
 @media (hover: none) {
   .cm-service-card:hover {
@@ -6301,8 +6289,8 @@ body.plain-ui.ap-page .ap-hero-actions .fs-btn-ghost:hover {
     min-height: 68px;
     gap: 10px;
   }
-  .page-header a.logo span {
-    font-size: 16px;
+  .page-header a.logo img {
+    height: 28px;
   }
   .cm-works-tabs,
   .av-works-filter {

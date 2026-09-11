@@ -108,57 +108,83 @@
     })();
   }
 
+  var numbersCountPlayed = false;
+
   function formatCountValue(value, decimal) {
     if (decimal) return value.toFixed(1);
     return String(Math.round(value));
   }
 
-  function initNumbersCountUp() {
+  function getLiveNumbersSection() {
     var section = document.getElementById("numbers");
-    if (!section) return;
+    if (!section || !document.body.contains(section)) return null;
+    if (section.closest("x-dc")) return null;
+    return section;
+  }
+
+  function initNumbersCountUp() {
+    var section = getLiveNumbersSection();
+    if (!section) return false;
+    if (section.getAttribute("data-count-up-bound") === "1") return true;
+    section.setAttribute("data-count-up-bound", "1");
 
     var nums = section.querySelectorAll(".top-numbers-num");
-    if (!nums.length) return;
+    if (!nums.length) return false;
 
     var items = [];
     nums.forEach(function (el) {
-      var value = parseFloat(el.getAttribute("data-value"), 10);
+      var value = parseFloat(el.getAttribute("data-value"));
       if (isNaN(value)) return;
       var decimal = el.getAttribute("data-decimal") === "1";
       items.push({ el: el, value: value, decimal: decimal });
-      if (reduced) {
-        el.textContent = formatCountValue(value, decimal);
-      } else {
-        el.textContent = decimal ? "0.0" : "0";
-      }
     });
 
-    if (reduced || !items.length) return;
+    if (!items.length) return true;
+
+    function showFinal() {
+      items.forEach(function (item) {
+        item.el.textContent = formatCountValue(item.value, item.decimal);
+      });
+    }
+
+    if (reduced || numbersCountPlayed) {
+      showFinal();
+      return true;
+    }
+
+    items.forEach(function (item) {
+      item.el.textContent = item.decimal ? "0.0" : "0";
+    });
 
     var started = false;
-    var duration = 1750;
+    var duration = 1900;
+    var observer = null;
 
     function runCountUp() {
-      if (started) return;
+      if (started || numbersCountPlayed) return;
       started = true;
+      numbersCountPlayed = true;
+      if (observer) observer.disconnect();
+
       var startTime = null;
+
+      function easeOut(t) {
+        return Math.sin((t * Math.PI) / 2);
+      }
 
       function frame(timestamp) {
         if (!startTime) startTime = timestamp;
         var progress = Math.min((timestamp - startTime) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
+        var eased = easeOut(progress);
 
         items.forEach(function (item) {
-          var current = item.value * eased;
-          item.el.textContent = formatCountValue(current, item.decimal);
+          item.el.textContent = formatCountValue(item.value * eased, item.decimal);
         });
 
         if (progress < 1) {
           requestAnimationFrame(frame);
         } else {
-          items.forEach(function (item) {
-            item.el.textContent = formatCountValue(item.value, item.decimal);
-          });
+          showFinal();
         }
       }
 
@@ -167,26 +193,50 @@
 
     if (!("IntersectionObserver" in window)) {
       runCountUp();
-      return;
+      return true;
     }
 
-    var observer = new IntersectionObserver(
+    observer = new IntersectionObserver(
       function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
+        for (var i = 0; i < entries.length; i++) {
+          if (!entries[i].isIntersecting) continue;
           runCountUp();
-          observer.disconnect();
-        });
+          return;
+        }
       },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+      { threshold: [0, 0.1, 0.25, 0.5], rootMargin: "0px" }
     );
 
     observer.observe(section);
+    return true;
+  }
+
+  function waitForNumbersCountUp() {
+    var n = 0;
+    (function tick() {
+      if (initNumbersCountUp() || n > 120) return;
+      n += 1;
+      setTimeout(tick, 50);
+    })();
+  }
+
+  function watchNumbersRemount() {
+    var root = document.getElementById("dc-root");
+    if (!root || typeof MutationObserver === "undefined") return;
+    var mo = new MutationObserver(function () {
+      var section = getLiveNumbersSection();
+      if (section && section.getAttribute("data-count-up-bound") !== "1") {
+        initNumbersCountUp();
+      }
+    });
+    mo.observe(root, { childList: true, subtree: true });
   }
 
   function boot() {
-    initNumbersCountUp();
+    waitForNumbersCountUp();
     waitForScene(function () {
+      initNumbersCountUp();
+      watchNumbersRemount();
       waitForHeroLottie(function () {
         waitForContactLottie(function () {
           cloneHeroDeco();
