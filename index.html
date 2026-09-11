@@ -530,8 +530,7 @@
       z-index: 1;
       pointer-events: none;
     }
-    .top-about-deco-upper,
-    .top-about-deco-lower {
+    .top-about-deco-upper {
       position: absolute;
       margin: 0;
       font-family: 'Space Grotesk', 'Noto Sans JP', sans-serif;
@@ -541,8 +540,6 @@
       line-height: 1.22;
       color: #111318;
       white-space: pre-line;
-    }
-    .top-about-deco-upper {
       top: 4%;
       left: calc(var(--about-photo-w) * 0.98);
     }
@@ -562,28 +559,6 @@
       white-space: nowrap;
       user-select: none;
       z-index: 0;
-    }
-    .top-about-deco-lower {
-      top: 64%;
-      left: calc(var(--about-photo-w) * 0.92);
-    }
-    .top-about-vert {
-      position: absolute;
-      left: calc(var(--about-photo-w) + 156px);
-      right: auto;
-      top: 50%;
-      transform: translateY(-50%);
-      margin: 0;
-      padding-right: 0;
-      writing-mode: vertical-rl;
-      font-family: 'Noto Serif JP', 'Noto Sans JP', serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      line-height: 1.7;
-      color: #111318;
-      white-space: nowrap;
-      z-index: 3;
     }
     .top-service-group-label {
       font-family: 'Noto Sans JP', sans-serif;
@@ -2275,7 +2250,6 @@
         padding-left: 4px;
       }
       .top-about-deco-upper,
-      .top-about-deco-lower,
       .top-about-deco-big {
         position: relative;
         top: auto;
@@ -2289,14 +2263,6 @@
         font-size: clamp(40px, 11.5vw, 72px);
         line-height: 0.9;
         max-width: 100%;
-      }
-      .top-about-vert {
-        left: calc(var(--about-photo-w) + 12px);
-        right: auto;
-        top: calc(var(--about-photo-h) * 0.42);
-        transform: none;
-        writing-mode: vertical-rl;
-        letter-spacing: 0.24em;
       }
       .top-contact-section { padding: 0; }
     }
@@ -2384,10 +2350,8 @@
         --about-photo-w: min(50vw, 300px);
         --about-photo-h: min(52vw, 300px);
       }
-      .top-about-deco-upper,
-      .top-about-deco-lower { font-size: 9px; }
+      .top-about-deco-upper { font-size: 9px; }
       .top-about-deco-big { font-size: clamp(34px, 9.5vw, 52px); }
-      .top-about-vert { left: calc(var(--about-photo-w) + 8px); font-size: 12px; letter-spacing: 0.2em; }
       .top-contact-section { padding: 0; }
       .top-news-section { padding: 48px 0 64px !important; }
     }
@@ -2405,7 +2369,6 @@
         padding: 20px 0 0;
       }
       .top-about-section { overflow: visible; }
-      .top-about-vert { left: auto; right: 0; }
       .top-service-section,
       .top-media-section,
       .top-numbers-section,
@@ -2526,7 +2489,6 @@
       .top-about-headline { font-size: clamp(28px, 8vw, 36px); }
       .top-about-headline span { white-space: nowrap; }
       .top-about-btn { min-width: 0; width: 100%; max-width: 280px; }
-      .top-about-vert { display: none; }
       .top-contact-section {
         display: flex;
         flex-direction: column;
@@ -2800,12 +2762,7 @@ THE WAY
 THE WORLD
 CONNECTS.</p>
           <p class="top-about-deco-big">ABOUT</p>
-          <p class="top-about-deco-lower">PEOPLE
-TECHNOLOGY
-CREATIVE
-SOCIETY</p>
         </div>
-        <p class="top-about-vert">働くを、<br>もっと好きに。</p>
       </div>
     </div>
   </section>

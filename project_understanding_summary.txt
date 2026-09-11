@@ -1,6 +1,7 @@
 # Project Understanding Summary
 
 ## Recent edits (2026-09-11)
+- TOP ABOUT deco (`index.html` only): removed PEOPLE / TECHNOLOGY / CREATIVE / SOCIETY and the vertical 働くを、もっと好きに。 UPDATE THE WAY… and large ABOUT remain. Other sections unchanged.
 - TOP Hero slogan (`index.html` only): 「伝わるから、世界は動く。」 is now horizontal (was `writing-mode: vertical-rl` at top-right) and sits where the `01` pager + line were (bottom-right of the photo). Pager markup and CSS removed. Tablet/mobile keep the slogan in that same corner; PEOPLE/BRANDS aside and other hero copy unchanged.
 - TOP ABOUT responsive deco (`index.html` CSS only): fixed pale-blue "ABOUT" hidden on mobile — root cause was `.top-about-deco` stacking context (z-index 1) under photo (z-index 2). ≤960px stage is now a 2-col grid (photo | deco flex column); photo narrowed (58/54/50vw); deco text no longer absolute-overlapped. Desktop unchanged.
 - TOP SERVICE responsive type (`index.html` CSS only): bumped pinned mobile/tablet sizes — catch 24/23/21px (mid/low), desc 16/15px, en 16/15px, VIEW MORE 14/13px, numbers 72/64px. Fixed 600px breakpoint shrinking text further than 960px. Desktop unchanged.
