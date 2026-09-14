@@ -6,7 +6,7 @@
 - TOP MEDIA aside (`index.html`): copy 「私たちの取り組みが…」 restored for desktop; ≤960px hides entire `.top-media-aside` (copy + arrows + rule). Desktop/tablet-wide unchanged.
 - TOP CONTACT CTA (`index.html`): 「お問い合わせ」 moved inside `.top-contact-copy` below the lead (was absolutely positioned mid-right on the banner). Copy block is flex column; tablet/mobile absolute CTA overrides removed. Matches client arrow mock.
 - TOP SERVICE mobile thumbnails (`index.html` CSS ≤960px): 02–06 clips had `aspect-ratio: auto` while images stayed `position: absolute`, so clip height collapsed to 0. Responsive rules now flow images (`position: relative`, `height: auto`, `object-fit: contain`) so all six service photos show. Desktop unchanged.
-- TOP Hero mobile (`index.html` CSS ≤767px): main `.hero-visual` shown again below copy (flow layout + contain image; script/slogan overlays kept). Reverts prior hide-only rule.
+- TOP Hero mobile script (`index.html` CSS ≤767px): `.hero-script` pinned to the photo’s upper-right sky (`width: 38%`, `max-width: 96px`, `top: 2%`, `right: 0`) so it no longer covers the face.
 - TOP SERVICE 03 AI×WEB photo: `assets/service-aiweb-photo.jpg` mask knocked out (surrounding black → white) for white page background; CSS unchanged.
 - TOP Hero title overlap: 「採用」was under the photo parallelogram. Raised `.hero-copy` / `.hero-copy-main` / `.hero-title` z-index above `.hero-visual` so the heading paints on top.
 - TOP SERVICE 01 photo: slightly larger — column 46%→52%, image scale 108%→116%; vertical slogan shifted to stay just outside the photo. Copy/layout otherwise unchanged.
