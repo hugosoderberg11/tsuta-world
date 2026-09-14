@@ -2141,9 +2141,16 @@
       .top-svc-low .top-service-body { padding-top: 0; gap: 14px; }
       .top-svc-low[data-num="06"] .top-service-body { align-self: start; }
       /* below 960 the fluid --svc-w sizes would shrink too far, so pin them */
-      .top-service-en { max-width: 14em; font-size: 16px; line-height: 1.22; }
+      .top-service-en,
       .top-svc-mid .top-service-en,
-      .top-svc-low .top-service-en { font-size: 14px; line-height: 1.24; }
+      .top-svc-low .top-service-en {
+        max-width: 14em;
+        font-size: 16px;
+        line-height: 1.18;
+        font-weight: 600;
+        letter-spacing: 0.045em;
+        color: #3A5F8F;
+      }
       .top-svc-hero .top-service-idx { font-size: 80px; }
       .top-svc-mid .top-service-idx,
       .top-svc-low .top-service-idx { font-size: 72px; }
@@ -2426,9 +2433,9 @@
       .top-svc-mid .top-service-desc,
       .top-svc-low .top-service-desc { font-size: clamp(14px, 3.6vw, 16px); line-height: 1.7; }
       .top-svc-hero .top-service-desc { font-size: 18px; line-height: 1.72; }
-      .top-service-en { font-size: 17px; line-height: 1.22; }
+      .top-service-en,
       .top-svc-mid .top-service-en,
-      .top-svc-low .top-service-en { font-size: 16px; line-height: 1.24; }
+      .top-svc-low .top-service-en { font-size: 16px; line-height: 1.18; }
       .top-service-more { font-size: 14px; }
       .top-svc-mid .top-service-more,
       .top-svc-low .top-service-more { font-size: 15px; }
@@ -2676,7 +2683,13 @@
       .top-svc-mid .top-service-desc,
       .top-svc-low .top-service-desc { font-size: clamp(14px, 3.6vw, 16px) !important; line-height: 1.7 !important; }
       .top-svc-mid .top-service-en,
-      .top-svc-low .top-service-en { font-size: clamp(12px, 3.2vw, 14px) !important; line-height: 1.26 !important; }
+      .top-svc-low .top-service-en {
+        font-size: 16px !important;
+        line-height: 1.18 !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.045em !important;
+        color: #3A5F8F !important;
+      }
       .top-svc-mid .top-service-idx,
       .top-svc-low .top-service-idx { font-size: clamp(56px, 14vw, 72px) !important; }
       .top-svc-mid .top-service-more,
