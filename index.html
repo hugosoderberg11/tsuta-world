@@ -2072,19 +2072,37 @@
       .top-svc-low[data-num="06"] {
         margin-top: 0;
         width: 100%;
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
         grid-template-areas:
-          "num"
-          "img"
-          "body";
-        gap: 12px;
+          "num num"
+          "name img"
+          "desc desc"
+          "more more";
+        column-gap: clamp(12px, 3vw, 18px);
+        row-gap: 10px;
+        align-items: start;
       }
       .top-svc-mid .top-service-visual,
-      .top-svc-low .top-service-visual,
-      .top-svc-mid .top-service-visual-clip,
-      .top-svc-low .top-service-visual-clip,
+      .top-svc-low .top-service-visual {
+        grid-area: img;
+        width: 100%;
+        max-width: none;
+        align-self: start;
+        justify-self: stretch;
+      }
       .top-svc-mid .top-service-body,
-      .top-svc-low .top-service-body { width: 100%; max-width: none; }
+      .top-svc-low .top-service-body {
+        display: contents;
+      }
+      .top-svc-mid .top-service-name,
+      .top-svc-low .top-service-name {
+        grid-area: name;
+        align-self: center;
+      }
+      .top-svc-mid .top-service-desc,
+      .top-svc-low .top-service-desc { grid-area: desc; }
+      .top-svc-mid .top-service-more,
+      .top-svc-low .top-service-more { grid-area: more; }
       .top-svc-mid .top-service-visual-clip,
       .top-svc-low .top-service-visual-clip,
       .top-svc-mid[data-num="02"] .top-service-visual-clip,
@@ -2092,8 +2110,8 @@
       .top-svc-low[data-num="04"] .top-service-visual-clip,
       .top-svc-low[data-num="05"] .top-service-visual-clip,
       .top-svc-low[data-num="06"] .top-service-visual-clip {
-        height: auto;
-        aspect-ratio: 16 / 10;
+        width: 100%;
+        max-width: none;
       }
       .top-svc-hero .top-service-visual-clip { aspect-ratio: auto; overflow: visible; clip-path: none; }
       .top-svc-mid[data-num="02"] .top-service-visual-clip,
@@ -2124,18 +2142,21 @@
       .top-svc-low[data-num="06"] .top-service-body { align-self: start; }
       /* below 960 the fluid --svc-w sizes would shrink too far, so pin them */
       .top-service-en { max-width: 14em; font-size: 16px; line-height: 1.22; }
+      .top-svc-mid .top-service-en,
+      .top-svc-low .top-service-en { font-size: 14px; line-height: 1.24; }
       .top-svc-hero .top-service-idx { font-size: 80px; }
       .top-svc-mid .top-service-idx,
       .top-svc-low .top-service-idx { font-size: 72px; }
       .top-svc-hero .top-service-name { font-size: 32px; line-height: 1.32; }
-      .top-svc-mid .top-service-name { font-size: 24px; line-height: 1.36; }
-      .top-svc-low .top-service-name { font-size: 22px; line-height: 1.34; }
+      .top-svc-mid .top-service-name { font-size: clamp(20px, 3.6vw, 24px); line-height: 1.4; font-weight: 700; }
+      .top-svc-low .top-service-name { font-size: clamp(19px, 3.4vw, 23px); line-height: 1.4; font-weight: 700; }
       .top-service-desc,
       .top-svc-mid .top-service-desc,
-      .top-svc-low .top-service-desc { font-size: 16px; line-height: 1.72; }
+      .top-svc-low .top-service-desc { font-size: clamp(14px, 2.8vw, 16px); line-height: 1.7; }
       .top-svc-hero .top-service-desc { font-size: 19px; line-height: 1.72; }
-      .top-service-more { font-size: 14px; }
-      .top-svc-hero .top-service-more { font-size: 16px; }
+      .top-service-more { font-size: 15px; }
+      .top-svc-mid .top-service-more,
+      .top-svc-low .top-service-more { font-size: 14px; }
       .top-svc-mid .top-service-body,
       .top-svc-low .top-service-body { gap: 16px; }
       .top-service-lead { font-size: clamp(18px, 4.2vw, 22px); }
@@ -2396,17 +2417,21 @@
       .top-media-title { font-size: 18px; }
       .top-news-lead { font-size: 15px; }
       .top-svc-hero .top-service-name { font-size: 30px; line-height: 1.32; }
-      .top-svc-mid .top-service-name { font-size: 23px; line-height: 1.36; }
-      .top-svc-low .top-service-name { font-size: 21px; line-height: 1.34; }
+      .top-svc-mid .top-service-name { font-size: clamp(20px, 5.2vw, 24px); line-height: 1.4; }
+      .top-svc-low .top-service-name { font-size: clamp(18px, 5vw, 22px); line-height: 1.38; }
       .top-svc-hero .top-service-idx { font-size: 72px; }
       .top-svc-mid .top-service-idx,
-      .top-svc-low .top-service-idx { font-size: 64px; }
+      .top-svc-low .top-service-idx { font-size: 76px; }
       .top-service-desc,
       .top-svc-mid .top-service-desc,
-      .top-svc-low .top-service-desc { font-size: 15px; line-height: 1.72; }
+      .top-svc-low .top-service-desc { font-size: clamp(14px, 3.6vw, 16px); line-height: 1.7; }
       .top-svc-hero .top-service-desc { font-size: 18px; line-height: 1.72; }
-      .top-service-en { font-size: 15px; line-height: 1.22; }
-      .top-service-more { font-size: 13px; }
+      .top-service-en { font-size: 17px; line-height: 1.22; }
+      .top-svc-mid .top-service-en,
+      .top-svc-low .top-service-en { font-size: 16px; line-height: 1.24; }
+      .top-service-more { font-size: 14px; }
+      .top-svc-mid .top-service-more,
+      .top-svc-low .top-service-more { font-size: 15px; }
       .top-svc-hero .top-service-more { font-size: 15px; }
       .top-media-section { padding: 64px 0 28px; }
       .top-service-section { padding: 64px 0 32px; }
@@ -2543,7 +2568,15 @@
       .hero-cta-orb svg { width: 18px; height: 18px; }
       .hero-rail { display: none !important; }
       .hero-visual {
-        display: none !important;
+        order: 2;
+        position: relative;
+        width: 100%;
+        height: auto !important;
+        min-height: 0 !important;
+        align-self: stretch;
+        overflow: visible;
+        display: block;
+        margin-top: 4px;
       }
       .hero-photo {
         position: relative;
@@ -2580,6 +2613,51 @@
       .top-svc-mid,
       .top-svc-hero { width: 100%; max-width: none; }
       .top-svc-trio { align-items: stretch; }
+      .top-svc-mid[data-num="02"],
+      .top-svc-mid[data-num="03"],
+      .top-svc-low[data-num="04"],
+      .top-svc-low[data-num="05"],
+      .top-svc-low[data-num="06"] {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) !important;
+        grid-template-areas:
+          "num num"
+          "name img"
+          "desc desc"
+          "more more" !important;
+        column-gap: 12px !important;
+        row-gap: 10px !important;
+        align-items: start !important;
+      }
+      .top-svc-mid .top-service-visual,
+      .top-svc-low .top-service-visual {
+        grid-area: img !important;
+        width: 100% !important;
+        max-width: none !important;
+        align-self: start !important;
+      }
+      .top-svc-mid .top-service-body,
+      .top-svc-low .top-service-body {
+        display: contents !important;
+      }
+      .top-svc-mid .top-service-name,
+      .top-svc-low .top-service-name {
+        grid-area: name !important;
+        align-self: center !important;
+      }
+      .top-svc-mid .top-service-desc,
+      .top-svc-low .top-service-desc { grid-area: desc !important; }
+      .top-svc-mid .top-service-more,
+      .top-svc-low .top-service-more { grid-area: more !important; }
+      .top-svc-mid .top-service-name { font-size: clamp(19px, 5vw, 22px) !important; line-height: 1.4 !important; font-weight: 700 !important; }
+      .top-svc-low .top-service-name { font-size: clamp(18px, 4.8vw, 21px) !important; line-height: 1.4 !important; font-weight: 700 !important; }
+      .top-svc-mid .top-service-desc,
+      .top-svc-low .top-service-desc { font-size: clamp(14px, 3.6vw, 16px) !important; line-height: 1.7 !important; }
+      .top-svc-mid .top-service-en,
+      .top-svc-low .top-service-en { font-size: clamp(12px, 3.2vw, 14px) !important; line-height: 1.26 !important; }
+      .top-svc-mid .top-service-idx,
+      .top-svc-low .top-service-idx { font-size: clamp(56px, 14vw, 72px) !important; }
+      .top-svc-mid .top-service-more,
+      .top-svc-low .top-service-more { font-size: 13px !important; }
       .top-numbers-inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 28px 16px;
