@@ -589,7 +589,7 @@
        The photo keeps its right edge and loses width off its left side, so the
        script line has white space to sit in before it crosses the photo. */
     .top-svc-hero {
-      grid-template-columns: 40% 46% minmax(0, 1fr);
+      grid-template-columns: 36% 52% minmax(0, 1fr);
       column-gap: 1.2%;
       align-items: start;
       width: 100%;
@@ -689,24 +689,23 @@
       -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 92%);
     }
     .top-svc-mid[data-num="02"] .top-service-visual-clip {
-      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 80%);
-      -webkit-clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 80%);
+      clip-path: none;
+      -webkit-clip-path: none;
+      overflow: visible;
+      aspect-ratio: 1024 / 512;
     }
     .top-svc-mid[data-num="03"] .top-service-visual-clip {
-      clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
-      -webkit-clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+      clip-path: none;
+      -webkit-clip-path: none;
+      overflow: visible;
     }
-    .top-svc-low[data-num="04"] .top-service-visual-clip {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 70%);
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 70%);
-    }
-    .top-svc-low[data-num="05"] .top-service-visual-clip {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 74%);
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 74%);
-    }
+    .top-svc-low[data-num="04"] .top-service-visual-clip,
+    .top-svc-low[data-num="05"] .top-service-visual-clip,
     .top-svc-low[data-num="06"] .top-service-visual-clip {
-      clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
-      -webkit-clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
+      clip-path: none;
+      -webkit-clip-path: none;
+      overflow: visible;
+      background: #ffffff;
     }
     .top-svc-hero .top-service-visual-clip {
       min-height: 0;
@@ -715,11 +714,10 @@
       -webkit-clip-path: none;
       overflow: visible;
     }
-    .top-svc-mid[data-num="02"] .top-service-visual-clip { aspect-ratio: 1.69 / 1; }
-    .top-svc-mid[data-num="03"] .top-service-visual-clip { aspect-ratio: 1.76 / 1; }
-    .top-svc-low[data-num="04"] .top-service-visual-clip { aspect-ratio: 1.36 / 1; }
-    .top-svc-low[data-num="05"] .top-service-visual-clip { aspect-ratio: 0.97 / 1; }
-    .top-svc-low[data-num="06"] .top-service-visual-clip { aspect-ratio: 0.95 / 1; }
+    .top-svc-mid[data-num="03"] .top-service-visual-clip { aspect-ratio: 1024 / 768; }
+    .top-svc-low[data-num="04"] .top-service-visual-clip { aspect-ratio: 1 / 1; }
+    .top-svc-low[data-num="05"] .top-service-visual-clip { aspect-ratio: 1 / 1; }
+    .top-svc-low[data-num="06"] .top-service-visual-clip { aspect-ratio: 1 / 1; }
     .top-service-visual img {
       width: 100%;
       max-width: 100%;
@@ -734,18 +732,21 @@
     .top-svc-hero .top-service-visual img {
       position: relative;
       inset: auto;
-      width: 108%;
-      max-width: 108%;
+      width: 116%;
+      max-width: 116%;
       height: auto;
       object-fit: contain;
       object-position: center;
-      margin-left: -2%;
+      margin-left: -3%;
     }
-    .top-svc-mid[data-num="02"] .top-service-visual img { object-position: center 40%; }
-    .top-svc-mid[data-num="03"] .top-service-visual img { object-position: 52% center; }
-    .top-svc-low[data-num="04"] .top-service-visual img { object-position: 18% center; }
-    .top-svc-low[data-num="05"] .top-service-visual img { object-position: center; }
-    .top-svc-low[data-num="06"] .top-service-visual img { object-position: center; }
+    .top-svc-mid[data-num="02"] .top-service-visual img,
+    .top-svc-mid[data-num="03"] .top-service-visual img,
+    .top-svc-low[data-num="04"] .top-service-visual img,
+    .top-svc-low[data-num="05"] .top-service-visual img,
+    .top-svc-low[data-num="06"] .top-service-visual img {
+      object-fit: contain;
+      object-position: center;
+    }
     .top-service-script {
       display: none;
     }
@@ -761,7 +762,7 @@
       display: block;
       position: absolute;
       top: calc(var(--svc-w) * 0.022);
-      left: calc(40% + 1.2% + 46% + 0.35%);
+      left: calc(36% + 1.2% + 52% + 0.35%);
       margin: 0;
       padding: 0;
       writing-mode: vertical-rl;
@@ -901,7 +902,8 @@
       white-space: pre-line;
     }
     .top-svc-hero .top-service-desc {
-      line-height: 1.68;
+      font-size: calc(var(--svc-w) * 0.0138);
+      line-height: 1.72;
     }
     .top-svc-mid .top-service-desc {
       font-size: calc(var(--svc-w) * 0.0098);
@@ -918,6 +920,9 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       color: var(--svc-blue);
+    }
+    .top-svc-hero .top-service-more {
+      font-size: calc(var(--svc-w) * 0.0115);
     }
     .top-news-kicker,
     .top-media-kicker,
@@ -1473,6 +1478,7 @@
     }
     .hero-copy {
       position: relative;
+      z-index: 3;
       display: block;
       align-self: center;
       max-width: none;
@@ -1480,15 +1486,18 @@
       margin: 0;
       padding: clamp(12px, 4vh, 48px) 0 clamp(20px, 5vh, 56px) clamp(36px, 5.5vw, 88px);
       animation: none;
+      overflow: visible;
     }
     .hero-copy-main {
       position: relative;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-left: clamp(28px, 3.4vw, 56px);
       padding-left: clamp(32px, 3.6vw, 56px);
       max-width: 100%;
+      overflow: visible;
     }
     .hero-rail {
       position: absolute;
@@ -1796,6 +1805,8 @@
       animation: heroFade 0.7s ease both;
     }
     .hero-title {
+      position: relative;
+      z-index: 4;
       margin: 0 0 clamp(10px, 1.4vh, 16px);
       max-width: 100%;
       text-align: left;
@@ -1809,6 +1820,7 @@
     .hero-title span { display: block; overflow: visible; white-space: nowrap; }
     .hero-visual {
       position: relative;
+      z-index: 1;
       align-self: stretch;
       min-height: calc(100svh - 92px);
       height: calc(100svh - 92px);
@@ -2026,16 +2038,30 @@
       }
       .top-svc-pair {
         grid-template-columns: minmax(0, 1fr);
-        gap: 56px;
-        margin-top: 56px;
+        gap: 32px;
+        margin-top: 32px;
       }
       .top-svc-trio {
         flex-direction: column;
-        gap: 48px;
-        margin-top: 56px;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 32px;
+        margin-top: 32px;
       }
-      .top-svc-trio > .top-svc-low {
+      #services .top-svc-trio > sc-for {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        width: 100%;
+        column-gap: 0;
+        row-gap: 32px;
+      }
+      .top-svc-trio > .top-svc-low,
+      .top-svc-trio .top-svc-low {
+        flex: 0 0 auto;
         max-width: none;
+        width: 100%;
       }
       .top-svc-mid[data-num="02"],
       .top-svc-mid[data-num="03"],
@@ -2043,6 +2069,7 @@
       .top-svc-low[data-num="05"],
       .top-svc-low[data-num="06"] {
         margin-top: 0;
+        width: 100%;
         grid-template-columns: minmax(0, 1fr);
         grid-template-areas:
           "num"
@@ -2050,9 +2077,33 @@
           "body";
         gap: 12px;
       }
+      .top-svc-mid .top-service-visual,
+      .top-svc-low .top-service-visual,
       .top-svc-mid .top-service-visual-clip,
-      .top-svc-low .top-service-visual-clip { height: auto; aspect-ratio: 16 / 10; }
+      .top-svc-low .top-service-visual-clip,
+      .top-svc-mid .top-service-body,
+      .top-svc-low .top-service-body { width: 100%; max-width: none; }
+      .top-svc-mid .top-service-visual-clip,
+      .top-svc-low .top-service-visual-clip,
+      .top-svc-mid[data-num="02"] .top-service-visual-clip,
+      .top-svc-mid[data-num="03"] .top-service-visual-clip,
+      .top-svc-low[data-num="04"] .top-service-visual-clip,
+      .top-svc-low[data-num="05"] .top-service-visual-clip,
+      .top-svc-low[data-num="06"] .top-service-visual-clip {
+        height: auto;
+        aspect-ratio: 16 / 10;
+      }
       .top-svc-hero .top-service-visual-clip { aspect-ratio: auto; overflow: visible; clip-path: none; }
+      .top-svc-mid[data-num="02"] .top-service-visual-clip,
+      .top-svc-mid[data-num="03"] .top-service-visual-clip,
+      .top-svc-low[data-num="04"] .top-service-visual-clip,
+      .top-svc-low[data-num="05"] .top-service-visual-clip,
+      .top-svc-low[data-num="06"] .top-service-visual-clip {
+        aspect-ratio: auto;
+        clip-path: none;
+        -webkit-clip-path: none;
+        overflow: visible;
+      }
       .top-svc-low .top-service-kicker { margin: 0; }
       .top-svc-low .top-service-body { padding-top: 0; gap: 14px; }
       .top-svc-low[data-num="06"] .top-service-body { align-self: start; }
@@ -2067,7 +2118,9 @@
       .top-service-desc,
       .top-svc-mid .top-service-desc,
       .top-svc-low .top-service-desc { font-size: 16px; line-height: 1.72; }
+      .top-svc-hero .top-service-desc { font-size: 19px; line-height: 1.72; }
       .top-service-more { font-size: 14px; }
+      .top-svc-hero .top-service-more { font-size: 16px; }
       .top-svc-mid .top-service-body,
       .top-svc-low .top-service-body { gap: 16px; }
       .top-service-lead { font-size: clamp(18px, 4.2vw, 22px); }
@@ -2123,11 +2176,11 @@
       .top-contact-cta { top: 50%; right: 8%; width: 160px; height: 40px; font-size: 12px; }
       .top-contact-aside { font-size: 9px; top: 10%; right: 3%; }
       .top-contact-lead { font-size: 14px; }
-      .top-hero-shell { min-height: 0; }
-      #hero { min-height: calc(100svh - 92px); }
+      .top-hero-shell,
+      #hero { min-height: 0; }
       .top-hero-inner {
         grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
-        min-height: calc(100svh - 92px);
+        min-height: 0;
         padding-top: 8px;
         padding-bottom: 0;
         padding-right: 0 !important;
@@ -2167,12 +2220,10 @@
         top: auto;
         right: auto;
         width: 100%;
-        height: 100%;
-        min-height: clamp(280px, 42vw, 520px);
+        height: auto;
+        min-height: 0;
         clip-path: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
       }
       .hero-photo img {
         position: relative;
@@ -2180,16 +2231,16 @@
         left: auto;
         width: 100%;
         height: auto;
-        max-width: 112%;
-        max-height: 100%;
-        transform: scale(1.08);
-        transform-origin: center center;
+        max-width: 100%;
+        max-height: none;
+        transform: none;
         display: block;
-        margin: 0 auto;
+        margin: 0;
         object-fit: contain;
         object-position: center;
       }
       .hero-script { width: min(28vw, 180px); top: 4%; right: 5%; }
+      .hero-cut { display: none; }
       .hero-slogan { right: 2%; bottom: 8%; font-size: clamp(10px, 1.3vw, 13px); }
       .hero-aside { right: 5%; top: 50%; font-size: 7px; }
       .top-media-section { padding: 96px 0 36px; }
@@ -2338,8 +2389,10 @@
       .top-service-desc,
       .top-svc-mid .top-service-desc,
       .top-svc-low .top-service-desc { font-size: 15px; line-height: 1.72; }
+      .top-svc-hero .top-service-desc { font-size: 18px; line-height: 1.72; }
       .top-service-en { font-size: 15px; line-height: 1.22; }
       .top-service-more { font-size: 13px; }
+      .top-svc-hero .top-service-more { font-size: 15px; }
       .top-media-section { padding: 64px 0 28px; }
       .top-service-section { padding: 64px 0 32px; }
       .top-numbers-section { padding: 24px 0 32px; }
@@ -2356,7 +2409,46 @@
       .top-news-section { padding: 48px 0 64px !important; }
     }
     @media (min-width: 961px) and (max-width: 1199px) {
-      .top-hero-shell { min-height: 0; }
+      .top-hero-shell,
+      #hero { min-height: 0; overflow: hidden; }
+      .top-hero-inner {
+        grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+        min-height: 0;
+        align-items: center;
+      }
+      .hero-visual {
+        height: auto !important;
+        min-height: 0 !important;
+        align-self: center;
+        overflow: visible;
+      }
+      .hero-photo {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        clip-path: none;
+        display: block;
+      }
+      .hero-photo img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        transform: none;
+        display: block;
+        margin: 0;
+        object-fit: contain;
+        object-position: center;
+      }
+      .hero-cut { display: none; }
+      .hero-title { font-size: clamp(24px, 2.8vw, 40px); }
+      .hero-copy-main { margin-left: clamp(12px, 1.6vw, 28px); padding-left: clamp(16px, 2vw, 32px); }
       .top-media-layout {
         grid-template-columns: minmax(0, max-content) minmax(0, 1fr) minmax(0, 1fr);
         gap: 24px 28px;
@@ -2452,6 +2544,7 @@
         right: auto;
         width: 100%;
         height: auto;
+        min-height: 0;
         clip-path: none;
         overflow: visible;
       }
@@ -2461,12 +2554,11 @@
         left: auto;
         width: 100%;
         height: auto;
-        max-width: 108%;
+        max-width: 100%;
         max-height: none;
-        transform: scale(1.06);
-        transform-origin: center center;
+        transform: none;
         display: block;
-        margin: 0 auto;
+        margin: 0;
         object-fit: contain;
         object-position: center;
       }
@@ -2476,6 +2568,11 @@
       .hero-slogan { right: 4%; bottom: 8%; font-size: 12px; letter-spacing: 0.12em; }
       .hero-shape--back,
       .hero-shape--mid { width: 100%; clip-path: none; opacity: 0.55; height: 42%; top: auto; bottom: 0; }
+      .top-svc-trio,
+      .top-svc-trio .top-svc-low,
+      .top-svc-mid,
+      .top-svc-hero { width: 100%; max-width: none; }
+      .top-svc-trio { align-items: stretch; }
       .top-numbers-inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 28px 16px;
@@ -2876,11 +2973,11 @@ class Component extends DCLogic {
   renderVals() {
     var services = [
         { num: '01', en: 'FAN STEP\nRECRUITING', category: '採用ブランディング', name: 'ファンステップ採用【動画SNS採用】', catch: '採用は、\n「集める」から\n「好きになってもらう」へ。', desc: 'LINE × 動画 × SNSで\n「ここで働きたい」を育てる採用。\n応募の前から、企業のファンをつくる\n新しい採用モデルです。', href: 'fanstep.html', target: '_self', imageSrc: 'assets/service-01-full.jpg' },
-        { num: '02', en: 'KITABUZZ', category: 'インフルエンサーエージェンシー', name: 'キタバズ【北海道特化型 地域創生インフルエンサー事務所】', catch: '北海道の可能性を、\nもっと大きく。', desc: '北海道の企業・店舗と\nインフルエンサーをつなぐ\n北海道特化型マーケティング。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz-photo.jpg' },
-        { num: '03', en: 'AI × WEB\nCREATE', category: 'Web制作', name: 'Webサイト制作・リース', catch: 'AIで、\nつくるをもっと自由に。', desc: 'AIを活用したWebサイト制作・\nシステム開発・業務効率化を実現。', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-aiweb-photo.jpg' },
-        { num: '04', en: 'EXPLAINER\nANIMATION VIDEO', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', catch: '複雑なことを、\nシンプルに伝える。', desc: '伝わりやすく、心を動かす\n採用用アニメーション動画。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-animation-photo.jpg' },
-        { num: '05', en: 'CREATIVE &\nMARKETING', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', catch: '戦略×クリエイティブで、\n成果を最大化。', desc: '動画・SNS・広告・デザインで、\n企業の魅力を引き出します。', href: 'creative-marketing.html', target: '_self', imageSrc: 'assets/service-creative-photo.jpg' },
-        { num: '06', en: 'FASHION\nAPPAREL', category: 'アパレル', name: 'アパレル', catch: '好きなものを、\nもっと自由に。', desc: '企画・デザインから倉庫・販売まで\nトータルでサポート。', href: 'apparel.html', target: '_self', imageSrc: 'assets/service-apparel-photo.jpg' }
+        { num: '02', en: 'KITABUZZ', category: 'インフルエンサーエージェンシー', name: 'キタバズ【北海道特化型 地域創生インフルエンサー事務所】', catch: '北海道の可能性を、\nもっと大きく。', desc: '北海道の企業・店舗と\nインフルエンサーをつなぐ\n北海道特化型マーケティング。', href: 'https://kitabuzz.jp', target: '_blank', imageSrc: 'assets/service-kitabuzz-photo.png' },
+        { num: '03', en: 'AI × WEB\nCREATE', category: 'Web制作', name: 'Webサイト制作・リース', catch: 'AIで、\nつくるをもっと自由に。', desc: 'AIを活用したWebサイト制作・\nシステム開発・業務効率化を実現。', href: 'https://min-nano.site/', target: '_blank', imageSrc: 'assets/service-aiweb-photo.png' },
+        { num: '04', en: 'EXPLAINER\nANIMATION VIDEO', category: '動画制作', name: '説明用アニメ動画 TSUTA-WORLD', catch: '複雑なことを、\nシンプルに伝える。', desc: '伝わりやすく、心を動かす\n採用用アニメーション動画。', href: 'animevideo.html', target: '_self', imageSrc: 'assets/service-animation-photo.png' },
+        { num: '05', en: 'CREATIVE &\nMARKETING', category: '動画制作・マーケティング', name: 'クリエイティブ＆マーケティング', catch: '戦略×クリエイティブで、\n成果を最大化。', desc: '動画・SNS・広告・デザインで、\n企業の魅力を引き出します。', href: 'creative-marketing.html', target: '_self', imageSrc: 'assets/service-creative-photo.png' },
+        { num: '06', en: 'FASHION\nAPPAREL', category: 'アパレル', name: 'アパレル', catch: '好きなものを、\nもっと自由に。', desc: '企画・デザインから倉庫・販売まで\nトータルでサポート。', href: 'apparel.html', target: '_self', imageSrc: 'assets/service-apparel-photo.png' }
     ];
     return {
       mediaItems: [

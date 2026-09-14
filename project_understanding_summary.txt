@@ -1,6 +1,14 @@
 # Project Understanding Summary
 
-## Recent edits (2026-09-11)
+## Recent edits (2026-09-14)
+- TOP SERVICE 03 AI×WEB photo: `assets/service-aiweb-photo.jpg` mask knocked out (surrounding black → white) for white page background; CSS unchanged.
+- TOP Hero title overlap: 「採用」was under the photo parallelogram. Raised `.hero-copy` / `.hero-copy-main` / `.hero-title` z-index above `.hero-visual` so the heading paints on top.
+- TOP SERVICE 01 photo: slightly larger — column 46%→52%, image scale 108%→116%; vertical slogan shifted to stay just outside the photo. Copy/layout otherwise unchanged.
+- TOP SERVICE 05 bottom edge: jagged under-camera cut replaced with a straight diagonal; leftover black stub removed. Camera body kept.
+- TOP SERVICE 04 animation photo: swapped to client profile crop (`assets/service-animation-photo.png`); black canvas knocked out (hair kept); CSS clip-path off, `object-fit: contain`.
+- TOP SERVICE 02/03 photo edges: black/jagged JPEG mask cleaned to transparent PNG; CSS clip-path off; `object-fit: contain`.
+- TOP SERVICE mobile whitespace (`index.html` CSS): 04–06 stayed content-width on phones because `.top-svc-trio` is a column flex with `align-items: flex-start` and `flex: 1 1 0`, so cards (~194px) sat on the left with a large empty gutter. ≤960 now stretches cards to full width, forces visual/clip `width: 100%`, overrides per-item aspect-ratios to 16/10, and stacks the `sc-for` wrapper as a column. Pair/trio gaps 56/48→32. Desktop 1200+ unchanged.
+- TOP Hero float-drop (`index.html` CSS): below 1200px the photo is no longer `position: absolute` inside a `100svh` frame (that left a tall empty column and let the parallelogram overflow). Tablet 961–1199 and 768–960 now size the visual to the image (`height: auto`, `transform: none`, `max-width: 100%`). Mobile ≤767 keeps the copy→photo stack and drops the leftover 280px min-height / 1.06 scale. Desktop 1200+ unchanged.
 - TOP ABOUT deco (`index.html` only): removed PEOPLE / TECHNOLOGY / CREATIVE / SOCIETY and the vertical 働くを、もっと好きに。 UPDATE THE WAY… and large ABOUT remain. Other sections unchanged.
 - TOP Hero slogan (`index.html` only): 「伝わるから、世界は動く。」 is now horizontal (was `writing-mode: vertical-rl` at top-right) and sits where the `01` pager + line were (bottom-right of the photo). Pager markup and CSS removed. Tablet/mobile keep the slogan in that same corner; PEOPLE/BRANDS aside and other hero copy unchanged.
 - TOP ABOUT responsive deco (`index.html` CSS only): fixed pale-blue "ABOUT" hidden on mobile — root cause was `.top-about-deco` stacking context (z-index 1) under photo (z-index 2). ≤960px stage is now a 2-col grid (photo | deco flex column); photo narrowed (58/54/50vw); deco text no longer absolute-overlapped. Desktop unchanged.
