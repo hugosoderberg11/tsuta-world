@@ -1,0 +1,1472 @@
+/* Fanstep LP — Claude Design v3 (1440 / 390). Scoped to body.fs-lp-page. */
+html:has(body.fs-lp-page) { scroll-behavior: smooth; }
+
+body.fs-lp-page {
+  margin: 0;
+  background: #fff;
+  color: #0B1B2B;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+body.fs-lp-page * { box-sizing: border-box; }
+body.fs-lp-page a { color: #0E4C92; text-decoration: none; }
+body.fs-lp-page a:hover { color: #3B7FD4; }
+body.fs-lp-page a.fslp-cta-text { color: #0B1B2B; }
+body.fs-lp-page a.fslp-cta-text:hover { color: #0E4C92; }
+body.fs-lp-page a.fslp-btn,
+body.fs-lp-page .fslp-btn { color: #fff; }
+body.fs-lp-page a.fslp-btn:hover,
+body.fs-lp-page .fslp-btn:hover { color: #fff; background: #0B3C7A; }
+body.fs-lp-page input,
+body.fs-lp-page textarea,
+body.fs-lp-page button {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.fslp {
+  width: 100%;
+  background: #fff;
+}
+
+#service,
+#issue,
+#style,
+#proposal,
+#assets,
+#effects,
+#works,
+#contact {
+  scroll-margin-top: 96px;
+}
+
+.fslp-en {
+  font-family: Archivo, sans-serif;
+}
+
+.fslp-serif {
+  font-family: "Shippori Mincho", serif;
+}
+
+.fslp-display {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #0B1B2B;
+  line-height: 1.1;
+}
+
+.fslp-sub {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0E4C92;
+  margin-top: 8px;
+}
+
+.fslp-script {
+  font-family: Parisienne, cursive;
+  color: #0E4C92;
+}
+
+/* ——— HERO ——— */
+.fslp-hero {
+  position: relative;
+  background: #fff;
+  padding: 72px 72px 80px;
+}
+
+.fslp-hero-copy {
+  position: relative;
+  max-width: 720px;
+}
+
+.fslp-kicker-text {
+  font-family: Archivo, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #0E4C92;
+}
+
+.fslp-hero-title {
+  margin: 0 0 20px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 3.2vw, 46px);
+  line-height: 1.42;
+  letter-spacing: 0.01em;
+  color: #0B1B2B;
+}
+
+.fslp-hero-lead {
+  margin: 0 0 36px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.85;
+  color: #26384C;
+}
+
+.fslp-hero-title em {
+  font-style: normal;
+  color: #0E4C92;
+}
+
+.fslp-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.fslp-kicker-line {
+  width: 40px;
+  height: 1px;
+  background: #0E4C92;
+}
+
+.fslp-cta-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0B1B2B;
+}
+
+.fslp-cta-text:hover { color: #0E4C92; }
+
+.fslp-cta-orb {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0E4C92;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-family: Archivo, sans-serif;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.fslp-cta-text:hover .fslp-cta-orb {
+  background: #0B3C7A;
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* ——— CONCEPT ——— */
+.fslp-concept {
+  padding: 96px 120px 80px;
+}
+
+.fslp-concept-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.fslp-concept h2 {
+  margin: 0 0 22px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.55;
+  color: #0B1B2B;
+}
+
+.fslp-concept p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 2.1;
+  color: #2E3A48;
+  max-width: 720px;
+}
+
+/* ——— ISSUE ——— */
+.fslp-issue {
+  background: #F6FAFE;
+  padding: 88px 120px 96px;
+}
+
+.fslp-issue-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  gap: 24px;
+}
+
+.fslp-issue-head p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2;
+  color: #3C4B5C;
+  max-width: 420px;
+}
+
+.fslp-issue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.fslp-issue-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 38px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.fslp-num {
+  font-family: Archivo, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: #9BBBDD;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.fslp-issue-card h3 {
+  margin: 0 0 10px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #0B1B2B;
+}
+
+.fslp-issue-card p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.95;
+  color: #2E3A48;
+}
+
+/* ——— STYLE ——— */
+.fslp-style {
+  padding: 104px 120px 96px;
+}
+
+.fslp-style-grid {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 72px;
+  align-items: center;
+}
+
+.fslp-style .fslp-display { margin-bottom: 8px; }
+.fslp-style .fslp-sub { margin-bottom: 34px; margin-top: 0; }
+
+.fslp-style-title {
+  margin: 0 0 34px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: 52px;
+  line-height: 1.45;
+  color: #0B1B2B;
+}
+
+.fslp-style-title em {
+  font-style: normal;
+  color: #0E4C92;
+}
+
+.fslp-style-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid #E7EDF4;
+  align-items: baseline;
+}
+
+.fslp-style-row:last-child { border-bottom: 1px solid #E7EDF4; }
+
+.fslp-style-idx {
+  font-family: Archivo, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0E4C92;
+}
+
+.fslp-style-row h3 {
+  margin: 0 0 6px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #0B1B2B;
+}
+
+.fslp-style-row p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.95;
+  color: #3C4B5C;
+}
+
+.fslp-style-visual {
+  position: relative;
+  height: 520px;
+}
+
+.fslp-style-photo {
+  position: absolute;
+  inset: 0;
+  background: #E8F1F8;
+  clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 94%);
+  overflow: hidden;
+}
+
+.fslp-style-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 12%;
+  display: block;
+}
+
+.fslp-quote-card {
+  position: absolute;
+  left: -56px;
+  bottom: 56px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 34px;
+  box-shadow: 0 20px 50px rgba(11, 60, 122, 0.14);
+  max-width: 360px;
+}
+
+.fslp-quote-card p {
+  margin: 0 0 10px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.6;
+  color: #0B1B2B;
+}
+
+.fslp-quote-card span {
+  font-family: Archivo, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #7C8CA0;
+}
+
+/* ——— PROPOSAL ——— */
+.fslp-proposal {
+  background: #F6FAFE;
+  padding: 96px 120px 104px;
+}
+
+.fslp-proposal-head { margin-bottom: 56px; }
+
+.fslp-prop-hero {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  margin-bottom: 20px;
+}
+
+.fslp-prop-copy { padding: 48px 52px; }
+
+.fslp-prop-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.fslp-prop-en {
+  font-family: Archivo, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #0E4C92;
+}
+
+.fslp-tag {
+  background: #F0F6FC;
+  color: #0B3C7A;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.fslp-prop-copy h3 {
+  margin: 0 0 16px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.45;
+  color: #0B1B2B;
+}
+
+.fslp-prop-copy p {
+  margin: 0 0 28px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.05;
+  color: #3C4B5C;
+  max-width: 560px;
+}
+
+.fslp-steps {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fslp-step {
+  border: 1px solid #C3D2E3;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #26384C;
+}
+
+.fslp-chat {
+  position: relative;
+  background: linear-gradient(200deg, #E4EFFA, #F5FAFE);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fslp-chat-box {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 14px 34px rgba(11, 60, 122, 0.12);
+  width: 250px;
+}
+
+.fslp-chat-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #26384C;
+}
+
+.fslp-chat-user i {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #06C755;
+  display: block;
+}
+
+.fslp-bubble {
+  background: #F0F6FC;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #26384C;
+  margin-bottom: 8px;
+}
+
+.fslp-bubble--me {
+  background: #0E4C92;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.fslp-prop-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fslp-prop-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 44px 46px;
+}
+
+.fslp-prop-card .fslp-prop-meta { gap: 16px; }
+
+.fslp-prop-card h3 {
+  margin: 0 0 16px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.45;
+  color: #0B1B2B;
+}
+
+.fslp-prop-card p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.05;
+  color: #3C4B5C;
+}
+
+.fslp-prop-quote {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #0E4C92;
+}
+
+.fslp-sns {
+  display: flex;
+  gap: 14px;
+  font-family: Archivo, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #0E4C92;
+}
+
+/* ——— ASSETS ——— */
+.fslp-assets {
+  padding: 104px 120px 96px;
+}
+
+.fslp-assets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.fslp-asset {
+  border-radius: 24px;
+  padding: 48px 46px;
+}
+
+.fslp-asset--media { background: #F3F5F8; }
+
+.fslp-asset--video {
+  background: linear-gradient(200deg, #0E4C92, #0B3C7A);
+  color: #fff;
+}
+
+.fslp-asset-kicker {
+  font-family: Archivo, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #5A6878;
+  margin-bottom: 22px;
+}
+
+.fslp-asset--video .fslp-asset-kicker {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.fslp-asset h3 {
+  margin: 0 0 16px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.5;
+}
+
+.fslp-asset--media h3 { color: #5A6878; }
+
+.fslp-asset p {
+  margin: 0 0 34px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.05;
+}
+
+.fslp-asset--media p { color: #4A5766; }
+.fslp-asset--video p { color: #fff; }
+
+.fslp-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 96px;
+}
+
+.fslp-bar {
+  width: 32px;
+  border-radius: 6px 6px 0 0;
+}
+
+.fslp-bar--down:nth-child(1) { height: 96px; background: #C9D2DD; }
+.fslp-bar--down:nth-child(2) { height: 70px; background: #D2DAE3; }
+.fslp-bar--down:nth-child(3) { height: 46px; background: #DBE1E9; }
+.fslp-bar--down:nth-child(4) { height: 24px; background: #E3E8EE; }
+.fslp-bar--down:nth-child(5) { height: 8px; background: #EBEEF2; }
+
+.fslp-bar--up:nth-child(1) { height: 24px; background: rgba(255, 255, 255, 0.45); }
+.fslp-bar--up:nth-child(2) { height: 44px; background: rgba(255, 255, 255, 0.6); }
+.fslp-bar--up:nth-child(3) { height: 64px; background: rgba(255, 255, 255, 0.75); }
+.fslp-bar--up:nth-child(4) { height: 80px; background: rgba(255, 255, 255, 0.9); }
+.fslp-bar--up:nth-child(5) { height: 96px; background: #fff; }
+
+/* ——— EFFECTS ——— */
+.fslp-effects {
+  background: #F6FAFE;
+  padding: 88px 120px 96px;
+}
+
+.fslp-effects-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.fslp-effect-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.fslp-effect-cols h3 {
+  margin: 0 0 12px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #0B1B2B;
+}
+
+.fslp-rule {
+  width: 40px;
+  height: 2px;
+  background: #0E4C92;
+  margin-bottom: 16px;
+}
+
+.fslp-effect-cols p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.95;
+  color: #3C4B5C;
+}
+
+.fslp-result {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.fslp-result-kicker {
+  font-family: Archivo, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #0E4C92;
+  flex-shrink: 0;
+}
+
+.fslp-result p {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.55;
+  color: #0B1B2B;
+}
+
+/* ——— WORKS ——— */
+.fslp-works { padding: 96px 0 104px; }
+
+.fslp-works-head {
+  padding: 0 120px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 52px;
+}
+
+.fslp-works-count {
+  font-family: Archivo, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #7C8CA0;
+  padding-bottom: 10px;
+}
+
+.fslp-works-list {
+  padding: 0 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.fslp-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+  gap: 48px;
+  align-items: center;
+}
+
+.fslp-work--flip {
+  grid-template-columns: minmax(320px, 400px) minmax(0, 1fr);
+}
+
+.fslp-work img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid #E7EDF4;
+}
+
+.fslp-work-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.fslp-work-idx {
+  font-family: Archivo, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #7AA3D4;
+}
+
+.fslp-work-tag {
+  background: #F0F6FC;
+  color: #0B3C7A;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.fslp-work-tag--lead {
+  background: #0E4C92;
+  color: #fff;
+}
+
+.fslp-work h3 {
+  margin: 0 0 12px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #0B1B2B;
+}
+
+.fslp-work-ch {
+  margin: 0 0 28px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #3C4B5C;
+}
+
+.fslp-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fslp-stat {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E7EDF4;
+  padding-bottom: 9px;
+}
+
+.fslp-stat:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.fslp-stat dt {
+  font-size: 15px;
+  color: #5A6878;
+}
+
+.fslp-stat dd {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0B1B2B;
+}
+
+.fslp-stat dd.accent { color: #0E4C92; }
+
+.fslp-work-mobile { display: none; }
+
+/* ——— CTA BAND ——— */
+.fslp-band {
+  position: relative;
+  background: linear-gradient(120deg, #DCEAF8, #F3F9FE);
+  padding: 72px 120px;
+  overflow: hidden;
+}
+
+.fslp-band-photo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 420px;
+  background: #CFE2F5;
+  clip-path: polygon(0 0, 78% 0, 100% 100%, 0 100%);
+  overflow: hidden;
+}
+
+.fslp-band-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.fslp-band-inner {
+  position: relative;
+  padding-left: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.fslp-band .fslp-script {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.fslp-band h2 {
+  margin: 0 0 12px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1.4;
+  color: #0B1B2B;
+}
+
+.fslp-band p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+  color: #3C4B5C;
+}
+
+.fslp-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #0E4C92;
+  color: #fff;
+  padding: 22px 40px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 0;
+  cursor: pointer;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.fslp-btn:hover {
+  background: #0B3C7A;
+  color: #fff;
+}
+
+/* ——— CONTACT ——— */
+.fslp-contact {
+  padding: 96px 120px 104px;
+}
+
+.fslp-contact-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.fslp-contact .fslp-sub { margin: 8px 0 28px; }
+
+.fslp-contact-lead {
+  margin: 0 0 32px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2.05;
+  color: #3C4B5C;
+}
+
+.fslp-hours {
+  border-top: 1px solid #E7EDF4;
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fslp-hours div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fslp-hours span:first-child {
+  font-size: 13px;
+  color: #5A6878;
+}
+
+.fslp-hours span:last-child {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0B1B2B;
+}
+
+.fslp-form {
+  background: #F6FAFE;
+  border-radius: 24px;
+  padding: 48px 52px;
+}
+
+.fslp-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 32px;
+}
+
+.fslp-field label,
+.fslp-kinds-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0B1B2B;
+  margin-bottom: 10px;
+}
+
+.fslp-req { color: #C0392B; font-size: 11px; }
+.fslp-opt { color: #5A6878; font-size: 11px; }
+
+.fslp-field input,
+.fslp-field textarea {
+  width: 100%;
+  border: 1px solid #D6E0EC;
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+  font-size: 15px;
+  color: #0B1B2B;
+  outline: none;
+}
+
+.fslp-field textarea { resize: vertical; min-height: 120px; }
+
+.fslp-field input:focus,
+.fslp-field textarea:focus {
+  border: 1px solid #0E4C92;
+}
+
+.fslp-kinds {
+  margin-top: 32px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.fslp-kinds-label { margin-bottom: 14px; }
+
+.fslp-check-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fslp-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #D6E0EC;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #26384C;
+  cursor: pointer;
+}
+
+.fslp-check:hover {
+  border-color: #0E4C92;
+  color: #0E4C92;
+}
+
+.fslp-check input {
+  accent-color: #0E4C92;
+  width: 17px;
+  height: 17px;
+}
+
+.fslp-note { margin-top: 32px; }
+
+.fslp-form .fslp-btn {
+  margin-top: 32px;
+  padding: 22px 52px;
+}
+
+.fslp-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* reveal */
+.fslp-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fslp-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.fslp-d2 { transition-delay: 0.08s; }
+.fslp-d3 { transition-delay: 0.16s; }
+.fslp-d4 { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fslp-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ——— TABLET ——— */
+@media (max-width: 1199px) {
+  .fslp-hero { padding: 48px 48px 56px; }
+
+  .fslp-hero-title { font-size: 44px; }
+
+  .fslp-concept,
+  .fslp-issue,
+  .fslp-style,
+  .fslp-proposal,
+  .fslp-assets,
+  .fslp-effects,
+  .fslp-contact {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .fslp-works-head,
+  .fslp-works-list { padding-left: 48px; padding-right: 48px; }
+
+  .fslp-band { padding: 56px 48px; }
+
+  .fslp-band-photo { display: none; }
+
+  .fslp-band-inner { padding-left: 0; }
+
+  .fslp-concept-grid,
+  .fslp-style-grid,
+  .fslp-effects-grid,
+  .fslp-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .fslp-style-visual { height: 360px; }
+
+  .fslp-quote-card { left: 24px; right: 24px; max-width: none; }
+
+  .fslp-prop-hero { grid-template-columns: 1fr; }
+
+  .fslp-chat { min-height: 240px; }
+
+  .fslp-work,
+  .fslp-work--flip {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .fslp-work img { order: -1; }
+}
+
+/* ——— MOBILE 390 spec ——— */
+@media (max-width: 767px) {
+  .fslp-display { font-size: 32px; }
+  .fslp-sub { font-size: 12px; margin-top: 6px; }
+
+  .fslp-hero { padding: 36px 18px 40px; }
+
+  .fslp-hero-copy { max-width: none; }
+
+  .fslp-kicker { gap: 10px; margin-bottom: 16px; }
+  .fslp-kicker-line { width: 24px; }
+  .fslp-kicker-text { font-size: 11px; letter-spacing: 0.18em; }
+
+  .fslp-hero-title { font-size: 32px; line-height: 1.4; margin-bottom: 14px; }
+
+  .fslp-hero-lead { font-size: 17px; margin-bottom: 22px; }
+
+  .fslp-cta-text {
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 22px;
+    border-radius: 999px;
+    font-size: 16px;
+    background: #0E4C92;
+    color: #fff;
+    width: 100%;
+  }
+
+  body.fs-lp-page a.fslp-cta-text {
+    color: #fff;
+  }
+
+  body.fs-lp-page a.fslp-cta-text:hover { color: #fff; }
+
+  .fslp-cta-orb { display: none; }
+
+  .fslp-concept,
+  .fslp-issue,
+  .fslp-style,
+  .fslp-proposal,
+  .fslp-assets,
+  .fslp-effects,
+  .fslp-works,
+  .fslp-contact {
+    padding: 44px 18px 40px;
+  }
+
+  .fslp-issue,
+  .fslp-proposal,
+  .fslp-effects { padding: 44px 18px; }
+
+  .fslp-concept h2 {
+    font-size: 27px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .fslp-concept p { font-size: 15px; line-height: 2.05; }
+
+  .fslp-issue-head {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .fslp-issue-head p { display: none; }
+
+  .fslp-issue-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .fslp-issue-card {
+    border-radius: 16px;
+    padding: 24px 22px;
+    gap: 16px;
+  }
+
+  .fslp-issue-card h3 { font-size: 20px; margin-bottom: 8px; }
+  .fslp-issue-card p { font-size: 14px; line-height: 1.9; }
+
+  .fslp-issue-card .fslp-num { font-size: 26px; }
+
+  .fslp-style { padding: 44px 18px 40px; }
+  .fslp-style .fslp-display { font-size: 28px; }
+  .fslp-style .fslp-sub { margin-bottom: 22px; }
+
+  .fslp-style-title { font-size: 32px; line-height: 1.5; margin-bottom: 24px; }
+
+  .fslp-style-row {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .fslp-style-idx { font-size: 18px; }
+  .fslp-style-row h3 { font-size: 19px; }
+  .fslp-style-row p { font-size: 14px; line-height: 1.9; }
+
+  .fslp-style-visual { display: none; }
+
+  .fslp-quote-mobile {
+    display: block;
+    margin-top: 24px;
+    background: #F6FAFE;
+    border-radius: 18px;
+    padding: 24px 22px;
+  }
+
+  .fslp-quote-mobile p {
+    margin: 0 0 8px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.6;
+    color: #0B1B2B;
+  }
+
+  .fslp-quote-mobile span {
+    font-family: Archivo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #5A6878;
+  }
+
+  .fslp-proposal-head { margin-bottom: 24px; }
+
+  .fslp-prop-hero {
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    margin-bottom: 0;
+  }
+
+  .fslp-chat { display: none; }
+
+  .fslp-prop-pair {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .fslp-prop-copy,
+  .fslp-prop-card {
+    padding: 26px 22px;
+    border-radius: 18px;
+  }
+
+  .fslp-prop-copy h3,
+  .fslp-prop-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .fslp-prop-copy p,
+  .fslp-prop-card p {
+    font-size: 14px;
+    line-height: 1.95;
+    margin-bottom: 16px;
+  }
+
+  .fslp-prop-quote { font-size: 17px; line-height: 1.7; margin: 0; }
+
+  .fslp-step { font-size: 12px; padding: 8px 14px; }
+
+  .fslp-prop-hero .fslp-num,
+  .fslp-prop-card .fslp-num { font-size: 28px; }
+
+  .fslp-sns { font-size: 12px; gap: 12px; letter-spacing: 0.1em; }
+
+  .fslp-assets {
+    padding: 44px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .fslp-assets-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .fslp-asset {
+    border-radius: 18px;
+    padding: 26px 22px;
+  }
+
+  .fslp-asset-kicker { font-size: 10px; margin-bottom: 14px; }
+
+  .fslp-asset h3 { font-size: 24px; line-height: 1.55; margin-bottom: 10px; }
+
+  .fslp-asset p { font-size: 14px; line-height: 1.95; margin-bottom: 0; }
+
+  .fslp-asset--video p { margin-bottom: 20px; }
+
+  .fslp-bars { height: 60px; gap: 6px; }
+  .fslp-bar { width: 24px; }
+  .fslp-asset--media .fslp-bars { display: none; }
+  .fslp-bar--up:nth-child(1) { height: 16px; }
+  .fslp-bar--up:nth-child(2) { height: 28px; }
+  .fslp-bar--up:nth-child(3) { height: 40px; }
+  .fslp-bar--up:nth-child(4) { height: 50px; }
+  .fslp-bar--up:nth-child(5) { height: 60px; }
+
+  .fslp-effect-cols {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-bottom: 24px;
+  }
+
+  .fslp-effect-cols h3 { font-size: 22px; margin-bottom: 10px; }
+  .fslp-rule { width: 32px; margin-bottom: 12px; }
+  .fslp-effect-cols p { font-size: 14px; line-height: 1.9; }
+
+  .fslp-result {
+    display: block;
+    border-radius: 18px;
+    padding: 24px 22px;
+  }
+
+  .fslp-result-kicker {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+
+  .fslp-result p { font-size: 23px; line-height: 1.6; }
+
+  .fslp-works-head {
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .fslp-works-count {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #5A6878;
+    padding-bottom: 0;
+  }
+
+  .fslp-works-list { padding: 0; gap: 30px; }
+
+  .fslp-work {
+    display: none;
+  }
+
+  .fslp-work-mobile {
+    display: block;
+  }
+
+  .fslp-work-mobile .fslp-work-meta {
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .fslp-work-mobile .fslp-work-idx { font-size: 24px; }
+
+  .fslp-work-mobile .fslp-work-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .fslp-work-mobile h3 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.45;
+    width: 100%;
+  }
+
+  .fslp-work-mobile p {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #3C4B5C;
+  }
+
+  .fslp-work-mobile img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #E7EDF4;
+  }
+
+  .fslp-band {
+    padding: 40px 18px;
+  }
+
+  .fslp-band .fslp-script { font-size: 26px; margin-bottom: 10px; }
+
+  .fslp-band h2 { font-size: 28px; line-height: 1.5; }
+
+  .fslp-band p { font-size: 14px; margin-bottom: 20px; }
+
+  .fslp-band-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .fslp-band .fslp-btn {
+    justify-content: center;
+    padding: 18px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .fslp-form {
+    border-radius: 20px;
+    padding: 26px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fslp-form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fslp-kinds,
+  .fslp-note { margin-top: 0; }
+
+  .fslp-check-row { gap: 6px; }
+
+  .fslp-check {
+    flex: 1;
+    justify-content: center;
+    padding: 14px 0;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .fslp-form .fslp-btn {
+    margin-top: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .fslp-hours { display: none; }
+
+  .fslp-concept h2 br,
+  .fslp-effect-cols h3 br,
+  .fslp-asset h3 br {
+    display: none;
+  }
+}
+
+.fslp-quote-mobile { display: none; }
+
+@media (max-width: 767px) {
+  .fslp-quote-mobile { display: block; }
+}

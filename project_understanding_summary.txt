@@ -1,5 +1,19 @@
 # Project Understanding Summary
 
+## Recent edits (2026-09-17)
+- `creative-marketing.html` WORKS right-column type enlarged again (CASE → 媒体): CASE 20px, company 34px, stats 16/24px, meta 20px. Image size unchanged.
+- `creative-marketing.html` WORKS right-column type enlarged (CASE → 媒体): company ~26px, meta/stats 16–18px, more spacing. Image size unchanged.
+- `creative-marketing.html` WORKS: oversized case photos shrunk to compact thumbs; SNS/creative are row cards (photo left, copy right) with scannable stats chips; live-action is a 2-col mini-card grid. Meta is a tight left-aligned spec list. SERVICES 01 is now 動画制作 (was overlapping SNS + a duplicate 04). Fanstep/animevideo unchanged.
+- `creative-marketing.html` rebuilt to Fanstep/animevideo LP UI (`fanstep-lp.css` + `creative-marketing-lp.css`). TOP-aligned hero copy（戦略×クリエイティブで、成果を最大化。）. Sections: Hero → CONCEPT → SERVICES (01–06) → AREAS → WORKS (4 tab panels, case studies preserved) → APPROACH → CTA band → CONTACT (`/api/contact`). Fanstep/animevideo pages unchanged.
+- `animevideo-lp.css`: Hero copy block centered (flex + `text-align: center`, kicker and CTA aligned to center). Fanstep page unchanged.
+- `animevideo.html` rebuilt to the Fanstep LP UI (`fanstep-lp.css` + `animevideo-lp.css`). Same editorial system: Shippori Mincho / Cormorant / Archivo, pale-blue bands, numbered cards, orb CTA, in-page contact form. Sections: Header → Hero (text) → CONCEPT → SERVICES (01 mosaic + 02/03 cards) → WORKS (10 category filters, 75 thumbs) → VOICE (testimonial PNG + 3 quotes) → CTA band → CONTACT (`/api/contact` via `contact-form.js`) → shared footer. Copy, YouTube IDs, and portfolio JSON unchanged.
+
+## Recent edits (2026-09-16)
+- animevideo.html (説明用アニメ動画, `/animevideo`): service LP — Header (shared) → Hero (copy + 3-shot mosaic) → SERVICES 3 cards → WORKS (10 category filters, 75 thumbs in `assets/animevideo/works-thumb*.jpg`) → VOICE (testimonial PNG + 3 quotes) → CONTACT → shared footer. Hero photos: `hero-sammy.jpg`, `hero-greeneye.jpg`, `creative-marketing/live-01-shacho.png`. Service thumbs: works-thumb02 / 22 / 68. Voice: `creative-marketing/anime-testimonial.png`.
+- Fanstep recruit hero: right-side photo (`assets/hero-woman.jpg` in `.fslp-hero-visual`) removed. Hero is now a simple text block (kicker / title / lead / CTA) with no two-column grid. PRODUCTION STYLE and other sections still use that portrait.
+- Fanstep hero photo: couple (`service-01-fanstep.jpg`) removed; replaced with TOP mock portrait `assets/hero-woman.jpg`. Section copy tightened (ISSUE titles, CONCEPT, PROPOSAL, EFFECTS, WORKS names without mid-word breaks).
+- `fanstep.html` rebuilt from Claude Design v3 (1440 / 390). Layout, type, colors, clip-path hero, LINE card, works 5 slides (`assets/fanstep/image1/3/5/7/9.png`), and form stay. Shared `page-header` + `site-footer` (not the mock chrome). Styles in `fanstep-lp.css`. Form still posts to `tiktok_b/branch.php` with recaptcha. Hero photo is `assets/service-01-full.jpg` inside the design frame.
+
 ## Recent edits (2026-09-14)
 - TOP SERVICE 02–06 mobile (`index.html` CSS): photo sits beside the catch (~55% width); description / VIEW MORE go full-width under that row so type is not squeezed and the thumbnail is no longer a stamp. Desktop unchanged.
 - TOP SERVICE 02–06 mobile type (`index.html` CSS): larger EN / catch / desc / VIEW MORE / idx at ≤960 and ≤600; ≤767 full-width stack under thumbnails + bigger clamp() overrides (was tiny side-column copy). Desktop unchanged.
@@ -129,11 +143,11 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `post-*.html` — article detail pages (content from tsuta-world.com)
 - `company.html` — 会社情報（代表メッセージ / 会社概要 / 沿革）。公式 https://tsuta-world.com/company/ と同一内容。本社は渋谷区神泉町 アネックス神泉301。
 - `agency.html` — 代理店募集 (from existing site partner-recruitment text)
-- `creative-marketing.html` — クリエイティブ＆マーケティング詳細（Hero / SERVICES / WORKS / CONTACT / Footer）
-- `fanstep.html` — ファンステップ採用 LP。Word「fanstep_service_description.docx」準拠（課題4つ / 実績スライド5枚 / 制作スタイル / 3施策 / 動画資産 / 3成果 / tiktok_b問い合わせフォーム / フッター）。料金・ISZ事例・タイムラインは含めない。TOPカードからリンク済み。
+- `creative-marketing.html` — クリエイティブ＆マーケティング LP（`fanstep-lp.css` + `creative-marketing-lp.css`）。Hero / CONCEPT / SERVICES / AREAS / WORKS（4タブ）/ APPROACH / CONTACT。
+- `fanstep.html` — ファンステップ採用 LP（Claude Design v3 組み込み）。Hero / CONCEPT / ISSUE / PRODUCTION STYLE / PROPOSAL / VIDEO ASSETS / EFFECTS / WORKS 5件 / CTA / CONTACT。共通ヘッダー・フッター。料金・ISZ・タイムラインなし。TOPからリンク済み。
 - `assets/fanstep/` — Word内の実績スライドPNG（image1/3/5/7/9）と付随SVG。
 - `website.html` — Webサイト制作・リース 詳細（同構成、placeholderコンテンツ）
-- `animevideo.html` — 説明用アニメ動画 TSUTA-WORLD 詳細。Hero（service-anime.jpg）/ SERVICES 3種 / WORKS 全10カテゴリ75作品（公式LPから取得、assets/animevideo/ サムネ）/ VOICE / CONTACT。カテゴリフィルタはJS。
+- `animevideo.html` — 説明用アニメ動画 LP。Fanstep と同じ `fslp-*` UI（`fanstep-lp.css` + `animevideo-lp.css`）。Hero / CONCEPT / SERVICES / WORKS（10カテゴリ75作品）/ VOICE / CONTACT（`/api/contact`）。カテゴリフィルタはJS。
 - `apparel.html` — アパレル 詳細。Hero / 事業について / 自社ブランド・OEM / 対応範囲 / WORKS / CONTACT / Footer。コイシカワapparel掲載の文言と実績のみ。`ap-page` で大きな太字（Noto Sans JP 900 / Barlow Condensed）とスクロール表示アニメ。
 - `assets/apparel/` — BYWEAR・MA LABELバナー、AKG実績画像（コイシカワ公式から取得）
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
