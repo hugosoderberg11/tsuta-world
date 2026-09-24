@@ -1,5 +1,14 @@
 # Project Understanding Summary
 
+## Recent edits (2026-09-24)
+- `animevideo.html` VOICE: testimonial sheet uses the wider column. CTA band no longer clips a works thumb on the left (that still is not a contact image).
+- `animevideo.html` / `animevideo-lp.css`: image placement. SERVICES 01 is one 16:9 still (no overlapping mosaic, live-action photo removed from this block). 02/03 cards show a thumb above the copy. WORKS thumbs are equal 16:9 frames (`object-fit: contain`). VOICE shows the testimonial sheet in full (clip-path off). Copy and YouTube IDs unchanged.
+- `apparel-lp.css` v7: 390px pass. Apparel overrides Fanstep `keep-all` so long JP/EN wraps; WORKS stays a visible 1-col stack (shared CSS hides `.fslp-work` under 767px); brand/work images keep ratio; phone hours stay visible; section padding tightened. `fanstep-lp.css` / other Service LPs unchanged.
+- `apparel-lp.css` v6: HOME-aligned tokens on Fanstep LP shell — 1440px content rail, steel blue accents (#33598C / #3A5F8F), Space Grotesk hero kicker, centered hero like CM/animevideo, header/contact/form/card/line polish. Copy unchanged.
+- `apparel.html` PC layout pass: BRANDS is two Fanstep card pairs（01 自社ブランド / 02 OEM、BYWEAR / MA LABEL）. SCOPE stays on the pale-blue band with tags + 4 cards. WORKS is an even image/text split; long case specs are left-aligned so they wrap inside the column. Copy, images, and external links unchanged.
+- `apparel.html` Hero copy centered (kicker, title, lead, CTA) via `apparel-lp.css`, matching animevideo/creative-marketing LP hero.
+- `apparel.html` rebuilt onto the Fanstep LP UI (`fanstep-lp.css` + `apparel-lp.css`). Sections: Hero（好きなものを、もっと自由に。）→ CONCEPT → BRANDS（BYWEAR / MA LABEL）→ SCOPE → WORKS 2件 → APPROACH → CTA → CONTACT（`/api/contact`）。Copy and case links unchanged. Old `cm-page` / `ap-page` chrome removed.
+
 ## Recent edits (2026-09-17)
 - `creative-marketing.html` WORKS right-column type enlarged again (CASE → 媒体): CASE 20px, company 34px, stats 16/24px, meta 20px. Image size unchanged.
 - `creative-marketing.html` WORKS right-column type enlarged (CASE → 媒体): company ~26px, meta/stats 16–18px, more spacing. Image size unchanged.
@@ -148,7 +157,7 @@ Claude export of a static TSUTA-WORLD corporate site. Not a Node/npm app. Previe
 - `assets/fanstep/` — Word内の実績スライドPNG（image1/3/5/7/9）と付随SVG。
 - `website.html` — Webサイト制作・リース 詳細（同構成、placeholderコンテンツ）
 - `animevideo.html` — 説明用アニメ動画 LP。Fanstep と同じ `fslp-*` UI（`fanstep-lp.css` + `animevideo-lp.css`）。Hero / CONCEPT / SERVICES / WORKS（10カテゴリ75作品）/ VOICE / CONTACT（`/api/contact`）。カテゴリフィルタはJS。
-- `apparel.html` — アパレル 詳細。Hero / 事業について / 自社ブランド・OEM / 対応範囲 / WORKS / CONTACT / Footer。コイシカワapparel掲載の文言と実績のみ。`ap-page` で大きな太字（Noto Sans JP 900 / Barlow Condensed）とスクロール表示アニメ。
+- `apparel.html` — アパレル LP（`fanstep-lp.css` + `apparel-lp.css`）。Hero / CONCEPT / BRANDS / SCOPE / WORKS 2件 / APPROACH / CTA / CONTACT（`/api/contact`、03-6722-6776）。ブランド説明・実績文言・画像・外部リンクは旧ページから維持。
 - `assets/apparel/` — BYWEAR・MA LABELバナー、AKG実績画像（コイシカワ公式から取得）
 - `assets/ai-dx-training.png` — AI/DX研修（サービス03）サムネイル
 - `assets/service-*-photo.jpg` — TOP SERVICE 01–06 photo banners from the 9/5 mock. Older graphic `service-*.jpg` files remain unused on TOP.

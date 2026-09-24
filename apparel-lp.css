@@ -1,0 +1,537 @@
+/* Apparel LP — fanstep-lp.css + HOME / Service LP alignment. Scoped to body.ap-lp-page. */
+
+body.ap-lp-page {
+  word-break: normal;
+  line-break: strict;
+  --ap-content: 1440px;
+  --ap-inline: max(24px, min(88px, 6.5vw));
+  --ap-ink: #111318;
+  --ap-text: #26384C;
+  --ap-muted: #3C4B5C;
+  --ap-accent: #33598C;
+  --ap-accent-bright: #3A5F8F;
+  --ap-line: #E7EDF4;
+  --ap-band: #F6FAFE;
+}
+
+@media (min-width: 1200px) {
+  body.ap-lp-page {
+    --ap-inline: max(48px, calc((100vw - var(--ap-content)) / 2));
+  }
+}
+
+body.ap-lp-page #about,
+body.ap-lp-page #brands,
+body.ap-lp-page #areas,
+body.ap-lp-page #works,
+body.ap-lp-page #approach,
+body.ap-lp-page #contact {
+  scroll-margin-top: 96px;
+}
+
+/* ——— Header (HOME gutters) ——— */
+body.ap-lp-page .page-header {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom-color: #D6E0EC;
+}
+
+body.ap-lp-page .page-header-inner {
+  max-width: var(--ap-content);
+}
+
+body.ap-lp-page .page-header-nav a {
+  color: var(--ap-ink);
+}
+
+body.ap-lp-page .page-header-nav a.page-header-contact {
+  background: #3B82F6;
+}
+
+/* ——— Section gutters → 1440px content rail ——— */
+@media (min-width: 768px) {
+  body.ap-lp-page .fslp-hero,
+  body.ap-lp-page .fslp-concept,
+  body.ap-lp-page .fslp-issue,
+  body.ap-lp-page .fslp-style,
+  body.ap-lp-page .fslp-proposal,
+  body.ap-lp-page .fslp-band,
+  body.ap-lp-page .fslp-contact {
+    padding-left: var(--ap-inline);
+    padding-right: var(--ap-inline);
+  }
+
+  body.ap-lp-page .fslp-works-head,
+  body.ap-lp-page .fslp-works-list {
+    padding-left: var(--ap-inline);
+    padding-right: var(--ap-inline);
+  }
+}
+
+/* ——— Hero (centered like CM / animevideo) ——— */
+body.ap-lp-page .fslp-hero {
+  display: flex;
+  justify-content: center;
+  padding-top: 96px;
+  padding-bottom: 104px;
+}
+
+body.ap-lp-page .fslp-hero-copy {
+  max-width: min(880px, 100%);
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+body.ap-lp-page .fslp-hero .fslp-kicker {
+  justify-content: center;
+}
+
+body.ap-lp-page .fslp-hero .fslp-kicker-line {
+  background: var(--ap-accent-bright);
+}
+
+body.ap-lp-page .fslp-hero .fslp-kicker-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--ap-accent-bright);
+}
+
+body.ap-lp-page .fslp-hero-title {
+  color: var(--ap-ink);
+  letter-spacing: 0.02em;
+}
+
+body.ap-lp-page .fslp-hero-title em {
+  color: var(--ap-accent);
+}
+
+body.ap-lp-page .fslp-hero-lead {
+  color: var(--ap-text);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 600;
+}
+
+body.ap-lp-page .fslp-hero .fslp-cta-text {
+  margin-inline: auto;
+}
+
+body.ap-lp-page .fslp-hero .fslp-cta-orb {
+  background: var(--ap-accent);
+}
+
+body.ap-lp-page .fslp-hero .fslp-cta-text:hover .fslp-cta-orb {
+  background: #2A466E;
+}
+
+/* ——— Section labels (HOME steel blue) ——— */
+body.ap-lp-page .fslp-sub {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ap-accent-bright);
+}
+
+body.ap-lp-page .fslp-num {
+  color: #9BBBDD;
+}
+
+body.ap-lp-page .fslp-prop-en {
+  color: var(--ap-accent-bright);
+}
+
+body.ap-lp-page .fslp-concept h2,
+body.ap-lp-page .fslp-issue-card h3,
+body.ap-lp-page .fslp-prop-copy h3,
+body.ap-lp-page .fslp-prop-card h3,
+body.ap-lp-page .fslp-work h3,
+body.ap-lp-page .fslp-style-title {
+  color: var(--ap-ink);
+}
+
+body.ap-lp-page .fslp-concept p,
+body.ap-lp-page .fslp-issue-card p,
+body.ap-lp-page .fslp-prop-copy p,
+body.ap-lp-page .fslp-prop-card p {
+  color: var(--ap-muted);
+}
+
+body.ap-lp-page .fslp-concept p + p {
+  margin-top: 1.4em;
+}
+
+body.ap-lp-page .fslp-concept-grid > *,
+body.ap-lp-page .fslp-prop-card,
+body.ap-lp-page .fslp-issue-card,
+body.ap-lp-page .fslp-work,
+body.ap-lp-page .fslp-work > *,
+body.ap-lp-page .fslp-style-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* ——— BRANDS ——— */
+body.ap-lp-page .fslp-prop-pair + .fslp-prop-pair {
+  margin-top: 20px;
+}
+
+body.ap-lp-page .fslp-prop-card,
+body.ap-lp-page .fslp-prop-hero {
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .aplp-brand {
+  overflow: hidden;
+  padding-top: 0;
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .aplp-brand img {
+  display: block;
+  width: calc(100% + 92px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  margin: 0 -46px 28px;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+body.ap-lp-page .aplp-brand p:last-of-type {
+  margin-bottom: 20px;
+}
+
+body.ap-lp-page .aplp-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ap-accent);
+}
+
+body.ap-lp-page .aplp-ext:hover {
+  color: #2A466E;
+}
+
+/* ——— SCOPE ——— */
+body.ap-lp-page .fslp-issue {
+  background: var(--ap-band);
+}
+
+body.ap-lp-page #areas .fslp-issue-head p {
+  max-width: 640px;
+  text-align: right;
+  color: var(--ap-muted);
+}
+
+body.ap-lp-page .fslp-issue-card {
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .aplp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 36px;
+  padding: 0;
+  list-style: none;
+}
+
+body.ap-lp-page .aplp-tags li {
+  border: 1px solid #C3D2E3;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ap-text);
+  background: #fff;
+}
+
+/* ——— WORKS ——— */
+body.ap-lp-page .fslp-work,
+body.ap-lp-page .fslp-work--flip {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 64px;
+}
+
+body.ap-lp-page .fslp-work img {
+  aspect-ratio: 4 / 5;
+  max-height: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 16%;
+  background: var(--ap-band);
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .fslp-work h3,
+body.ap-lp-page .aplp-work-copy,
+body.ap-lp-page .fslp-stat dd {
+  overflow-wrap: break-word;
+}
+
+body.ap-lp-page .aplp-work-copy {
+  margin: 0 0 22px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+  color: var(--ap-muted);
+}
+
+body.ap-lp-page .fslp-stat {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 8px 18px;
+  align-items: baseline;
+  justify-content: stretch;
+  border-bottom-color: var(--ap-line);
+}
+
+body.ap-lp-page .fslp-stat dd {
+  text-align: left;
+  max-width: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--ap-muted);
+}
+
+/* ——— APPROACH / CTA ——— */
+body.ap-lp-page #approach .fslp-style-title em {
+  color: var(--ap-accent);
+}
+
+body.ap-lp-page #approach .fslp-style-title + p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2;
+  color: var(--ap-muted);
+  max-width: 520px;
+}
+
+body.ap-lp-page #approach .fslp-style-photo {
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .fslp-band {
+  background: linear-gradient(120deg, #E8F1FA, #F6FAFE);
+}
+
+body.ap-lp-page .fslp-btn {
+  background: var(--ap-accent);
+}
+
+body.ap-lp-page .fslp-btn:hover {
+  background: #2A466E;
+}
+
+/* ——— CONTACT ——— */
+body.ap-lp-page .fslp-contact-lead {
+  color: var(--ap-muted);
+}
+
+body.ap-lp-page .fslp-hours {
+  border-top-color: var(--ap-line);
+}
+
+body.ap-lp-page .fslp-form {
+  border: 1px solid var(--ap-line);
+}
+
+body.ap-lp-page .fslp-field input,
+body.ap-lp-page .fslp-field textarea {
+  border-color: #D6E0EC;
+}
+
+body.ap-lp-page .fslp-field input:focus,
+body.ap-lp-page .fslp-field textarea:focus {
+  border-color: var(--ap-accent);
+}
+
+body.ap-lp-page .fslp-field--full {
+  grid-column: 1 / -1;
+}
+
+body.ap-lp-page .fslp-form-error {
+  margin: 16px 0 0;
+  color: #C0392B;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  body.ap-lp-page .fslp-hero {
+    padding: 36px 18px 28px;
+  }
+
+  body.ap-lp-page .fslp-hero-copy {
+    max-width: none;
+  }
+
+  body.ap-lp-page .fslp-hero .fslp-kicker-text {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  body.ap-lp-page .fslp-hero-title {
+    font-size: 30px;
+    line-height: 1.45;
+  }
+
+  body.ap-lp-page .fslp-hero-lead {
+    max-width: 20em;
+    margin-inline: auto;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  body.ap-lp-page .fslp-hero .fslp-cta-text {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    background: var(--ap-accent);
+    color: #fff;
+    padding: 16px 18px;
+  }
+
+  body.ap-lp-page .fslp-concept,
+  body.ap-lp-page .fslp-issue,
+  body.ap-lp-page .fslp-proposal,
+  body.ap-lp-page .fslp-works,
+  body.ap-lp-page .fslp-style,
+  body.ap-lp-page .fslp-contact {
+    padding: 32px 18px 28px;
+  }
+
+  body.ap-lp-page .fslp-band {
+    padding: 32px 18px;
+  }
+
+  body.ap-lp-page .fslp-concept h2 br {
+    display: inline;
+  }
+
+  body.ap-lp-page .fslp-prop-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.ap-lp-page .aplp-tags {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  body.ap-lp-page .aplp-tags li {
+    max-width: 100%;
+  }
+
+  body.ap-lp-page .aplp-brand img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 0 0 16px;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+  }
+
+  body.ap-lp-page .fslp-work,
+  body.ap-lp-page .fslp-work--flip {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  body.ap-lp-page .fslp-work img {
+    order: -1;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  body.ap-lp-page .fslp-work h3 {
+    font-size: 22px;
+  }
+
+  body.ap-lp-page .fslp-stat {
+    grid-template-columns: 5.2em minmax(0, 1fr);
+    gap: 6px 10px;
+  }
+
+  body.ap-lp-page .fslp-style-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  body.ap-lp-page .fslp-style-visual {
+    display: block;
+    position: relative;
+    height: auto;
+    margin-top: 8px;
+  }
+
+  body.ap-lp-page .fslp-style-photo {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    clip-path: none;
+  }
+
+  body.ap-lp-page .fslp-style-photo img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+  }
+
+  body.ap-lp-page .fslp-quote-card {
+    position: static;
+    left: auto;
+    bottom: auto;
+    max-width: none;
+    margin-top: 12px;
+    padding: 18px 18px;
+  }
+
+  body.ap-lp-page .fslp-quote-card p {
+    font-size: 20px;
+  }
+
+  body.ap-lp-page .fslp-hours {
+    display: flex;
+  }
+
+  body.ap-lp-page .fslp-form {
+    padding: 22px 16px;
+  }
+
+  body.ap-lp-page .fslp-field input,
+  body.ap-lp-page .fslp-field textarea {
+    font-size: 16px;
+  }
+
+  body.ap-lp-page .fslp-field--full {
+    grid-column: auto;
+  }
+
+  body.ap-lp-page .fslp-band .fslp-btn,
+  body.ap-lp-page .fslp-form .fslp-btn {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+}

@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&family=Archivo:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
   <link rel="stylesheet" href="fanstep-lp.css">
-  <link rel="stylesheet" href="animevideo-lp.css">
+  <link rel="stylesheet" href="animevideo-lp.css?v=3">
 </head>
 <body class="fs-lp-page av-lp-page">
   <header class="page-header">
@@ -77,22 +77,13 @@
           </div>
         </div>
         <div class="fslp-chat avlp-visual" aria-hidden="true">
-          <div class="avlp-mosaic">
-            <figure class="avlp-shot avlp-shot--a">
-              <img src="assets/animevideo/hero-sammy.jpg" alt="">
-            </figure>
-            <figure class="avlp-shot avlp-shot--b">
-              <img src="assets/creative-marketing/live-01-shacho.png" alt="">
-            </figure>
-            <figure class="avlp-shot avlp-shot--c">
-              <img src="assets/animevideo/hero-greeneye.jpg" alt="">
-            </figure>
-          </div>
+          <img src="assets/animevideo/works-thumb02.jpg" alt="">
         </div>
       </article>
 
       <div class="fslp-prop-pair">
-        <article class="fslp-prop-card fslp-reveal">
+        <article class="fslp-prop-card avlp-svc fslp-reveal">
+          <img src="assets/animevideo/works-thumb22.jpg" alt="">
           <div class="fslp-prop-meta">
             <span class="fslp-num">02</span>
             <span class="fslp-tag">社内研修</span>
@@ -100,7 +91,8 @@
           <h3>社内研修・マニュアル</h3>
           <p>Eラーニングや業務マニュアルを動画化。視聴後の理解度向上をサポートします。</p>
         </article>
-        <article class="fslp-prop-card fslp-reveal fslp-d2">
+        <article class="fslp-prop-card avlp-svc fslp-reveal fslp-d2">
+          <img src="assets/animevideo/works-thumb68.jpg" alt="">
           <div class="fslp-prop-meta">
             <span class="fslp-num">03</span>
             <span class="fslp-tag">採用・求人</span>
@@ -172,9 +164,6 @@
     </section>
 
     <section class="fslp-band">
-      <div class="fslp-band-photo" aria-hidden="true">
-        <img src="assets/animevideo/hero-sammy.jpg" alt="">
-      </div>
       <div class="fslp-band-inner">
         <div>
           <div class="fslp-script">Make it simple.</div>
@@ -786,9 +775,8 @@
 
       function renderCards(category) {
         var items = data.portfolio.filter(function (item) { return item.category === category; });
-        gridEl.innerHTML = items.map(function (item, i) {
-          var feat = i === 0 ? " avlp-card--feature" : "";
-          return '<a class="avlp-card' + feat + '" href="https://www.youtube.com/watch?v=' + item.yt + '" target="_blank" rel="noopener">' +
+        gridEl.innerHTML = items.map(function (item) {
+          return '<a class="avlp-card" href="https://www.youtube.com/watch?v=' + item.yt + '" target="_blank" rel="noopener">' +
             '<img src="assets/animevideo/' + item.img + '" alt="' + escapeHtml(item.title) + '">' +
             '<div class="avlp-card-body">' +
             '<p class="avlp-card-cat">' + escapeHtml(item.category) + "</p>" +

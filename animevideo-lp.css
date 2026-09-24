@@ -26,54 +26,41 @@ body.av-lp-page .fslp-hero .fslp-cta-text {
   margin-inline: auto;
 }
 
-body.av-lp-page .avlp-visual {
-  padding: 28px;
+body.av-lp-page {
+  word-break: normal;
+  line-break: strict;
 }
 
-body.av-lp-page .avlp-mosaic {
-  position: relative;
+body.av-lp-page .fslp-chat.avlp-visual {
+  padding: 20px;
+  min-height: 0;
+  align-items: center;
+}
+
+body.av-lp-page .avlp-visual img {
   width: 100%;
-  height: 100%;
-  min-height: 280px;
-}
-
-body.av-lp-page .avlp-shot {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #E8F1F8;
-  box-shadow: 0 12px 28px rgba(11, 60, 122, 0.14);
-}
-
-body.av-lp-page .avlp-shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 16px;
   display: block;
+  background: #fff;
 }
 
-body.av-lp-page .avlp-shot--a {
-  width: 64%;
-  height: 56%;
-  left: 0;
-  top: 12%;
-  z-index: 2;
+body.av-lp-page .avlp-svc {
+  overflow: hidden;
+  padding-top: 0;
 }
 
-body.av-lp-page .avlp-shot--b {
-  width: 44%;
-  height: 40%;
-  right: 0;
-  top: 0;
-  z-index: 1;
-}
-
-body.av-lp-page .avlp-shot--c {
-  width: 50%;
-  height: 42%;
-  right: 4%;
-  bottom: 0;
-  z-index: 3;
+body.av-lp-page .avlp-svc > img {
+  display: block;
+  width: calc(100% + 92px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0 -46px 24px;
+  object-fit: cover;
+  object-position: center;
 }
 
 body.av-lp-page .fslp-works-list {
@@ -132,7 +119,8 @@ body.av-lp-page .avlp-card:hover img {
 body.av-lp-page .avlp-card img {
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
+  background: #F4F7FB;
   display: block;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -157,10 +145,6 @@ body.av-lp-page .avlp-card h4 {
   font-size: 16px;
   line-height: 1.55;
   color: #0B1B2B;
-}
-
-body.av-lp-page .avlp-card--feature {
-  grid-column: span 2;
 }
 
 body.av-lp-page .avlp-more {
@@ -226,8 +210,49 @@ body.av-lp-page .avlp-quote cite {
   color: #5A6878;
 }
 
-body.av-lp-page .avlp-voice-photo img {
-  object-position: center top;
+body.av-lp-page #voice .fslp-style-grid {
+  grid-template-columns: minmax(280px, 0.72fr) minmax(520px, 1.28fr);
+  gap: 48px;
+  align-items: start;
+}
+
+body.av-lp-page #voice .fslp-style-visual {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+body.av-lp-page #voice .fslp-style-photo {
+  position: relative;
+  inset: auto;
+  height: auto;
+  clip-path: none;
+  background: #E7F3F6;
+  border-radius: 16px;
+}
+
+body.av-lp-page #voice .avlp-voice-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+body.av-lp-page #voice .fslp-quote-card {
+  position: static;
+  left: auto;
+  bottom: auto;
+  max-width: none;
+}
+
+body.av-lp-page .fslp-band-photo {
+  display: none;
+}
+
+body.av-lp-page .fslp-band-inner {
+  padding-left: 0;
 }
 
 body.av-lp-page .fslp-field--full {
@@ -247,28 +272,40 @@ body.av-lp-page .fslp-form {
 }
 
 @media (max-width: 1199px) {
+  body.av-lp-page #voice .fslp-style-grid {
+    grid-template-columns: 1fr;
+  }
+
   body.av-lp-page .avlp-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  body.av-lp-page .avlp-card--feature {
-    grid-column: span 2;
-  }
-
-  body.av-lp-page .avlp-visual {
-    min-height: 280px;
+  body.av-lp-page .avlp-svc > img {
+    width: 100%;
+    margin: 0 0 20px;
   }
 }
 
 @media (max-width: 767px) {
   body.av-lp-page .fslp-chat.avlp-visual {
     display: flex;
-    min-height: 220px;
-    padding: 18px;
+    min-height: 0;
+    padding: 16px;
   }
 
-  body.av-lp-page .avlp-mosaic {
-    min-height: 200px;
+  body.av-lp-page .avlp-visual img {
+    max-height: 220px;
+  }
+
+  body.av-lp-page .avlp-svc > img {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  body.av-lp-page #voice .fslp-style-visual {
+    display: flex;
+    height: auto;
+    margin-top: 8px;
   }
 
   body.av-lp-page .avlp-filter {
@@ -288,10 +325,6 @@ body.av-lp-page .fslp-form {
   body.av-lp-page .avlp-grid {
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  body.av-lp-page .avlp-card--feature {
-    grid-column: auto;
   }
 
   body.av-lp-page .avlp-more {
