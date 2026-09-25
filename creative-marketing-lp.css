@@ -485,6 +485,43 @@ body.cmk-lp-page .fslp-form-error {
   body.cmk-lp-page .cm-anime-links {
     grid-template-columns: 1fr;
   }
+
+  body.cmk-lp-page .fslp-chat.cmk-visual {
+    display: block;
+    min-height: 0;
+    padding: 16px;
+  }
+
+  body.cmk-lp-page .cmk-mosaic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  body.cmk-lp-page .cmk-shot,
+  body.cmk-lp-page .cmk-shot--a,
+  body.cmk-lp-page .cmk-shot--b,
+  body.cmk-lp-page .cmk-shot--c {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    aspect-ratio: auto;
+    z-index: auto;
+  }
+
+  body.cmk-lp-page .cmk-shot img {
+    position: static;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 767px) {
@@ -503,13 +540,11 @@ body.cmk-lp-page .fslp-form-error {
   }
 
   body.cmk-lp-page .fslp-chat.cmk-visual {
-    display: flex;
-    min-height: 220px;
-    padding: 18px;
+    padding: 14px;
   }
 
   body.cmk-lp-page .cmk-mosaic {
-    min-height: 200px;
+    gap: 8px;
   }
 
   body.cmk-lp-page .cm-work-list--grid {
