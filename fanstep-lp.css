@@ -1825,3 +1825,66 @@ body.fs-lp-page button {
 @media (max-width: 767px) {
   .fslp-quote-mobile { display: block; }
 }
+
+/* Fanstep-only: centered larger hero + louder WORKS numbers */
+body.fs-lp-page .fslp-hero-copy {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+body.fs-lp-page .fslp-hero .fslp-kicker {
+  justify-content: center;
+}
+body.fs-lp-page .fslp-hero-title {
+  font-size: clamp(42px, 5.4vw, 72px);
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+}
+body.fs-lp-page .fslp-hero-lead {
+  font-size: clamp(22px, 2.1vw, 30px);
+  line-height: 1.7;
+}
+body.fs-lp-page .fslp-hero .fslp-cta-text {
+  justify-content: center;
+}
+body.fs-lp-page .fslp-work-idx,
+body.fs-lp-page .fslp-work-mobile .fslp-work-idx {
+  font-family: Archivo, sans-serif;
+  font-size: clamp(56px, 5.2vw, 80px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: #0E4C92;
+}
+body.fs-lp-page .fslp-work-meta {
+  align-items: center;
+}
+body.fs-lp-page .fslp-stat dd {
+  font-size: 26px;
+  font-weight: 800;
+}
+body.fs-lp-page .fslp-stat dd.accent {
+  font-size: 28px;
+  color: #0E4C92;
+}
+
+@media (max-width: 1199px) {
+  body.fs-lp-page .fslp-hero-title {
+    font-size: clamp(40px, 6.2vw, 58px);
+  }
+}
+
+@media (max-width: 767px) {
+  body.fs-lp-page .fslp-hero-title {
+    font-size: clamp(32px, 8.6vw, 40px);
+    line-height: 1.35;
+  }
+  body.fs-lp-page .fslp-hero-lead {
+    font-size: 20px;
+  }
+  body.fs-lp-page .fslp-work-mobile .fslp-work-idx {
+    font-size: 40px;
+    color: #0E4C92;
+    font-weight: 800;
+  }
+}

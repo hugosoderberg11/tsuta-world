@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "dev": "py -m http.server 5500"
+  },
   "dependencies": {
     "@vercel/functions": "^2.2.3"
   }

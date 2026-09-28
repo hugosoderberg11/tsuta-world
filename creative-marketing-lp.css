@@ -388,57 +388,26 @@ body.cmk-lp-page .cm-anime-link-card span {
   color: #3C4B5C;
 }
 
-body.cmk-lp-page .cmk-visual {
-  padding: 28px;
+body.cmk-lp-page #services .fslp-num {
+  font-size: clamp(48px, 4.6vw, 72px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: #0E4C92;
 }
 
-body.cmk-lp-page .cmk-mosaic {
-  position: relative;
-  width: 100%;
-  min-height: 280px;
-  height: 100%;
+body.cmk-lp-page #services .fslp-prop-meta {
+  align-items: center;
 }
 
-body.cmk-lp-page .cmk-shot {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #E8F1F8;
-  box-shadow: 0 12px 28px rgba(11, 60, 122, 0.14);
+body.cmk-lp-page #services .fslp-prop-card .fslp-steps {
+  margin-top: 8px;
 }
 
-body.cmk-lp-page .cmk-shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-body.cmk-lp-page .cmk-shot--a {
-  width: 64%;
-  height: 56%;
-  left: 0;
-  top: 12%;
-  z-index: 2;
-}
-
-body.cmk-lp-page .cmk-shot--b {
-  width: 44%;
-  height: 40%;
-  right: 0;
-  top: 0;
-}
-
-body.cmk-lp-page .cmk-shot--c {
-  width: 50%;
-  height: 42%;
-  right: 4%;
-  bottom: 0;
-  z-index: 3;
-}
-
-body.cmk-lp-page .fslp-prop-card--solo {
-  margin-top: 20px;
+body.cmk-lp-page .cm-work-stats b {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0E4C92;
 }
 
 body.cmk-lp-page #approach .fslp-style-title + p {
@@ -485,43 +454,6 @@ body.cmk-lp-page .fslp-form-error {
   body.cmk-lp-page .cm-anime-links {
     grid-template-columns: 1fr;
   }
-
-  body.cmk-lp-page .fslp-chat.cmk-visual {
-    display: block;
-    min-height: 0;
-    padding: 16px;
-  }
-
-  body.cmk-lp-page .cmk-mosaic {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-  }
-
-  body.cmk-lp-page .cmk-shot,
-  body.cmk-lp-page .cmk-shot--a,
-  body.cmk-lp-page .cmk-shot--b,
-  body.cmk-lp-page .cmk-shot--c {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    aspect-ratio: auto;
-    z-index: auto;
-  }
-
-  body.cmk-lp-page .cmk-shot img {
-    position: static;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
 }
 
 @media (max-width: 767px) {
@@ -537,14 +469,6 @@ body.cmk-lp-page .fslp-form-error {
     flex-shrink: 0;
     font-size: 12px;
     padding: 8px 14px;
-  }
-
-  body.cmk-lp-page .fslp-chat.cmk-visual {
-    padding: 14px;
-  }
-
-  body.cmk-lp-page .cmk-mosaic {
-    gap: 8px;
   }
 
   body.cmk-lp-page .cm-work-list--grid {
