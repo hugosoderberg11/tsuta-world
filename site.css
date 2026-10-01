@@ -3261,6 +3261,8 @@ body.fs-page .fs-measure {
   letter-spacing: 0.06em;
 }
 
+/* company.html — readable scale (locked again at end of file) */
+
 .agency-page .corp-block {
   max-width: 720px;
   margin: 0 0 64px;
@@ -6493,6 +6495,163 @@ body.plain-ui.ap-page .ap-hero-actions .fs-btn-ghost:hover {
     width: 28px;
     height: 28px;
     max-width: 28px;
+  }
+}
+
+/* company.html — last in cascade so mobile shrink rules cannot win */
+body.company-page .page-main {
+  max-width: 1180px !important;
+  padding-top: 104px !important;
+  padding-bottom: 128px !important;
+}
+body.company-page .page-label {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+}
+body.company-page .page-title {
+  font-size: clamp(44px, 6vw, 72px) !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  margin-bottom: 36px !important;
+  max-width: none !important;
+}
+body.company-page .co-jump {
+  gap: 12px !important;
+  margin: 0 0 48px !important;
+}
+body.company-page .co-jump a {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 52px !important;
+  padding: 12px 22px !important;
+  border: 2px solid #0E4C92 !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #0E4C92 !important;
+  letter-spacing: 0.02em !important;
+}
+body.company-page .co-statement {
+  margin: 0 0 72px !important;
+  padding: 40px 36px !important;
+  background: #F3F8FD !important;
+  border: 0 !important;
+  border-left: 8px solid #0E4C92 !important;
+  border-radius: 16px !important;
+}
+body.company-page .co-statement-text {
+  font-size: clamp(30px, 4.2vw, 48px) !important;
+  font-weight: 900 !important;
+  line-height: 1.4 !important;
+  max-width: 14em !important;
+  color: #0B1B2B !important;
+}
+body.company-page .co-statement-name {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0E4C92 !important;
+}
+body.company-page .co-message {
+  max-width: 920px !important;
+  margin-bottom: 96px !important;
+}
+body.company-page .co-message p,
+body.company-page .co-examples p {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.9 !important;
+  color: #101418 !important;
+}
+body.company-page .co-examples {
+  margin: 20px 0 28px !important;
+  padding: 20px 24px !important;
+  background: #F6FAFE !important;
+  border-left: 6px solid #0E4C92 !important;
+  border-radius: 0 16px 16px 0 !important;
+}
+body.company-page .co-sign {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+}
+body.company-page .info-block h2 {
+  font-size: clamp(34px, 4vw, 48px) !important;
+  font-weight: 900 !important;
+  margin: 0 0 28px !important;
+}
+body.company-page .co-dl-row {
+  display: grid !important;
+  grid-template-columns: 200px minmax(0, 1fr) !important;
+  gap: 12px 28px !important;
+  padding: 28px 8px !important;
+  border-bottom: 2px solid #D5E2EF !important;
+}
+body.company-page .co-dl-row dt {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  color: #0E4C92 !important;
+}
+body.company-page .co-dl-row dd,
+body.company-page .co-office p,
+body.company-page .co-business li,
+body.company-page .co-history li,
+body.company-page .co-history li span {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.75 !important;
+  color: #101418 !important;
+}
+body.company-page .co-dl-row dd a {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+}
+body.company-page .co-office {
+  padding: 18px 20px !important;
+  background: #F6FAFE !important;
+  border: 1px solid #D5E2EF !important;
+  border-radius: 14px !important;
+}
+body.company-page .co-office-label {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+}
+body.company-page .co-history li {
+  grid-template-columns: 120px minmax(0, 1fr) !important;
+  padding-bottom: 28px !important;
+}
+body.company-page .co-history time {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+}
+@media (max-width: 720px) {
+  body.company-page .page-title {
+    font-size: clamp(36px, 10vw, 48px) !important;
+  }
+  body.company-page .co-statement {
+    padding: 24px 18px !important;
+  }
+  body.company-page .co-statement-text {
+    font-size: clamp(26px, 7.2vw, 34px) !important;
+  }
+  body.company-page .co-message p,
+  body.company-page .co-examples p,
+  body.company-page .co-dl-row dd,
+  body.company-page .co-office p,
+  body.company-page .co-business li,
+  body.company-page .co-history li,
+  body.company-page .co-history li span {
+    font-size: 18px !important;
+  }
+  body.company-page .co-dl-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+    padding: 20px 0 !important;
+  }
+  body.company-page .co-jump a {
+    font-size: 16px !important;
+    min-height: 46px !important;
   }
 }
 
