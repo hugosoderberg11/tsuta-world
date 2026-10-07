@@ -1,0 +1,322 @@
+/* Recruit page — aligned with TOP / service LP tokens. Scoped to body.recruit-page. */
+body.recruit-page #duties,
+body.recruit-page #skills,
+body.recruit-page #profile,
+body.recruit-page #requirements,
+body.recruit-page #apply {
+  scroll-margin-top: 96px;
+}
+
+body.recruit-page {
+  --recruit-brand: #33598c;
+  --recruit-brand-deep: #0e4c92;
+  --recruit-ink: #0b1b2b;
+  --recruit-muted: #3c4b5c;
+  --recruit-band: #f3f8fd;
+  --recruit-content: min(1240px, calc(100% - 40px));
+  font-size: 18px;
+}
+
+body.recruit-page .fslp-display {
+  font-size: clamp(52px, 5.2vw, 68px);
+}
+
+body.recruit-page .fslp-sub {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+
+body.recruit-page .fslp-hero {
+  padding: clamp(96px, 12vw, 140px) max(24px, 5vw) clamp(72px, 8vw, 104px);
+  min-height: 0;
+  display: block;
+  background: linear-gradient(180deg, #f3f8fd 0%, #fff 70%);
+}
+
+body.recruit-page .fslp-hero-copy {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+body.recruit-page .fslp-hero .fslp-kicker,
+body.recruit-page .fslp-hero .fslp-kicker-line,
+body.recruit-page .fslp-hero-title,
+body.recruit-page .fslp-hero .rc-hero-cta {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+body.recruit-page .fslp-hero .fslp-kicker {
+  justify-content: center;
+}
+
+body.recruit-page .fslp-hero-title {
+  font-size: clamp(40px, 5.8vw, 72px) !important;
+  line-height: 1.32 !important;
+  margin-bottom: 28px !important;
+}
+
+body.recruit-page .rc-hero-cta {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+body.recruit-page .rc-btn-indeed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: var(--recruit-brand-deep);
+  color: #fff !important;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 14px 32px rgba(14, 76, 146, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+body.recruit-page .rc-btn-indeed:hover {
+  background: #0b3c7a;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+body.recruit-page .rc-btn-indeed--ghost {
+  background: #fff;
+  color: var(--recruit-brand-deep) !important;
+  border: 2px solid var(--recruit-brand-deep);
+  box-shadow: none;
+}
+
+body.recruit-page .rc-btn-indeed--ghost:hover {
+  background: var(--recruit-band);
+  color: var(--recruit-brand-deep) !important;
+}
+
+body.recruit-page .rc-section {
+  max-width: var(--recruit-content);
+  margin: 0 auto;
+  padding: 0 max(24px, 5vw) 104px;
+}
+
+body.recruit-page .rc-section--band {
+  max-width: none;
+  padding: 88px max(24px, 5vw);
+  background: var(--recruit-band);
+}
+
+body.recruit-page .rc-section--band .rc-section-inner {
+  max-width: var(--recruit-content);
+  margin: 0 auto;
+}
+
+body.recruit-page .rc-lead {
+  margin: 0 0 28px;
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 600;
+  line-height: 1.85;
+  color: var(--recruit-muted);
+  max-width: 52em;
+}
+
+body.recruit-page .rc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+body.recruit-page .rc-card {
+  background: #fff;
+  border: 1px solid rgba(14, 76, 146, 0.12);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 12px 28px rgba(11, 60, 122, 0.06);
+}
+
+body.recruit-page .rc-card-num {
+  font-family: Archivo, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--recruit-brand-deep);
+  margin-bottom: 10px;
+}
+
+body.recruit-page .rc-card h3 {
+  margin: 0 0 12px;
+  font-family: "Shippori Mincho", serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--recruit-ink);
+}
+
+body.recruit-page .rc-card p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.85;
+  color: var(--recruit-muted);
+}
+
+body.recruit-page .rc-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+body.recruit-page .rc-skill {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  border: 1px solid rgba(14, 76, 146, 0.1);
+}
+
+body.recruit-page .rc-skill strong {
+  display: block;
+  font-family: "Shippori Mincho", serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--recruit-brand-deep);
+  line-height: 1.4;
+}
+
+body.recruit-page .rc-appeal-box {
+  background: #fff;
+  border-left: 6px solid var(--recruit-brand-deep);
+  border-radius: 0 16px 16px 0;
+  padding: 24px 26px;
+}
+
+body.recruit-page .rc-appeal-box p {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.95;
+  color: var(--recruit-ink);
+}
+
+body.recruit-page .rc-appeal-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5a6878;
+  line-height: 1.7;
+}
+
+body.recruit-page .rc-profile-card {
+  background: linear-gradient(135deg, #fff 0%, #f6fbff 100%);
+  border: 1px solid rgba(14, 76, 146, 0.14);
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 760px;
+}
+
+body.recruit-page .rc-profile-card p {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(26px, 2.8vw, 34px);
+  font-weight: 800;
+  line-height: 1.55;
+  color: var(--recruit-ink);
+}
+
+body.recruit-page .rc-dl {
+  margin: 0;
+  border-top: 2px solid #d5e2ef;
+}
+
+body.recruit-page .rc-dl-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 12px 28px;
+  padding: 26px 4px;
+  border-bottom: 2px solid #d5e2ef;
+}
+
+body.recruit-page .rc-dl-row dt {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--recruit-brand-deep);
+}
+
+body.recruit-page .rc-dl-row dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--recruit-ink);
+}
+
+body.recruit-page .rc-dl-row dd ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+body.recruit-page .rc-dl-row dd li {
+  margin: 0.35em 0;
+}
+
+body.recruit-page .rc-apply-band {
+  text-align: center;
+  padding: 96px max(24px, 5vw) 112px;
+  background: var(--recruit-ink);
+  color: #fff;
+}
+
+body.recruit-page .rc-apply-band h2 {
+  margin: 0 0 28px;
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(32px, 3.6vw, 42px);
+  font-weight: 800;
+}
+
+body.recruit-page .rc-apply-band p {
+  margin: 0 0 28px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 1024px) {
+  body.recruit-page .rc-cards {
+    grid-template-columns: 1fr;
+  }
+
+  body.recruit-page .rc-skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  body.recruit-page .rc-dl-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 0;
+  }
+
+  body.recruit-page .rc-skill-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.recruit-page .rc-btn-indeed {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+}

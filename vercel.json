@@ -1,4 +1,74 @@
 {
+  "rewrites": [
+    {
+      "source": "/lp/vau/video-dx-elerning",
+      "destination": "/lp/vau/video-dx-elerning.html"
+    },
+    {
+      "source": "/lp/vau/video-dx-elearning",
+      "destination": "/lp/vau/video-dx-elerning.html"
+    },
+    {
+      "source": "/lp/vau/video-dx-elearning/",
+      "destination": "/lp/vau/video-dx-elerning.html"
+    },
+    {
+      "source": "/lp/vau/salesaidx",
+      "destination": "/lp/vau/salesaidx.html"
+    },
+    {
+      "source": "/lp/vau/salesaidx/",
+      "destination": "/lp/vau/salesaidx.html"
+    },
+    {
+      "source": "/lp/vau/salesaldx",
+      "destination": "/lp/vau/salesaidx.html"
+    },
+    {
+      "source": "/lp/vau/salesaldx/",
+      "destination": "/lp/vau/salesaidx.html"
+    },
+    {
+      "source": "/lp/vau/backoffiseai",
+      "destination": "/lp/vau/backoffiseai.html"
+    },
+    {
+      "source": "/lp/vau/backoffiseai/",
+      "destination": "/lp/vau/backoffiseai.html"
+    },
+    {
+      "source": "/lp/vau/markeai",
+      "destination": "/lp/vau/markeai.html"
+    },
+    {
+      "source": "/lp/vau/markeai/",
+      "destination": "/lp/vau/markeai.html"
+    },
+    {
+      "source": "/lp/vau/createai",
+      "destination": "/lp/vau/createai.html"
+    },
+    {
+      "source": "/lp/vau/createai/",
+      "destination": "/lp/vau/createai.html"
+    },
+    {
+      "source": "/lp/vau/engeneer_creative",
+      "destination": "/lp/vau/engeneer_creative.html"
+    },
+    {
+      "source": "/lp/vau/engeneer_creative/",
+      "destination": "/lp/vau/engeneer_creative.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/media-ichiban.html",

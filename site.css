@@ -480,7 +480,6 @@ a:hover { color: #1D4ED8; }
   opacity: 1;
 }
 .site-footer-links a:hover,
-.site-footer-sns a:hover,
 .site-footer-legal a:hover {
   opacity: 0.85;
   color: #b8dcff !important;
@@ -492,26 +491,8 @@ a:hover { color: #1D4ED8; }
   min-height: 100%;
   padding-left: 0;
 }
-.site-footer-sns {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.site-footer-sns a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  color: #ffffff !important;
-}
-.site-footer-sns svg {
-  width: 28px;
-  height: 28px;
-  display: block;
-}
 .site-footer-legal {
-  margin-top: 32px;
+  margin-top: 0;
 }
 .site-footer-legal-links {
   margin: 0 0 10px;
@@ -6547,6 +6528,11 @@ body.company-page .co-statement-text {
   line-height: 1.4 !important;
   max-width: 14em !important;
   color: #0B1B2B !important;
+  word-break: keep-all;
+  line-break: strict;
+}
+body.company-page .co-statement-kern {
+  white-space: nowrap;
 }
 body.company-page .co-statement-name {
   font-size: 20px !important;

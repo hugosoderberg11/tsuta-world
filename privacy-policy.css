@@ -1,0 +1,67 @@
+body.privacy-policy-page {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+body.privacy-policy-page .page-main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 32px) clamp(64px, 10vw, 96px);
+}
+
+body.privacy-policy-page .privacy-policy-lead {
+  margin: 0 0 2rem;
+  line-height: 1.9;
+  font-size: clamp(0.95rem, 2.2vw, 1.0625rem);
+}
+
+body.privacy-policy-page .privacy-policy-article section {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+body.privacy-policy-page .privacy-policy-article h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: #0f1a2e;
+}
+
+body.privacy-policy-page .privacy-policy-article p {
+  margin: 0 0 1rem;
+  line-height: 1.9;
+  font-size: clamp(0.95rem, 2.2vw, 1.0625rem);
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body.privacy-policy-page .privacy-policy-article ul {
+  margin: 0 0 1rem;
+  padding-left: 1.35em;
+  line-height: 1.85;
+  font-size: clamp(0.95rem, 2.2vw, 1.0625rem);
+}
+
+body.privacy-policy-page .privacy-policy-article ul li {
+  margin-bottom: 0.45em;
+}
+
+body.privacy-policy-page .privacy-policy-nested {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.35em;
+  list-style: disc;
+}
+
+body.privacy-policy-page .privacy-policy-contact p {
+  margin-bottom: 0.35rem;
+}
+
+body.privacy-policy-page .privacy-policy-contact a {
+  color: #1a4fd6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body.privacy-policy-page .privacy-policy-contact a:hover {
+  color: #6495ed;
+}
