@@ -1,5 +1,10 @@
 # Project Understanding Summary
 
+## Recent edits (2026-10-07)
+- `animevideo.html` VOICE: replaced blurry composite `anime-testimonial.png` with HTML cards + official LP assets in `assets/animevideo/voice/` (SVG logos, JPG thumbs at native size) for sharp text and images; `animevideo-lp.css` v7 scales cards/type/thumbs up (~15%).
+- `animevideo.html` WORKS: removed the two-link row (公式LPで全作品を見る / YouTubeチャンネル); unused `.avlp-more` styles dropped from `animevideo-lp.css`.
+- `animevideo.html` hero H1: fixed unintended 3-line wrap — line 2 is `<em>誰にでも伝わる動画に。</em>` with `white-space: nowrap` in `animevideo-lp.css` v4 so 「に。」 does not orphan; narrow phones get slightly smaller title clamp.
+
 ## Recent edits (2026-10-01)
 - Sitewide footer (all 16 HTML pages incl. TOP): removed COMPANY → メンバー and legal → サイトマップ (plus the ｜ separator). COMPANY column is now 会社概要 / 採用情報 / お知らせ / お問い合わせ; legal line is プライバシーポリシー only.
 - `company.html` (`site.css?v=co3`, rules last in cascade): readability pass — title ~44–72px, message/facts 22px weight 700, statement band, pill jump links. Mobile body stays 18px so the earlier 720px shrink cannot win.
