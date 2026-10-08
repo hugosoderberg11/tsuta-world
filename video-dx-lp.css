@@ -518,29 +518,38 @@ body.sales-ai-lp-page .sales-ai-format span {
 }
 
 body.sales-ai-lp-page .sales-ai-instructor {
-  margin-top: 28px;
+  margin-top: 36px;
   max-width: 52rem;
 }
 
 body.sales-ai-lp-page .sales-ai-instructor--with-photo {
   display: grid;
-  grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, min(46vw, 560px));
+  gap: clamp(28px, 4.5vw, 56px);
   align-items: start;
   max-width: none;
 }
 
+body.sales-ai-lp-page .sales-ai-instructor-body h2 {
+  margin: 0;
+  font-size: clamp(1.625rem, 1.4vw + 1.15rem, 2.125rem);
+  line-height: 1.45;
+  font-weight: 700;
+}
+
 body.sales-ai-lp-page .sales-ai-instructor-photo {
   margin: 0;
+  width: 100%;
 }
 
 body.sales-ai-lp-page .sales-ai-instructor-photo img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  object-position: center top;
-  border-radius: 12px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 14px;
   background: #eef3f8;
 }
 
@@ -626,13 +635,20 @@ body.backoffise-ai-lp-page .backoffise-hero-title-sp {
   body.sales-ai-lp-page .sales-ai-instructor--with-photo {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  body.sales-ai-lp-page .sales-ai-instructor-photo {
+    max-width: min(100%, 520px);
+    margin-inline: auto;
+  }
 }
 
 body.sales-ai-lp-page .sales-ai-profile {
-  margin: 16px 0 0;
-  padding-left: 1.2em;
+  margin: 22px 0 0;
+  padding-left: 1.3em;
   display: grid;
-  gap: 8px;
+  gap: clamp(10px, 1.1vw, 14px);
+  font-size: clamp(1.0625rem, 0.45vw + 0.92rem, 1.3125rem);
+  line-height: 1.65;
 }
 
 body.sales-ai-lp-page .sales-ai-price-label {

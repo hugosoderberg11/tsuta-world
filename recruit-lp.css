@@ -68,7 +68,7 @@ body.recruit-page .rc-hero-cta {
   justify-content: center;
 }
 
-body.recruit-page .rc-btn-indeed {
+body.recruit-page .rc-btn-contact {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,20 +85,20 @@ body.recruit-page .rc-btn-indeed {
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-body.recruit-page .rc-btn-indeed:hover {
+body.recruit-page .rc-btn-contact:hover {
   background: #0b3c7a;
   color: #fff !important;
   transform: translateY(-1px);
 }
 
-body.recruit-page .rc-btn-indeed--ghost {
+body.recruit-page .rc-btn-contact--ghost {
   background: #fff;
   color: var(--recruit-brand-deep) !important;
   border: 2px solid var(--recruit-brand-deep);
   box-shadow: none;
 }
 
-body.recruit-page .rc-btn-indeed--ghost:hover {
+body.recruit-page .rc-btn-contact--ghost:hover {
   background: var(--recruit-band);
   color: var(--recruit-brand-deep) !important;
 }
@@ -314,7 +314,7 @@ body.recruit-page .rc-apply-band p {
     grid-template-columns: 1fr 1fr;
   }
 
-  body.recruit-page .rc-btn-indeed {
+  body.recruit-page .rc-btn-contact {
     width: 100%;
     max-width: 360px;
     text-align: center;
